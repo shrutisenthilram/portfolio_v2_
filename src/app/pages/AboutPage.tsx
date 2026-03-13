@@ -10,24 +10,24 @@ const CORAL = "#F97316";
 const education = [
   {
     degree: "BS Computer Science",
-    school: "UC Berkeley",
-    period: "2023 – 2027",
+    school: "UC San Diego",
+    period: "2024 – 2027",
     detail:
-      "Concentration in Human-Computer Interaction. GPA 3.9.",
+      "object oriented programming",
   },
   {
-    degree: "Minor in Product Design",
-    school: "Jacobs Design Institute",
-    period: "2024 – present",
+    degree: "BS Business Economics",
+    school: "UC San Diego",
+    period: "2024 – 2027",
+    detail:
+      "rady school of management",
+  },
+  {
+    degree: "Minor in Design",
+    school: "UC San Diego",
+    period: "2024 – 2027",
     detail:
       "Studio courses in interaction design, design systems, and prototyping.",
-  },
-  {
-    degree: "Exchange Program",
-    school: "ETH Zürich",
-    period: "Spring 2026",
-    detail:
-      "Studied computational design and AI-assisted fabrication methods.",
   },
 ];
 
@@ -140,10 +140,11 @@ const values = [
 ];
 
 const stats = [
-  { value: "12+", label: "Projects shipped" },
-  { value: "3", label: "Internships" },
-  { value: "4k+", label: "GitHub commits" },
-  { value: "2", label: "Papers published" },
+
+  // { value: "12+", label: "Projects shipped" },
+  // { value: "3", label: "Internships" },
+  // { value: "4k+", label: "GitHub commits" },
+  // { value: "2", label: "Papers published" },
 ];
 
 const currently = [
@@ -424,9 +425,7 @@ export function AboutPage() {
                 color: "var(--p-fg-65)",
               }}
             >
-              I'm a third-year at UC Berkeley studying Computer
-              Science with a focus on human-centered AI and
-              product design. I care deeply about making tools
+              I care deeply about making tools
               that help people think, learn, and work more
               effectively — without getting in the way.
             </p>
@@ -438,17 +437,13 @@ export function AboutPage() {
                 color: "var(--p-fg-45)",
               }}
             >
-              Previously at Figma (Product Design), Anthropic
-              (Research Engineering), and Stripe (Software
-              Engineering). Currently working on AI-powered
-              design tooling and open to full-time roles
-              starting summer 2026.
+              
             </p>
 
             <div className="flex flex-wrap gap-4 mt-10">
               <MagneticButton
                 as="a"
-                href="mailto:alex@example.com"
+                href="mailto:senthilramshruti@gmail.com"
                 className="inline-flex items-center gap-3 px-6 py-3 text-white transition-colors duration-300"
                 style={{
                   backgroundColor: ACCENT,
@@ -480,7 +475,7 @@ export function AboutPage() {
                 }}
                 strength={0.2}
               >
-                Download CV
+                Download Resume
               </MagneticButton>
             </div>
           </div>
