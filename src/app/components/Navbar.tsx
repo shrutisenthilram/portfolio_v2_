@@ -76,7 +76,7 @@ export function Navbar() {
             onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
           >
-            Alex Chen
+            Shruti Senthilram
           </Link>
 
           {/* Desktop Nav */}

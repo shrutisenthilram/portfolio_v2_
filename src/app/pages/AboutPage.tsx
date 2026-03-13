@@ -32,39 +32,40 @@ const education = [
 ];
 
 const experiences = [
-  {
-    role: "Product Design Intern",
-    company: "Figma",
-    period: "Summer 2025",
-    location: "San Francisco, CA",
-    bullets: [
-      "Redesigned the plugin discovery surface, increasing installs by 18%.",
-      "Prototyped AI-assisted layout suggestions for the editor canvas.",
-      "Led 6 user research sessions and synthesised findings for the team.",
-    ],
-  },
-  {
-    role: "Research Engineering Intern",
-    company: "Anthropic",
-    period: "Winter 2025",
-    location: "Remote",
-    bullets: [
-      "Built an evaluation harness for LLM safety benchmarks (Python / TypeScript).",
-      "Contributed to internal tooling for red-teaming Claude 3.",
-      "Co-authored an internal memo on constitutional AI edge cases.",
-    ],
-  },
-  {
-    role: "Software Engineer Intern",
-    company: "Stripe",
-    period: "Summer 2024",
-    location: "Remote",
-    bullets: [
-      "Improved WCAG AA compliance across the Dashboard billing surface.",
-      "Shipped a new keyboard-navigation system for the payments table.",
-      "Reduced p95 load time by 22% through code-splitting improvements.",
-    ],
-  },
+  
+  // {
+  //   role: "Product Design Intern",
+  //   company: "Figma",
+  //   period: "Summer 2025",
+  //   location: "San Francisco, CA",
+  //   bullets: [
+  //     "Redesigned the plugin discovery surface, increasing installs by 18%.",
+  //     "Prototyped AI-assisted layout suggestions for the editor canvas.",
+  //     "Led 6 user research sessions and synthesised findings for the team.",
+  //   ],
+  // },
+  // {
+  //   role: "Research Engineering Intern",
+  //   company: "Anthropic",
+  //   period: "Winter 2025",
+  //   location: "Remote",
+  //   bullets: [
+  //     "Built an evaluation harness for LLM safety benchmarks (Python / TypeScript).",
+  //     "Contributed to internal tooling for red-teaming Claude 3.",
+  //     "Co-authored an internal memo on constitutional AI edge cases.",
+  //   ],
+  // },
+  // {
+  //   role: "Software Engineer Intern",
+  //   company: "Stripe",
+  //   period: "Summer 2024",
+  //   location: "Remote",
+  //   bullets: [
+  //     "Improved WCAG AA compliance across the Dashboard billing surface.",
+  //     "Shipped a new keyboard-navigation system for the payments table.",
+  //     "Reduced p95 load time by 22% through code-splitting improvements.",
+  //   ],
+  // },
 ];
 
 const skills = [
@@ -328,7 +329,7 @@ export function AboutPage() {
               (e.currentTarget.style.color = "var(--p-fg-35)")
             }
           >
-            Alex Chen
+            Shruti Senthilram
           </Link>
           <span
             style={{
@@ -504,8 +505,8 @@ export function AboutPage() {
                 }}
               />
               <img
-                src="https://images.unsplash.com/photo-1717068341511-204207d72705?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90JTIwcG9ydHJhaXQlMjBzdHVkaW98ZW58MXx8fHwxNzczMzg3NzYzfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Alex Chen"
+                src=""
+                alt=""
                 className="w-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 style={{ aspectRatio: "4/5", display: "block" }}
               />
@@ -516,7 +517,7 @@ export function AboutPage() {
               {[
                 {
                   k: "Based in",
-                  v: "Berkeley, CA",
+                  v: "San Francisco, CA",
                   coral: false,
                 },
                 {
@@ -527,7 +528,7 @@ export function AboutPage() {
                 { k: "Focus", v: "CS × Design", coral: false },
                 {
                   k: "Website",
-                  v: "alexchen.dev",
+                  v: "",
                   coral: false,
                 },
               ].map(({ k, v, coral }) => (
@@ -578,7 +579,7 @@ export function AboutPage() {
       </div>
 
       {/* ── Stats strip ── */}
-      <div
+      {/* <div
         className="px-6 md:px-12 max-w-6xl mx-auto py-12"
         style={{
           borderTop: "1px solid var(--p-divide)",
@@ -610,7 +611,7 @@ export function AboutPage() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* ── Experience ── */}
       <div className="px-6 md:px-12 max-w-6xl mx-auto py-14">

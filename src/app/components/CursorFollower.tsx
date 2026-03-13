@@ -46,8 +46,8 @@ export function CursorFollower() {
     const animate = () => {
       // Lag ring follows cursor
       ringRef.current = {
-        x: ringRef.current.x + (posRef.current.x - ringRef.current.x) * 0.2,
-        y: ringRef.current.y + (posRef.current.y - ringRef.current.y) * 0.2,
+        x: ringRef.current.x + (posRef.current.x - ringRef.current.x) * 0.9,
+        y: ringRef.current.y + (posRef.current.y - ringRef.current.y) * 0.9,
       };
       setRing({ x: ringRef.current.x, y: ringRef.current.y });
 

@@ -5,11 +5,11 @@ const CORAL = "#F97316";
 
 const communities = [
   {
-    name: "Blueprint",
+    name: "ACM @ UCSD",
     role: "Design Lead",
-    handle: "@berkeleyblueprint",
+    handle: "@",
     description:
-      "Cal's premier tech-for-good nonprofit. We build free software for local nonprofits — from shelter management to food-bank logistics. Leading a team of 8 designers across 4 active client projects.",
+      "ACM",
     color: ACCENT,
     photos: [
       {
@@ -25,12 +25,11 @@ const communities = [
     ],
   },
   {
-    name: "HCI Society",
-    role: "President",
-    handle: "@berkeleyhci",
+    name: "Computer Science and Engineering Society (CSES) Open Source @ UCSD",
+    role: "Vice President of Product",
+    handle: "@",
     description:
-      "Organizing talks, paper read-alongs, and workshops on human-computer interaction research. We've hosted guests from Google, Apple, and MIT CSAIL, and run Berkeley's largest design conference.",
-    color: CORAL,
+      "",
     photos: [
       {
         src: "https://images.unsplash.com/photo-1768796370577-c6e8b708b980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjB3b3Jrc2hvcCUyMHN0dWRlbnRzJTIwcHJlc2VudGF0aW9ufGVufDF8fHx8MTc3MzQyMDkwOHww&ixlib=rb-4.1.0&q=80&w=600",
@@ -45,11 +44,11 @@ const communities = [
     ],
   },
   {
-    name: "ColorStack",
-    role: "Mentor",
-    handle: "@colorstackorg",
+    name: "CodePath",
+    role: "Tech Fellow",
+    handle: "@code",
     description:
-      "Supporting Black and Latinx students in computing through community, mentorship, and career development. Mentoring 4 students through internship recruiting and helping them land roles at top tech companies.",
+      "",
     color: ACCENT,
     photos: [
       {

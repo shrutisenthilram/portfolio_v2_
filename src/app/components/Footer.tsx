@@ -15,10 +15,10 @@ export function Footer() {
       >
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <span style={{ fontSize: "0.75rem", color: "var(--p-fg-25)" }}>
-            © {year} Alex Chen
+            © {year} Shruti Senthilram
           </span>
           <span style={{ fontSize: "0.75rem", color: CORAL + "70" }}>
-            Designed & built in Berkeley
+            made with iced coffees and a pinch of code
           </span>
         </div>
 
@@ -26,7 +26,7 @@ export function Footer() {
           {[
             { label: "GitHub", href: "#" },
             { label: "LinkedIn", href: "#" },
-            { label: "Dribbble", href: "#" },
+            { label: "", href: "#" },
           ].map(({ label, href }) => (
             <a
               key={label}

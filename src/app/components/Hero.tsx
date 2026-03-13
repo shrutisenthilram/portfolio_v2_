@@ -73,7 +73,7 @@ export function Hero() {
               color: "var(--p-fg)",
             }}
           >
-            Hi, I'm Alex —<br />
+            Hi, I'm Shruti —<br />
             <span style={{ fontWeight: 500 }}>a </span>
             <span
               style={{
@@ -136,7 +136,7 @@ export function Hero() {
               }}
               strength={0.2}
             >
-              alex@example.com
+              senthilramshruti@gmail.com
             </MagneticButton>
           </div>
         </div>
@@ -157,7 +157,7 @@ export function Hero() {
               style={{ backgroundColor: "var(--p-surface)" }}
             >
               <img
-                src="https://images.unsplash.com/photo-1758613654360-45f1ff78c0cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90JTIwcG9ydHJhaXQlMjBuZXV0cmFsfGVufDF8fHx8MTc3MzM3NjY0MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                src=""
                 alt="Portrait"
                 className="w-full h-full object-cover"
                 style={{ filter: "none", transition: "filter 0.7s ease" }}
@@ -169,7 +169,7 @@ export function Hero() {
               className="absolute -bottom-6 left-0"
               style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
             >
-              Berkeley, CA
+              San Francisco, CA
             </div>
           </div>
         </div>

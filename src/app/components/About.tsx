@@ -4,9 +4,9 @@ const CORAL = "#F97316";
 import { Link } from "react-router";
 
 const education = [
-  { label: "BS Computer Science", sub: "UC Berkeley · 2023–2027" },
-  { label: "Minor in Product Design", sub: "Jacobs Design Institute" },
-  { label: "Exchange Program", sub: "ETH Zürich · Spring 2026" },
+  { label: "BS Computer Science", sub: "UC San Diego · 2024–2027" },
+  { label: "BS Business Economics", sub: "UC San Diego · 2024–2027" },
+  { label: "Minor: Design", sub: "UC San Diego · 2024–2027" },
 ];
 
 const interests = [
@@ -14,7 +14,6 @@ const interests = [
   "Generative AI & Design Tools",
   "Open Source Software",
   "Photography & Visual Arts",
-  "Urban Cycling",
 ];
 
 export function About() {
@@ -47,16 +46,16 @@ export function About() {
               style={{ border: `1px solid ${ACCENT}30` }}
             />
             <img
-              src="https://images.unsplash.com/photo-1758613654360-45f1ff78c0cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90JTIwcG9ydHJhaXQlMjBuZXV0cmFsfGVufDF8fHx8MTc3MzM3NjY0MHww&ixlib=rb-4.1.0&q=80&w=400"
-              alt="Alex Chen"
+              src=""
+              alt="Shruti Senthilram"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </div>
           <div className="space-y-2 mt-1 sm:mt-0">
             {[
-              { k: "Based in", v: "Berkeley, CA", coral: false },
+              { k: "Based in", v: "San Francisco, CA", coral: false },
               { k: "Availability", v: "Summer 2026", coral: true },
-              { k: "Focus", v: "CS × Design", coral: false },
+              { k: "Focus", v: "CS × Design x Product Management", coral: false },
             ].map(({ k, v, coral }) => (
               <div key={k} className="flex items-baseline gap-2">
                 <span className="w-20 shrink-0" style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}>{k}</span>
@@ -80,15 +79,12 @@ export function About() {
             className="mb-5"
             style={{ fontSize: "1rem", fontWeight: 300, lineHeight: 1.85, letterSpacing: "-0.005em", color: "var(--p-fg-65)" }}
           >
-            I'm a third-year student at UC Berkeley studying Computer Science
-            with a focus on human-centered AI and product design. I'm passionate
+            I'm a double major in CS and Business Econ at UC San Diego, with a focus on human-centered AI and product design. I'm passionate
             about creating tools that help people think, learn, and collaborate
             more effectively.
           </p>
           <p className="mb-8" style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}>
-            Previously interned at Figma (Product Design) and Anthropic (Research
-            Engineering). I'm currently working on AI-powered design tooling and
-            looking for full-time roles in product design engineering.
+            Outside of academics, I 
           </p>
           <Link
             to="/about"

@@ -4,9 +4,9 @@ const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
 const contactLinks = [
-  { label: "Email", value: "alex@example.com", href: "mailto:alex@example.com" },
-  { label: "GitHub", value: "github.com/alexchen", href: "#" },
-  { label: "LinkedIn", value: "linkedin.com/in/alexchen", href: "#" },
+  { label: "Email", value: "senthilramshruti@gmail.com", href: "mailto:senthilramshruti@gmail.com" },
+  { label: "GitHub", value: "github.com/shrutisenthilram", href: "#" },
+  { label: "LinkedIn", value: "linkedin.com/in/shrutisenthilram/", href: "#" },
   { label: "Resume", value: "Download PDF", href: "#" },
 ];
 
@@ -57,7 +57,7 @@ export function Contact() {
 
           <MagneticButton
             as="a"
-            href="mailto:alex@example.com"
+            href="mailto:senthilramshruti@gmail.com"
             className="inline-flex items-center gap-3 px-7 py-3.5 text-white transition-colors duration-300"
             style={{
               backgroundColor: ACCENT,
