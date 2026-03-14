@@ -5,50 +5,64 @@ const CORAL = "#F97316";
 
 const albums = [
   {
-    title: "Colorize",
-    artist: "Four Tet",
+    title: "Hurry Up Tomorrow",
+    artist: "The Weeknd",
     year: 2025,
-    art: "https://images.unsplash.com/photo-1759185609677-3289419052a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdXNpYyUyMGFsYnVtJTIwYXJ0JTIwYWJzdHJhY3QlMjBjb2xvcmZ1bCUyMGdyYWRpZW50fGVufDF8fHx8MTc3MzQyMDkxMnww&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Electronic",
+    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80",
+    genre: "Alt R&B",
   },
   {
-    title: "Cascade",
-    artist: "Bicep",
+    title: "After Hours",
+    artist: "The Weeknd",
+    year: 2020,
+    art: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=400&q=80",
+    genre: "Synthpop",
+  },
+  {
+    title: "Dawn FM",
+    artist: "The Weeknd",
+    year: 2022,
+    art: "https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=400&q=80",
+    genre: "Pop",
+  },
+  {
+    title: "Starboy",
+    artist: "The Weeknd",
+    year: 2016,
+    art: "https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&w=400&q=80",
+    genre: "R&B",
+  },
+  {
+    title: "Malcolm Todd",
+    artist: "Malcolm Todd",
     year: 2025,
-    art: "https://images.unsplash.com/photo-1701460356853-d65909c68337?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVjdHJvbmljJTIwbXVzaWMlMjBjb25jZXJ0JTIwbGlnaHRzJTIwYXRtb3NwaGVyaWN8ZW58MXx8fHwxNzczNDIwOTEyfDA&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Dance",
+    art: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=400&q=80",
+    genre: "Alternative R&B",
   },
   {
-    title: "Promises",
-    artist: "Floating Points",
+    title: "Malcolm Todd (still)",
+    artist: "Malcolm Todd",
+    year: 2025,
+    art: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=400&q=80",
+    genre: "Indie Pop",
+  },
+  {
+    title: "Sweet Boy",
+    artist: "Malcolm Todd",
     year: 2024,
-    art: "https://images.unsplash.com/photo-1576180606205-87261ca2f36c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpZSUyMGFsYnVtJTIwYXJ0JTIwZHJlYW15JTIwcGFzdGVsJTIwYWVzdGhldGljfGVufDF8fHx8MTc3MzQyMDkxM3ww&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Ambient Jazz",
+    art: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=400&q=80",
+    genre: "Alt Pop",
   },
   {
-    title: "Sundrift",
-    artist: "Bonobo",
-    year: 2024,
-    art: "https://images.unsplash.com/photo-1753973421082-c052c09b41f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW55bCUyMHJlY29yZCUyMHBsYXllciUyMGNsb3NlJTIwdXAlMjBhZXN0aGV0aWN8ZW58MXx8fHwxNzczNDIwOTA5fDA&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Nu-Jazz",
-  },
-  {
-    title: "Ghost Signals",
-    artist: "Jon Hopkins",
+    title: "Shower Shoes",
+    artist: "Malcolm Todd",
     year: 2023,
-    art: "https://images.unsplash.com/photo-1759185609677-3289419052a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdXNpYyUyMGFsYnVtJTIwYXJ0JTIwYWJzdHJhY3QlMjBjb2xvcmZ1bCUyMGdyYWRpZW50fGVufDF8fHx8MTc3MzQyMDkxMnww&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Ambient",
-  },
-  {
-    title: "Ultra Mono",
-    artist: "IDLES",
-    year: 2023,
-    art: "https://images.unsplash.com/photo-1701460356853-d65909c68337?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVjdHJvbmljJTIwbXVzaWMlMjBjb25jZXJ0JTIwbGlnaHRzJTIwYXRtb3NwaGVyaWN8ZW58MXx8fHwxNzczNDIwOTEyfDA&ixlib=rb-4.1.0&q=80&w=400",
-    genre: "Post-Punk",
+    art: "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?auto=format&fit=crop&w=400&q=80",
+    genre: "Bedroom Pop",
   },
 ];
 
-const YEARS = ["All", "2025", "2024", "2023"];
+const YEARS = ["All", "2025", "2024", "2023", "2022", "2020", "2016"];
 
 const BARS = [3, 5, 8, 6, 4, 7, 5, 3, 6, 8, 4, 5];
 

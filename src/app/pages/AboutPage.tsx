@@ -500,9 +500,9 @@ export function AboutPage() {
                 }}
               />
               <img
-                src=""
+                src="src/images/bbb.jpeg"
                 alt=""
-                className="w-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              
                 style={{ aspectRatio: "4/5", display: "block" }}
               />
             </div>

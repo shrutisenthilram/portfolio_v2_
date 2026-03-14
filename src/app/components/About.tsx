@@ -46,7 +46,7 @@ export function About() {
               style={{ border: `1px solid ${ACCENT}30` }}
             />
             <img
-              src=""
+              src="src/images/0ad9bd0e-dbd5-40e8-bcbc-0c1797eb3fd5.jpg"
               alt="Shruti Senthilram"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />

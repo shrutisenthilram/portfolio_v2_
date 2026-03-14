@@ -40,27 +40,27 @@ const columns = [
 ];
 
 const experiences = [
-  {
-    role: "Product Design Intern",
-    company: "Figma",
-    period: "Summer 2025",
-    desc: "Worked on editor performance and plugin UX improvements.",
-    color: INDIGO,
-  },
-  {
-    role: "Research Engineering Intern",
-    company: "Anthropic",
-    period: "Winter 2025",
-    desc: "Built evaluation tooling for LLM safety benchmarks.",
-    color: SKY,
-  },
-  {
-    role: "Software Engineer Intern",
-    company: "Stripe",
-    period: "Summer 2024",
-    desc: "Improved Dashboard accessibility across the billing surface.",
-    color: EMERALD,
-  },
+  // {
+  //   role: "Product Design Intern",
+  //   company: "Figma",
+  //   period: "Summer 2025",
+  //   desc: "Worked on editor performance and plugin UX improvements.",
+  //   color: INDIGO,
+  // },
+  // {
+  //   role: "Research Engineering Intern",
+  //   company: "Anthropic",
+  //   period: "Winter 2025",
+  //   desc: "Built evaluation tooling for LLM safety benchmarks.",
+  //   color: SKY,
+  // },
+  // {
+  //   role: "Software Engineer Intern",
+  //   company: "Stripe",
+  //   period: "Summer 2024",
+  //   desc: "Improved Dashboard accessibility across the billing surface.",
+  //   color: EMERALD,
+  // },
 ];
 
 export function Skills() {

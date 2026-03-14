@@ -157,7 +157,7 @@ export function Hero() {
               style={{ backgroundColor: "var(--p-surface)" }}
             >
               <img
-                src=""
+                src="src/images/5.jpg"
                 alt="Portrait"
                 className="w-full h-full object-cover"
                 style={{ filter: "none", transition: "filter 0.7s ease" }}

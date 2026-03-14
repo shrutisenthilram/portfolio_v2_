@@ -6,63 +6,65 @@ const CORAL = "#F97316";
 const communities = [
   {
     name: "ACM @ UCSD",
-    role: "Design Lead",
-    handle: "@",
+    role: "Public Relations Director",
+    handle: "@acm_ucsd",
     description:
       "ACM",
     color: ACCENT,
     photos: [
       {
-        src: "https://images.unsplash.com/photo-1772971919689-c216435a5899?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjBoYWNrYXRob24lMjBjb2RpbmclMjB0ZWFtfGVufDF8fHx8MTc3MzQyMDkwN3ww&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "Spring showcase night",
-        rotate: "-3deg",
+        src: "src/images/1K5A9054.JPG",
+        caption: "ACM retreat 2026",
+        rotate: "-6deg",
       },
       {
-        src: "https://images.unsplash.com/photo-1618173887111-3ecfc91c41b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwbm9ucHJvZml0JTIwdGVhbSUyMG1lZXRpbmclMjB2b2x1bnRlZXJzfGVufDF8fHx8MTc3MzQyMDkxMXww&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "Design team offsite",
-        rotate: "2.5deg",
+        src: "src/images/IMG_1079.JPG",
+        caption: "External Team",
+        rotate: "6deg",
       },
+      
     ],
   },
   {
-    name: "Computer Science and Engineering Society (CSES) Open Source @ UCSD",
-    role: "Vice President of Product",
+    name: "Design Co @ UCSD",
+    role: "Industry Relations Coordinator and Web Developer",
     handle: "@",
-    description:
-      "",
-    photos: [
-      {
-        src: "https://images.unsplash.com/photo-1768796370577-c6e8b708b980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjB3b3Jrc2hvcCUyMHN0dWRlbnRzJTIwcHJlc2VudGF0aW9ufGVufDF8fHx8MTc3MzQyMDkwOHww&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "Annual HCI Symposium",
-        rotate: "4deg",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1728071733668-dafce955272a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwY2FtcHVzJTIwb3V0ZG9vciUyMGdyb3VwJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc3MzQyMDkwOHww&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "End-of-year picnic",
-        rotate: "-2deg",
-      },
-    ],
-  },
-  {
-    name: "CodePath",
-    role: "Tech Fellow",
-    handle: "@code",
     description:
       "",
     color: ACCENT,
     photos: [
       {
-        src: "https://images.unsplash.com/photo-1770364292936-1800aa621b3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3R1ZGVudCUyMGNsdWIlMjBncm91cCUyMHBob3RvJTIwZXZlbnR8ZW58MXx8fHwxNzczNDIwOTA3fDA&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "Community kickoff event",
-        rotate: "-4deg",
+        src: "src/images/523C05F6-FF58-42BD-A82D-536FD77BA086_1_105_c.jpeg",
+        caption:"Industry Relations Team",
+        rotate: "6deg",
       },
       {
-        src: "https://images.unsplash.com/photo-1728071733668-dafce955272a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwY2FtcHVzJTIwb3V0ZG9vciUyMGdyb3VwJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc3MzQyMDkwOHww&ixlib=rb-4.1.0&q=80&w=600",
-        caption: "Mentorship circle",
-        rotate: "3deg",
+        src: "src/images/E1DB5654-1B17-4F5A-8B2C-0362CE25B66F.jpeg",
+        caption: "Design Co Creative Team",
+        rotate: "-6deg",
       },
     ],
   },
+  // {
+  //   name: "CodePath",
+  //   role: "Tech Fellow",
+  //   handle: "@code",
+  //   description:
+  //     "",
+  //   color: ACCENT,
+  //   photos: [
+  //     {
+  //       src: "https://images.unsplash.com/photo-1770364292936-1800aa621b3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3R1ZGVudCUyMGNsdWIlMjBncm91cCUyMHBob3RvJTIwZXZlbnR8ZW58MXx8fHwxNzczNDIwOTA3fDA&ixlib=rb-4.1.0&q=80&w=600",
+  //       caption: "Community kickoff event",
+  //       rotate: "-4deg",
+  //     },
+  //     {
+  //       src: "https://images.unsplash.com/photo-1728071733668-dafce955272a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwY2FtcHVzJTIwb3V0ZG9vciUyMGdyb3VwJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc3MzQyMDkwOHww&ixlib=rb-4.1.0&q=80&w=600",
+  //       caption: "Mentorship circle",
+  //       rotate: "3deg",
+  //     },
+  //   ],
+  // },
 ];
 
 function Polaroid({
