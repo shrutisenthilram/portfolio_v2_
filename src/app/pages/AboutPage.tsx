@@ -609,7 +609,7 @@ export function AboutPage() {
       </div> */}
 
       {/* ── Experience ── */}
-      <div className="px-6 md:px-12 max-w-6xl mx-auto py-14">
+      {/* <div className="px-6 md:px-12 max-w-6xl mx-auto py-14">
         <SectionLabel>Experience</SectionLabel>
         <div style={{ borderTop: "1px solid var(--p-divide)" }}>
           {experiences.map((exp, i) => (
@@ -620,7 +620,7 @@ export function AboutPage() {
             />
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* ── Education ── */}
       <div className="px-6 md:px-12 max-w-6xl mx-auto pb-14">
