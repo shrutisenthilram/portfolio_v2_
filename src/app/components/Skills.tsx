@@ -29,12 +29,12 @@ const columns = [
   {
     title: "Leadership & Orgs",
     items: [
-      { name: "Design Lead — Blueprint", level: 0, color: INDIGO },
-      { name: "President — HCI Society", level: 0, color: CORAL },
-      { name: "TA — CS 160: UI Design", level: 0, color: SKY },
-      { name: "Mentor — ColorStack", level: 0, color: EMERALD },
-      { name: "Hackathon Organizer", level: 0, color: AMBER },
-      { name: "Open Source Contributor", level: 0, color: VIOLET },
+      { name: "Design Co @ UCSD - Industry Relations Coordinator", level: 0, color: INDIGO },
+      { name: "CSES OpenSource - VP of Product", level: 0, color: CORAL },
+      { name: "ACM @ UCSD - Public Relations Director", level: 0, color: SKY },
+      { name: "Econ Undergraduate Research Assistant", level: 0, color: EMERALD },
+      { name: "Claude Ambassador", level: 0, color: AMBER },
+      { name: "Autodesk Ambassador", level: 0, color: VIOLET },
     ],
   },
 ];
@@ -68,7 +68,7 @@ export function Skills() {
     <section
       id="resume"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-28 px-6 md:px-12 max-w-6xl mx-auto"
+      className="py-12 px-6 md:px-12 max-w-6xl mx-auto"
     >
       {/* Header */}
       <div
@@ -95,7 +95,7 @@ export function Skills() {
           style={{ fontSize: "0.82rem", fontWeight: 400, color: ACCENT, borderBottom: `1px solid ${ACCENT}` }}
           strength={0.2}
         >
-          Download CV →
+          Download Resume →
         </MagneticButton>
       </div>
 

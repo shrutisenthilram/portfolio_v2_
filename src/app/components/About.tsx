@@ -13,7 +13,7 @@ const interests = [
   "Human-Computer Interaction",
   "Generative AI & Design Tools",
   "Open Source Software",
-  "Photography & Visual Arts",
+  "Web Development",
 ];
 
 export function About() {
@@ -21,7 +21,7 @@ export function About() {
     <section
       id="about"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-28 px-6 md:px-12 max-w-6xl mx-auto"
+      className="py-12 px-6 md:px-12 max-w-6xl mx-auto"
     >
       <span
         className="tracking-widest uppercase block mb-12 md:mb-16 pb-6"
@@ -55,7 +55,7 @@ export function About() {
             {[
               { k: "Based in", v: "San Francisco, CA", coral: false },
               { k: "Availability", v: "Summer 2026", coral: true },
-              { k: "Focus", v: "CS × Design x Product Management", coral: false },
+              { k: "Focus", v: "Product", coral: false },
             ].map(({ k, v, coral }) => (
               <div key={k} className="flex items-baseline gap-2">
                 <span className="w-20 shrink-0" style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}>{k}</span>
@@ -84,7 +84,7 @@ export function About() {
             more effectively.
           </p>
           <p className="mb-8" style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}>
-            Outside of academics, I 
+            Outside of academics, I love running, reading, playing the piano, and drinking iced coffees :)
           </p>
           <Link
             to="/about"

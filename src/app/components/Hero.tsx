@@ -3,7 +3,7 @@ import { MagneticButton } from "./MagneticButton";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
-const ROLES = ["Designer", "Engineer", "Builder", "Problem Solver", "Creator"];
+const ROLES = ["Designer", "Engineer", "Builder", "Problem Solver", "Artist"];
 
 export function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -73,7 +73,7 @@ export function Hero() {
               color: "var(--p-fg)",
             }}
           >
-            Hi, I'm Shruti —<br />
+            Hi, I'm Shruti <br />
             <span style={{ fontWeight: 500 }}>a </span>
             <span
               style={{
@@ -96,8 +96,7 @@ export function Hero() {
             className="mb-8 md:mb-12 max-w-md"
             style={{ fontSize: "0.95rem", fontWeight: 400, lineHeight: 1.7, color: "var(--p-fg-45)" }}
           >
-            I design and build thoughtful digital products at the intersection
-            of engineering, AI, and human-centered design.
+            I design and build thoughtful digital products focused on human-centered design.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 md:gap-8">
@@ -169,7 +168,7 @@ export function Hero() {
               className="absolute -bottom-6 left-0"
               style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
             >
-              San Francisco, CA
+            yay
             </div>
           </div>
         </div>

@@ -115,8 +115,8 @@ export function Navbar() {
                 </a>
               );
             })}
-
-            {/* Playground link */}
+{/* 
+            
             <Link
               to="/playground"
               className="playground-btn flex items-center gap-1.5 px-3 py-1.5 transition-all duration-200 border"
@@ -145,7 +145,7 @@ export function Navbar() {
             >
               <Sparkles size={12} strokeWidth={1.8} />
               Playground
-            </Link>
+            </Link> */}
 
             <style>{`
               @keyframes navbar-shake {
@@ -252,7 +252,8 @@ export function Navbar() {
           >
             All Projects →
           </Link>
-          <Link
+          
+          {/* <Link
             to="/playground"
             onClick={() => setMenuOpen(false)}
             className="flex items-center gap-2 transition-colors duration-200"
@@ -260,7 +261,7 @@ export function Navbar() {
           >
             <Sparkles size={14} strokeWidth={1.8} />
             Playground
-          </Link>
+          </Link> */}
         </div>
       )}
     </header>

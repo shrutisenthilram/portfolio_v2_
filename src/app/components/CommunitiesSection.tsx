@@ -97,7 +97,7 @@ function Polaroid({
       <div
         style={{
           backgroundColor: "var(--p-bg)",
-          padding: "8px 8px 28px 8px",
+          padding: "10px 10px 36px 10px",
           boxShadow: "0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.08)",
           position: "relative",
         }}
@@ -106,8 +106,8 @@ function Polaroid({
           src={src}
           alt={caption}
           style={{
-            width: 148,
-            height: 120,
+            width: 240,
+            height: 190,
             objectFit: "cover",
             display: "block",
             filter: "grayscale(15%)",
