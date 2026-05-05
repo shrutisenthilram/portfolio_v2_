@@ -10,27 +10,25 @@ export function Home() {
     <main>
       <Hero />
 
-      <MarqueeTicker />
-
       <Projects />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="border-t border-black/6" />
-      </div>
+      <MarqueeTicker />
 
       <About />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="border-t border-black/6" />
-      </div>
-
-      <Skills />
-
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="border-t border-black/6" />
-      </div>
-
       <Contact />
+
+      {/* <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="border-t border-black/6" />
+      </div> */}
+
+      {/* <Skills />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="border-t border-black/6" />
+      </div> */}
+
+    
     </main>
   );
 }

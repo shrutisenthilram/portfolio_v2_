@@ -139,8 +139,82 @@ export function Hero() {
             </MagneticButton>
           </div>
         </div>
+{/* Photo collage */}
+<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end">
+  <div className="relative w-44 h-56 sm:w-48 sm:h-64 md:w-56 md:h-72">
 
-        {/* Portrait */}
+    {/* Accent photo — top right, peeking out */}
+    <div
+      className="absolute -top-8 -right-10 w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 overflow-hidden z-20"
+      style={{
+        backgroundColor: "var(--p-surface)",
+        border: `1px solid ${ACCENT}40`,
+        boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+      }}
+    >
+      <img
+        src="src/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
+        alt=""
+        className="w-full h-full object-cover"
+        style={{ filter: "none", transition: "filter 0.7s ease" }}
+        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+      />
+    </div>
+
+    {/* Main photo — keeps your double-border signature */}
+    <div
+      className="absolute inset-0"
+      style={{ border: "1px solid var(--p-divide)" }}
+    />
+    <div
+      className="absolute -top-3 -right-3 w-full h-full"
+      style={{ border: `1px solid ${ACCENT}60` }}
+    />
+    <div
+      className="relative w-full h-full overflow-hidden z-10"
+      style={{ backgroundColor: "var(--p-surface)" }}
+    >
+      <img
+        src="src/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
+        alt="Portrait"
+        className="w-full h-full object-cover"
+        style={{ filter: "none", transition: "filter 0.7s ease" }}
+        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+      />
+    </div>
+
+    {/* Accent photo — bottom left, peeking out */}
+    <div
+      className="absolute -bottom-10 -left-10 w-24 h-28 sm:w-28 sm:h-32 md:w-32 md:h-36 overflow-hidden z-20"
+      style={{
+        backgroundColor: "var(--p-surface)",
+        border: "1px solid var(--p-divide)",
+        boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+      }}
+    >
+      <img
+        src="src/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
+        alt=""
+        className="w-full h-full object-cover"
+        style={{ filter: "none", transition: "filter 0.7s ease" }}
+        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+      />
+    </div>
+
+    {/* Caption */}
+    <div
+      className="absolute -bottom-16 right-0"
+      style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
+    >
+      MOMENTS — 2025
+    </div>
+
+  </div>
+</div>
+        {/* Portrait
         <div className="hidden sm:flex md:col-span-4 justify-center md:justify-end">
           <div className="relative w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72">
             <div
@@ -171,13 +245,13 @@ export function Hero() {
             yay
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      {/* Scroll indicator */}
+
       <div className="mt-16 md:mt-24 flex items-center gap-4">
-        <div className="w-12 h-px" style={{ backgroundColor: ACCENT + "70" }} />
-        <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--p-fg-35)" }}>SCROLL</span>
+         
+        <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--p-fg-35)" }}></span>
       </div>
     </section>
   );

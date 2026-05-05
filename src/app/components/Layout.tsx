@@ -24,6 +24,7 @@ function PageWrapper() {
     >
       <CursorFollower />
       <Navbar />
+      
 
       {/*
         No AnimatePresence — old page unmounts instantly, new page fades in.
