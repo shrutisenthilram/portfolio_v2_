@@ -500,7 +500,7 @@ export function AboutPage() {
                 }}
               />
               <img
-                src="src/images/bbb.jpeg"
+                src="/images/bbb.jpeg"
                 alt=""
               
                 style={{ aspectRatio: "4/5", display: "block" }}

@@ -13,12 +13,12 @@ const communities = [
     color: ACCENT,
     photos: [
       {
-        src: "src/images/1K5A9054.JPG",
+        src: "/images/1K5A9054.JPG",
         caption: "ACM retreat 2026",
         rotate: "-6deg",
       },
       {
-        src: "src/images/IMG_1079.JPG",
+        src: "/images/IMG_1079.JPG",
         caption: "External Team",
         rotate: "6deg",
       },
@@ -34,12 +34,12 @@ const communities = [
     color: ACCENT,
     photos: [
       {
-        src: "src/images/523C05F6-FF58-42BD-A82D-536FD77BA086_1_105_c.jpeg",
+        src: "/images/523C05F6-FF58-42BD-A82D-536FD77BA086_1_105_c.jpeg",
         caption:"Industry Relations Team",
         rotate: "6deg",
       },
       {
-        src: "src/images/E1DB5654-1B17-4F5A-8B2C-0362CE25B66F.jpeg",
+        src: "/images/E1DB5654-1B17-4F5A-8B2C-0362CE25B66F.jpeg",
         caption: "Design Co Creative Team",
         rotate: "-6deg",
       },

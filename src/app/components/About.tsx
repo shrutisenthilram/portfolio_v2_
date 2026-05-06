@@ -46,7 +46,7 @@ export function About() {
               style={{ border: `1px solid ${ACCENT}30` }}
             />
             <img
-              src="src/images/5.jpg"
+              src="/images/5.jpg"
               alt="Shruti Senthilram"
               className="w-full h-full object-cover"
               style={{
