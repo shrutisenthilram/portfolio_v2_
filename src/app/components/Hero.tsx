@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { MagneticButton } from "./MagneticButton";
+import portraitImg from "@/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg";
+import heroImg from "@/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
@@ -163,7 +165,7 @@ export function Hero() {
       }}
     >
       <img
-        src="src/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
+        src="public/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
         alt=""
         style={{
           width: "100%",
@@ -198,7 +200,7 @@ export function Hero() {
       }}
     >
       <img
-        src="src/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
+        src="public/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
         alt="Portrait"
         style={{
           width: "100%",
@@ -227,7 +229,7 @@ export function Hero() {
       }}
     >
       <img
-        src="src/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
+        src="public/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
         alt=""
         style={{
           width: "100%",
