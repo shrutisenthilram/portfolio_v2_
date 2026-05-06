@@ -66,7 +66,7 @@ export function Navbar() {
           transition: "background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 pt-3 sm:pt-4">
           {/* Logo — scrolls to top on home, navigates to / elsewhere */}
           <Link
             to="/"

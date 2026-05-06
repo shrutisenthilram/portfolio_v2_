@@ -28,7 +28,7 @@ export function Hero() {
     <section
       id="hero"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="flex flex-col justify-center pt-20 pb-10 px-6 md:px-12 max-w-6xl mx-auto"
+      className="flex flex-col justify-center pt-24 pb-10 px-6 md:px-12 max-w-6xl mx-auto"
     >
       {/* Top label row */}
       <div className="mb-6 md:mb-10 flex items-center gap-4 flex-wrap">
@@ -60,7 +60,7 @@ export function Hero() {
       </div>
 
       {/* Main content grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-end">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
         {/* Headline */}
         <div className="md:col-span-8">
           <h1
@@ -142,73 +142,105 @@ export function Hero() {
           </div>
         </div>
 {/* Photo collage */}
-<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end pr-2 md:pr-0 pl-10 md:pl-0">
-  <div className="relative w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72 my-12 sm:my-14 md:my-16">
+<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end pr-6 md:pr-3 pl-12 md:pl-0">
+  <div className="relative w-44 h-60 sm:w-52 sm:h-72 md:w-60 md:h-80 my-8 sm:my-10 md:my-12">
 
-    {/* Accent photo — top right, peeking out */}
+    {/* Accent photo — top right, peeking out (hover: lift + tilt) */}
     <div
-      className="absolute -top-8 -right-10 w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 overflow-hidden z-20"
+      className="hero-photo absolute -top-6 -right-5 sm:-right-7 w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 overflow-hidden z-20"
       style={{
-        backgroundColor: "var(--p-surface)",
         border: `1px solid ${ACCENT}40`,
         boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+        transition: "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translate(28px, -26px) rotate(12deg) scale(1.14)";
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 28px 50px ${ACCENT}55`;
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translate(0,0) rotate(0deg) scale(1)";
+        (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 22px rgba(0,0,0,0.10)";
       }}
     >
       <img
         src="src/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
         alt=""
-        className="w-full h-full object-cover"
-        style={{ filter: "none", transition: "filter 0.7s ease" }}
-        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
       />
     </div>
 
-    {/* Main photo — keeps your double-border signature */}
+    {/* Main photo — keeps the double-border signature, hover: lift + scale */}
     <div
-      className="absolute inset-0"
+      className="absolute inset-0 pointer-events-none"
       style={{ border: "1px solid var(--p-divide)" }}
     />
     <div
-      className="absolute -top-3 -right-3 w-full h-full"
+      className="absolute -top-3 -right-3 w-full h-full pointer-events-none"
       style={{ border: `1px solid ${ACCENT}60` }}
     />
     <div
-      className="relative w-full h-full overflow-hidden z-10"
-      style={{ backgroundColor: "var(--p-surface)" }}
+      className="hero-photo relative w-full h-full overflow-hidden z-10"
+      style={{
+        transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.55s ease",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translateY(-24px) scale(1.08) rotate(-1.5deg)";
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 40px 70px ${ACCENT}45`;
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translateY(0) scale(1) rotate(0deg)";
+        (e.currentTarget as HTMLElement).style.boxShadow = "none";
+      }}
     >
       <img
         src="src/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
         alt="Portrait"
-        className="w-full h-full object-cover"
-        style={{ filter: "none", transition: "filter 0.7s ease" }}
-        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
       />
     </div>
 
-    {/* Accent photo — bottom left, peeking out */}
+    {/* Accent photo — bottom left, peeking out (hover: drop + tilt) */}
     <div
-      className="absolute -bottom-10 -left-10 w-24 h-28 sm:w-28 sm:h-32 md:w-32 md:h-36 overflow-hidden z-20"
+      className="hero-photo absolute -bottom-6 -left-5 sm:-left-7 w-24 h-28 sm:w-28 sm:h-32 md:w-32 md:h-36 overflow-hidden z-20"
       style={{
-        backgroundColor: "var(--p-surface)",
         border: "1px solid var(--p-divide)",
         boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+        transition: "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translate(-28px, 26px) rotate(-12deg) scale(1.14)";
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 28px 50px ${CORAL}5c`;
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.transform = "translate(0,0) rotate(0deg) scale(1)";
+        (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 22px rgba(0,0,0,0.10)";
       }}
     >
       <img
         src="src/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
         alt=""
-        className="w-full h-full object-cover"
-        style={{ filter: "none", transition: "filter 0.7s ease" }}
-        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-        onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
       />
     </div>
 
     {/* Caption */}
     <div
-      className="absolute -bottom-16 right-0"
+      className="absolute -bottom-10 right-0"
       style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
     >
       MOMENTS — 2025

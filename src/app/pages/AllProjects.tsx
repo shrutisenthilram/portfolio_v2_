@@ -194,7 +194,7 @@ export function AllProjects() {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Page header */}
-      <div className="pt-24 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
+      <div className="pt-28 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="flex items-center gap-2 mb-10">
           <Link
             to="/"

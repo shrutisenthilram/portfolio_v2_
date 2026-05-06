@@ -23,14 +23,11 @@ body {
   max-width: 100vw;
 }
 
-/* Scale media safely across browsers */
-img,
-video,
-canvas,
-svg {
+/* Scale media safely across browsers — uses :where() so it never beats
+   utility classes like h-full / w-full / aspect-* / object-cover */
+:where(img, video, canvas, svg) {
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 /* Safari momentum scrolling on horizontal scrollers */

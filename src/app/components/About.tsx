@@ -40,15 +40,29 @@ export function About() {
         {/* Portrait + quick facts */}
         <div className="sm:col-span-1 md:col-span-3 flex sm:block items-start gap-8">
           <div className="relative w-28 h-36 sm:w-36 sm:h-44 mb-0 sm:mb-8 shrink-0">
-            <div className="absolute inset-0" style={{ border: "1px solid var(--p-fg-08)" }} />
+            <div className="absolute inset-0 pointer-events-none z-10" style={{ border: "1px solid var(--p-fg-08)" }} />
             <div
-              className="absolute -bottom-2 -right-2 w-full h-full"
+              className="absolute -bottom-2 -right-2 w-full h-full pointer-events-none"
               style={{ border: `1px solid ${ACCENT}30` }}
             />
             <img
               src="src/images/5.jpg"
               alt="Shruti Senthilram"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+                filter: "grayscale(0%)",
+                transition: "filter 0.6s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
+              }}
             />
           </div>
           <div className="space-y-2 mt-1 sm:mt-0">
