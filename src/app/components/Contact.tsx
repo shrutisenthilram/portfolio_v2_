@@ -15,10 +15,10 @@ export function Contact() {
     <section
       id="contact"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-28 px-6 md:px-12 max-w-6xl mx-auto"
+      className="py-20 px-6 md:px-12 max-w-6xl mx-auto"
     >
       <span
-        className="tracking-widest uppercase block mb-12 md:mb-16 pb-6"
+        className="tracking-widest uppercase block mb-9 md:mb-12 pb-5"
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
@@ -29,7 +29,7 @@ export function Contact() {
         Contact
       </span>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-9 md:gap-12">
         {/* Left — headline */}
         <div className="md:col-span-7">
           <h2
@@ -95,8 +95,8 @@ export function Contact() {
               </span>
               <a
                 href={href}
-                className="inline-flex items-center gap-2 transition-colors duration-200"
-                style={{ fontSize: "0.9rem", fontWeight: 400, color: "var(--p-fg)" }}
+                className="inline-flex items-center gap-2 transition-colors duration-200 break-all"
+                style={{ fontSize: "0.9rem", fontWeight: 400, color: "var(--p-fg)", wordBreak: "break-word", overflowWrap: "anywhere" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
               >

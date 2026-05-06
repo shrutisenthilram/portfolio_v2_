@@ -305,13 +305,13 @@ export function MusicSection() {
       style={{
         fontFamily: "'Inter', sans-serif",
         borderTop: "1px solid var(--p-divide)",
-        paddingTop: "5rem",
+        paddingTop: "3.5rem",
       }}
-      className="px-6 md:px-12 max-w-6xl mx-auto pb-14"
+      className="px-6 md:px-12 max-w-6xl mx-auto pb-10"
     >
       {/* Section label */}
       <span
-        className="tracking-widest uppercase block mb-12 pb-6"
+        className="tracking-widest uppercase block mb-9 pb-5"
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
@@ -323,11 +323,11 @@ export function MusicSection() {
       </span>
 
       {/* Currently listening + album list side by side */}
-      <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
         {/* Left: vinyl player — takes up most of the space */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 w-full">
           <h2
-            className="mb-8"
+            className="mb-6 md:mb-8"
             style={{
               fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)",
               fontWeight: 300,
@@ -341,7 +341,7 @@ export function MusicSection() {
         </div>
 
         {/* Right: vertical album list */}
-        <div style={{ width: 220, flexShrink: 0 }}>
+        <div className="w-full md:w-[220px] md:flex-shrink-0">
           {/* Year filter */}
           <div className="flex items-center gap-2 mb-5 flex-wrap">
             <span
