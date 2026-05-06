@@ -71,8 +71,8 @@ export function Navbar() {
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="tracking-tight transition-colors duration-200"
-            style={{ fontSize: "0.95rem", fontWeight: 500, letterSpacing: "-0.01em", color: "var(--p-fg)" }}
+            className="tracking-tight transition-colors duration-200 whitespace-nowrap"
+            style={{ fontSize: "clamp(0.82rem, 2.6vw, 0.95rem)", fontWeight: 500, letterSpacing: "-0.01em", color: "var(--p-fg)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
           >

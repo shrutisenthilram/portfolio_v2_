@@ -106,8 +106,9 @@ function Polaroid({
           src={src}
           alt={caption}
           style={{
-            width: 240,
-            height: 190,
+            width: "clamp(180px, 60vw, 240px)",
+            aspectRatio: "240 / 190",
+            height: "auto",
             objectFit: "cover",
             display: "block",
             filter: "grayscale(15%)",
@@ -142,14 +143,14 @@ export function CommunitiesSection() {
       style={{
         fontFamily: "'Inter', sans-serif",
         borderTop: "1px solid var(--p-divide)",
-        paddingTop: "5rem",
+        paddingTop: "3.5rem",
       }}
-      className="px-6 md:px-12 max-w-6xl mx-auto pb-14"
+      className="px-6 md:px-12 max-w-6xl mx-auto pb-10"
     >
       {/* Header */}
-      <div className="mb-14">
+      <div className="mb-10">
         <span
-          className="tracking-widest uppercase block mb-12 pb-6"
+          className="tracking-widest uppercase block mb-9 pb-5"
           style={{
             fontSize: "0.68rem",
             letterSpacing: "0.15em",
@@ -185,10 +186,10 @@ export function CommunitiesSection() {
       </div>
 
       {/* Community rows */}
-      <div className="space-y-16 md:space-y-20">
+      <div className="space-y-12 md:space-y-14">
         {communities.map((community, idx) => (
           <div key={community.name}>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
               {/* Left — club info */}
               <div className="md:col-span-4">
                 {/* Club badge */}
@@ -265,21 +266,28 @@ export function CommunitiesSection() {
               </div>
 
               {/* Right — scattered polaroids */}
-              <div className="md:col-span-8 flex items-start gap-6 overflow-x-auto pb-4">
+              <div
+                className="md:col-span-8 flex items-start gap-6 overflow-x-auto pb-4 -mx-6 px-6 md:mx-0 md:px-0"
+                style={{
+                  scrollSnapType: "x mandatory",
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
                 {community.photos.map((photo) => (
-                  <Polaroid
-                    key={photo.caption}
-                    src={photo.src}
-                    caption={photo.caption}
-                    rotate={photo.rotate}
-                  />
+                  <div key={photo.caption} style={{ scrollSnapAlign: "start" }}>
+                    <Polaroid
+                      src={photo.src}
+                      caption={photo.caption}
+                      rotate={photo.rotate}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
 
             {idx < communities.length - 1 && (
               <div
-                className="mt-16 md:mt-20"
+                className="mt-12 md:mt-14"
                 style={{
                   height: 1,
                   backgroundImage: `repeating-linear-gradient(90deg, var(--p-divide) 0px, var(--p-divide) 4px, transparent 4px, transparent 10px)`,

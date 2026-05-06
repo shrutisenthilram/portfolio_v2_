@@ -173,7 +173,7 @@ function SectionLabel({
 }) {
   return (
     <span
-      className="tracking-widest uppercase block mb-12 pb-6"
+      className="tracking-widest uppercase block mb-9 pb-5"
       style={{
         fontSize: "0.68rem",
         letterSpacing: "0.15em",
@@ -313,7 +313,7 @@ export function AboutPage() {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* ── Page header ── */}
-      <div className="pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+      <div className="pt-24 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-10">
           <Link
@@ -351,7 +351,7 @@ export function AboutPage() {
         </div>
 
         {/* Hero grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-9 md:gap-12 items-start">
           {/* Left — text */}
           <div className="md:col-span-7">
             <div className="flex items-center gap-3 mb-6 flex-wrap">
@@ -623,7 +623,7 @@ export function AboutPage() {
       </div> */}
 
       {/* ── Education ── */}
-      <div className="px-6 md:px-12 max-w-6xl mx-auto pb-14">
+      <div className="px-6 md:px-12 max-w-6xl mx-auto pb-10">
         <SectionLabel>Education</SectionLabel>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {education.map((ed) => (
@@ -683,10 +683,10 @@ export function AboutPage() {
 
       {/* ── Skills ── */}
       <div
-        className="px-6 md:px-12 max-w-6xl mx-auto pb-14"
+        className="px-6 md:px-12 max-w-6xl mx-auto pb-10"
         style={{
           borderTop: "1px solid var(--p-divide)",
-          paddingTop: "3.5rem",
+          paddingTop: "2.5rem",
         }}
       >
         <SectionLabel>Skills & Tools</SectionLabel>
@@ -742,10 +742,10 @@ export function AboutPage() {
 
       {/* ── Values ── */}
       <div
-        className="px-6 md:px-12 max-w-6xl mx-auto pb-14"
+        className="px-6 md:px-12 max-w-6xl mx-auto pb-10"
         style={{
           borderTop: "1px solid var(--p-divide)",
-          paddingTop: "3.5rem",
+          paddingTop: "2.5rem",
         }}
       >
         <SectionLabel>Values</SectionLabel>
@@ -786,13 +786,13 @@ export function AboutPage() {
 
       {/* ── Interests + Currently ── */}
       <div
-        className="px-6 md:px-12 max-w-6xl mx-auto pb-14"
+        className="px-6 md:px-12 max-w-6xl mx-auto pb-10"
         style={{
           borderTop: "1px solid var(--p-divide)",
-          paddingTop: "3.5rem",
+          paddingTop: "2.5rem",
         }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Interests */}
           <div>
             <SectionLabel>Interests</SectionLabel>
@@ -869,7 +869,7 @@ export function AboutPage() {
 
       {/* ── CTA strip ── */}
       <div
-        className="px-6 md:px-12 max-w-6xl mx-auto py-16 mb-12 text-center"
+        className="px-6 md:px-12 max-w-6xl mx-auto py-12 mb-9 text-center"
         style={{
           borderTop: "1px solid var(--p-divide)",
           borderBottom: "1px solid var(--p-divide)",

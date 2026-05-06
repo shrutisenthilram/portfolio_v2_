@@ -20,10 +20,28 @@ export function CursorFollower() {
   const [color, setColor] = useState(`rgb(${INDIGO.r},${INDIGO.g},${INDIGO.b})`);
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isFinePointer, setIsFinePointer] = useState(false);
 
   useEffect(() => {
+    // Only enable custom cursor on devices with a fine pointer + true hover
+    // (excludes touch devices, including iPads & iPhones in Safari)
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mql = window.matchMedia("(pointer: fine) and (hover: hover)");
+    setIsFinePointer(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsFinePointer(e.matches);
+    if (mql.addEventListener) mql.addEventListener("change", onChange);
+    else mql.addListener(onChange);
+    return () => {
+      if (mql.removeEventListener) mql.removeEventListener("change", onChange);
+      else mql.removeListener(onChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isFinePointer) return;
+
     const style = document.createElement("style");
-    style.innerHTML = `@media (pointer: fine) { *, *::before, *::after { cursor: none !important; } }`;
+    style.innerHTML = `@media (pointer: fine) and (hover: hover) { *, *::before, *::after { cursor: none !important; } }`;
     document.head.appendChild(style);
 
     const onMove = (e: MouseEvent) => {
@@ -61,15 +79,15 @@ export function CursorFollower() {
     animRef.current = requestAnimationFrame(animate);
 
     return () => {
-      document.head.removeChild(style);
+      if (style.parentNode) style.parentNode.removeChild(style);
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseover", onOver);
       document.documentElement.removeEventListener("mouseleave", onLeave);
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
-  }, []);
+  }, [isFinePointer]);
 
-  if (!visible) return null;
+  if (!isFinePointer || !visible) return null;
 
   const ringSize = hovering ? 44 : 28;
 

@@ -177,11 +177,11 @@ export function Projects() {
     <section
       id="work"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="pt-14 pb-28 px-6 md:px-12 max-w-6xl mx-auto"
+      className="pt-10 pb-20 px-6 md:px-12 max-w-6xl mx-auto"
     >
       {/* Header */}
       <div
-        className="flex items-end justify-between mb-10 pb-6"
+        className="flex items-end justify-between mb-8 pb-5"
         style={{ borderBottom: "1px solid var(--p-divide)" }}
       >
         <div>
@@ -210,7 +210,7 @@ export function Projects() {
       </div>
 
       {/* Tag filter */}
-      <div className="flex flex-wrap gap-2 mb-12">
+      <div className="flex flex-wrap gap-2 mb-9">
         {ALL_TAGS.map((tag) => {
           const active = activeTag === tag;
           return (

@@ -194,7 +194,7 @@ export function AllProjects() {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Page header */}
-      <div className="pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+      <div className="pt-24 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="flex items-center gap-2 mb-10">
           <Link
             to="/"
@@ -261,7 +261,7 @@ export function AllProjects() {
 
       {/* Tag filters */}
       <div
-        className="px-6 md:px-12 max-w-6xl mx-auto pt-6 pb-12"
+        className="px-6 md:px-12 max-w-6xl mx-auto pt-5 pb-9"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
         <div className="flex flex-wrap gap-2">
@@ -288,7 +288,7 @@ export function AllProjects() {
       </div>
 
       {/* Projects */}
-      <div className="px-6 md:px-12 max-w-6xl mx-auto pb-28">
+      <div className="px-6 md:px-12 max-w-6xl mx-auto pb-20">
         {layout === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
             {visible.map((project) => (

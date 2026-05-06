@@ -28,10 +28,10 @@ export function Hero() {
     <section
       id="hero"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="flex flex-col justify-center pt-24 pb-16 px-6 md:px-12 max-w-6xl mx-auto"
+      className="flex flex-col justify-center pt-20 pb-10 px-6 md:px-12 max-w-6xl mx-auto"
     >
       {/* Top label row */}
-      <div className="mb-8 md:mb-12 flex items-center gap-4 flex-wrap">
+      <div className="mb-6 md:mb-10 flex items-center gap-4 flex-wrap">
         <span
           className="tracking-widest uppercase"
           style={{ fontSize: "0.7rem", fontWeight: 400, letterSpacing: "0.15em", color: "var(--p-fg-35)" }}
@@ -60,7 +60,7 @@ export function Hero() {
       </div>
 
       {/* Main content grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-0 items-end">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-end">
         {/* Headline */}
         <div className="md:col-span-8">
           <h1
@@ -125,13 +125,15 @@ export function Hero() {
 
             <MagneticButton
               as="a"
-              href="mailto:alex@example.com"
-              className="transition-colors duration-200 pb-0.5"
+              href="mailto:senthilramshruti@gmail.com"
+              className="transition-colors duration-200 pb-0.5 break-all"
               style={{
                 fontSize: "0.875rem",
                 fontWeight: 400,
                 color: "var(--p-fg-45)",
                 borderBottom: "1px solid var(--p-fg-18)",
+                wordBreak: "break-word",
+                overflowWrap: "anywhere",
               }}
               strength={0.2}
             >
@@ -140,8 +142,8 @@ export function Hero() {
           </div>
         </div>
 {/* Photo collage */}
-<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end">
-  <div className="relative w-44 h-56 sm:w-48 sm:h-64 md:w-56 md:h-72">
+<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end pr-2 md:pr-0 pl-10 md:pl-0">
+  <div className="relative w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72 my-12 sm:my-14 md:my-16">
 
     {/* Accent photo — top right, peeking out */}
     <div
@@ -249,7 +251,7 @@ export function Hero() {
       </div>
 
 
-      <div className="mt-16 md:mt-24 flex items-center gap-4">
+      <div className="mt-10 md:mt-16 flex items-center gap-4">
          
         <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--p-fg-35)" }}></span>
       </div>

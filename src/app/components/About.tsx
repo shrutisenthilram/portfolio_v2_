@@ -21,10 +21,10 @@ export function About() {
     <section
       id="about"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-12 px-6 md:px-12 max-w-6xl mx-auto"
+      className="py-10 px-6 md:px-12 max-w-6xl mx-auto"
     >
       <span
-        className="tracking-widest uppercase block mb-12 md:mb-16 pb-6"
+        className="tracking-widest uppercase block mb-9 md:mb-12 pb-5"
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
@@ -35,7 +35,7 @@ export function About() {
         About
       </span>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 md:gap-12">
 
         {/* Portrait + quick facts */}
         <div className="sm:col-span-1 md:col-span-3 flex sm:block items-start gap-8">
