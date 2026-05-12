@@ -24,8 +24,8 @@ export const allProjects: Project[] = [
   {
     id: 1,
     slug: "clarity",
-    title: "Clarity",
-    subtitle: "AI Research Assistant",
+    title: "Kin",
+    subtitle: "Caregiver Aid",
     description:
       "A conversational tool that helps researchers synthesize academic papers using LLMs. Supports citation tracking, summary generation, and multi-paper comparison.",
     tags: ["AI", "Product Design", "React"],

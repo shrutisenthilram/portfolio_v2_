@@ -10,9 +10,9 @@ import type { Project } from "./projects";
 
 export const caseStudies: Record<string, Partial<CaseStudy>> = {
   clarity: {
-    client: "Stanford HAI Demo Track",
+    client: "Personal",
     tagline:
-      "A research workflow that treats sources, citations, and synthesis as one connected surface — not three.",
+      "An empathetic solution to medication management for families and caregivers",
     meta: {
       role: "Product Designer & Engineer",
       timeline: "12 weeks · 2026",
@@ -30,8 +30,8 @@ export const caseStudies: Record<string, Partial<CaseStudy>> = {
       impact: "−60% time-to-synthesis in PhD user study",
     },
     overview: {
-      title: "Treating literature review as a connected workflow, not a search box.",
-      body: "Clarity reframes a familiar surface — a chat with an AI — into a workspace anchored in real papers, real citations, and real provenance. Every answer is traceable. Every claim is grounded. The interface optimizes for trust as the unit of progress, not just speed.",
+      title: "Managing a family member's medication can be overwhelming, on top off all the other responsibilites of caregiving. ",
+      body: "Kin is a mobile app for caregivers taking care of their family members. The last thing caregivers need is the stress of remembering what medication is what, upcoming refills, and who takes it what. Kin solves this problem with a design that pritotizses clarity, and relief for caregivers.The core problem isn't missing features. Every existing tool has features. The problem is that none of them are designed around the caregiver's emotional reality: the low-grade anxiety of not knowing whether today's medications were taken, the coordination debt that builds between siblings, the guilt of living two hours away. Kin treats coordination as the product — not reminders. ",
       highlights: [
         { value: "12", label: "Week sprint" },
         { value: "320+", label: "Waitlist sign-ups" },
@@ -40,8 +40,8 @@ export const caseStudies: Record<string, Partial<CaseStudy>> = {
       ],
     },
     problem: {
-      title: "Researchers spend 40% of their time managing sources, not thinking.",
-      body: "I shadowed PhD candidates across three institutions and watched the same pattern: a 30-tab browser, a Notion canvas, a spinning Mendeley, and the slow cognitive cost of remembering which paper said what. The tools solved storage but never synthesis — the moment ideas connect across documents.",
+      title: "Caregivers aren't forgetting to care. They're forgetting who last checked.",
+      body: "The medication management space is full of apps built around a single patient taking their own pills. Medisafe, CareZone, MyMeds — they all assume one person is in charge, that person is present, and that person is not also managing their own household, job, and children.",
       painPoints: [
         {
           title: "Lost provenance",
