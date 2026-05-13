@@ -5,8 +5,21 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>portfolio_v2</title>
-      <script type="module" crossorigin src="/assets/index-SES_xLFb.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-B0J_km3K.css">
+      <script>
+        // Detect Chromium browsers (Chrome / Edge / Brave / Opera) so we can
+        // apply a color-correction filter for Display-P3 photos that Safari
+        // renders correctly but Chrome washes out. Runs before React mounts
+        // so the filter is in place on first paint.
+        (function () {
+          var ua = navigator.userAgent;
+          var isSafari = /^((?!chrome|android|crios|fxios|edg|opr).)*safari/i.test(ua);
+          if (!isSafari) {
+            document.documentElement.setAttribute("data-browser", "chromium");
+          }
+        })();
+      </script>
+      <script type="module" crossorigin src="/assets/index-Be7iM5wG.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-CDmnjurm.css">
     </head>
 
     <body>

@@ -30,7 +30,7 @@ export const allProjects: Project[] = [
       "A conversational tool that helps researchers synthesize academic papers using LLMs. Supports citation tracking, summary generation, and multi-paper comparison.",
     tags: ["AI", "Product Design", "React"],
     image:
-      "https://images.unsplash.com/photo-1772217360642-0f7a7b1b77d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMG1hY2hpbmUlMjBsZWFybmluZyUyMGFic3RyYWN0JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzMzNzY2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "",
     year: "2026",
     status: "Featured",
     role: "Product Designer & Engineer",

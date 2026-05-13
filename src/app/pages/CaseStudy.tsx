@@ -72,7 +72,7 @@ export function CaseStudy() {
       </div>
 
       {/* Header */}
-      <div className="max-w-3xl mx-auto px-6 md:px-12 pt-10 pb-9">
+      <div className="max-w-3xl mx-auto px-6 md:px-12 pt-14 pb-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-10">
           {[
@@ -286,7 +286,7 @@ export function CaseStudy() {
 
       {/* Overview */}
       <div
-        className="max-w-3xl mx-auto px-6 md:px-12 py-9"
+        className="max-w-3xl mx-auto px-6 md:px-12 py-12"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
         <p
@@ -320,8 +320,8 @@ export function CaseStudy() {
       </div>
 
       {/* Problem + Solution */}
-      <div className="max-w-3xl mx-auto px-6 md:px-12 py-10">
-        <div className="mb-8">
+      <div className="max-w-3xl mx-auto px-6 md:px-12 py-16">
+        <div className="mb-14">
           <span
             className="uppercase block mb-4"
             style={{
@@ -345,7 +345,7 @@ export function CaseStudy() {
         </div>
 
         <div
-          className="pt-10"
+          className="pt-14"
           style={{ borderTop: "1px solid var(--p-divide)" }}
         >
           <span
@@ -389,9 +389,9 @@ export function CaseStudy() {
       </div>
 
       {/* Outcomes */}
-      <div className="max-w-3xl mx-auto px-6 md:px-12 py-10">
+      <div className="max-w-3xl mx-auto px-6 md:px-12 py-16">
         <span
-          className="uppercase block mb-6"
+          className="uppercase block mb-8"
           style={{
             fontSize: "0.62rem",
             letterSpacing: "0.15em",
@@ -430,11 +430,11 @@ export function CaseStudy() {
 
       {/* Tech stack */}
       <div
-        className="max-w-3xl mx-auto px-6 md:px-12 py-9"
+        className="max-w-3xl mx-auto px-6 md:px-12 py-12"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
         <span
-          className="uppercase block mb-5"
+          className="uppercase block mb-6"
           style={{
             fontSize: "0.62rem",
             letterSpacing: "0.15em",
@@ -463,7 +463,7 @@ export function CaseStudy() {
 
       {/* GitHub CTA */}
       <div
-        className="max-w-3xl mx-auto px-6 md:px-12 py-9"
+        className="max-w-3xl mx-auto px-6 md:px-12 py-12"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
@@ -519,15 +519,14 @@ export function CaseStudy() {
         style={{ borderTop: "1px solid var(--p-divide)" }}
         className="mt-8"
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-2">
           <div
-            className="sm:border-r border-b sm:border-b-0"
-            style={{ borderColor: "var(--p-divide)" }}
+            style={{ borderRight: "1px solid var(--p-divide)" }}
           >
             {prevProject ? (
               <Link
                 to={`/projects/${prevProject.slug}`}
-                className="group flex flex-col gap-1.5 py-8 sm:py-10 sm:pr-8 transition-opacity duration-200 hover:opacity-60"
+                className="group flex flex-col gap-1.5 py-10 pr-8 transition-opacity duration-200 hover:opacity-60"
               >
                 <span
                   className="inline-flex items-center gap-1.5"
@@ -558,7 +557,7 @@ export function CaseStudy() {
                 </span>
               </Link>
             ) : (
-              <div className="py-8 sm:py-10 sm:pr-8">
+              <div className="py-10 pr-8">
                 <span
                   style={{
                     fontSize: "0.68rem",
@@ -574,7 +573,7 @@ export function CaseStudy() {
             {nextProject ? (
               <Link
                 to={`/projects/${nextProject.slug}`}
-                className="group flex flex-col gap-1.5 sm:items-end py-8 sm:py-10 sm:pl-8 transition-opacity duration-200 hover:opacity-60"
+                className="group flex flex-col gap-1.5 items-end py-10 pl-8 transition-opacity duration-200 hover:opacity-60"
               >
                 <span
                   className="inline-flex items-center gap-1.5"
@@ -605,7 +604,7 @@ export function CaseStudy() {
                 </span>
               </Link>
             ) : (
-              <div className="flex sm:justify-end py-8 sm:py-10 sm:pl-8">
+              <div className="flex justify-end py-10 pl-8">
                 <span
                   style={{
                     fontSize: "0.68rem",
@@ -621,7 +620,7 @@ export function CaseStudy() {
       </div>
 
       {/* Back link */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pb-12">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 pb-16">
         <button
           onClick={() => navigate("/projects")}
           className="inline-flex items-center gap-2 transition-colors duration-200"
