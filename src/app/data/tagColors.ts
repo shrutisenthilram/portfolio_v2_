@@ -36,6 +36,14 @@ const TAG_COLOR_MAP: Record<string, string> = {
   "Data":           SKY,
   "Engineering":    SKY,
   "Computer Vision":SKY,
+  "HCI":             SKY,
+  "Economics":       SKY,
+  "Civic":           SKY,
+  "Healthcare":      SKY,
+  "iOS":             SKY,
+  "Nonprofit":       EMERALD,
+  "Figma":           INDIGO,
+  "Prototyping":     INDIGO,
 
   // Creative → VIOLET
   "AR":             VIOLET,

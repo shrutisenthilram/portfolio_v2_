@@ -5,7 +5,13 @@ import heroImg from "@/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
-const ROLES = ["Designer", "Engineer", "Builder", "Problem Solver", "Artist"];
+const ROLES = [
+  { label: "Designer", article: "a" as const },
+  { label: "Engineer", article: "an" as const },
+  { label: "Builder", article: "a" as const },
+  { label: "Problem Solver", article: "a" as const },
+  { label: "Artist", article: "an" as const },
+];
 
 export function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -76,7 +82,7 @@ export function Hero() {
             }}
           >
             Hi, I'm Shruti <br />
-            <span style={{ fontWeight: 500 }}>a </span>
+            <span style={{ fontWeight: 500 }}>{ROLES[roleIdx].article} </span>
             <span
               style={{
                 fontWeight: 500,
@@ -90,7 +96,7 @@ export function Hero() {
                 textUnderlineOffset: "6px",
               }}
             >
-              {ROLES[roleIdx]}
+              {ROLES[roleIdx].label}
             </span>
             .
           </h1>
