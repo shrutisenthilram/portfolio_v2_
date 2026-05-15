@@ -1,15 +1,9 @@
 import type { CaseStudy } from "../../components/case-study/types";
 import type { Project } from "../projects";
-import { forma } from "./forma";
 import { kin } from "./kin";
-import { pulseboard } from "./pulseboard";
-import { waypoint } from "./waypoint";
 
 export const caseStudies: Record<string, Partial<CaseStudy>> = {
-  forma,
   kin,
-  pulseboard,
-  waypoint,
 };
 
 const PLACEHOLDER_HERO =

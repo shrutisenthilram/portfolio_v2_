@@ -1,182 +1,176 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { Github, ExternalLink } from "lucide-react";
-import { allProjects } from "../data/projects";
-import { getTagColor, INDIGO, CORAL } from "../data/tagColors";
+import {
+  allProjects,
+  ALL_PROJECT_TAGS,
+  getProjectHref,
+  isProjectNavigable,
+  type Project,
+} from "../data/projects";
+import { ProjectCard } from "../components/ProjectCard";
+import { INDIGO } from "../data/tagColors";
 
 const ACCENT = INDIGO;
-const ALL_TAGS = ["All", "AI", "Product Design", "Data", "Web", "Mobile", "AR", "Open Source"];
 
 const STATUS_COLORS: Record<string, string> = {
-  Featured:     INDIGO,
+  Featured: INDIGO,
   "Case Study": "#059669",
-  Live:         "#0891b2",
-  "Open Source":"#7c3aed",
-  Experiment:   "#d97706",
+  Live: "#0891b2",
+  "Coming Soon": "#6b7280",
+  "Small Case Study": "#0d9488",
 };
 
-function ProjectCard({ project }: { project: typeof allProjects[0] }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    setTilt({ rotateX: (y - 0.5) * -10, rotateY: (x - 0.5) * 10, glareX: x * 100, glareY: y * 100 });
-  };
-
+function ProjectListRow({ project }: { project: Project }) {
+  const navigable = isProjectNavigable(project);
+  const href = getProjectHref(project);
   const statusColor = STATUS_COLORS[project.status] ?? "#999";
-  const cornerColor = getTagColor(project.tags[0] ?? "");
+
+  const thumb = (
+    <div
+      className="relative w-full overflow-hidden group/thumb"
+      style={{ aspectRatio: "16/9", backgroundColor: "var(--p-surface)" }}
+    >
+      <img
+        src={project.image}
+        alt=""
+        className={`w-full h-full object-cover transition-all duration-500 ${
+          project.comingSoon ? "grayscale opacity-80" : "grayscale group-hover/thumb:grayscale-0"
+        }`}
+      />
+      {project.comingSoon && (
+        <div
+          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
+          aria-hidden
+        >
+          <span
+            className="text-white uppercase px-3 py-1.5 border border-white/40"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.12em" }}
+          >
+            Coming Soon
+          </span>
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div
-      ref={cardRef}
-      className="group"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => {
-        setHovered(false);
-        setTilt({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
-      }}
+      className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-6 -mx-4 px-4 transition-colors duration-200"
       style={{
-        transition: "box-shadow 0.35s ease",
-        boxShadow: hovered ? `0 4px 16px ${ACCENT}1A, 0 12px 40px ${CORAL}14` : "none",
-        position: "relative",
+        borderBottom: "1px solid var(--p-divide)",
+        cursor: project.comingSoon ? "not-allowed" : undefined,
+      }}
+      aria-label={project.comingSoon ? `${project.title}, coming soon` : project.title}
+      aria-disabled={project.comingSoon || undefined}
+      onMouseEnter={(e) => {
+        if (!project.comingSoon) e.currentTarget.style.backgroundColor = "var(--p-hover)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = "transparent";
       }}
     >
-      {/* Accent corner brackets */}
-      <div style={{ position: "absolute", top: 0, left: 0, width: hovered ? 22 : 16, height: hovered ? 22 : 16, borderTop: `2px solid ${cornerColor}`, borderLeft: `2px solid ${cornerColor}`, zIndex: 2, transition: "all 0.3s ease", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 0, right: 0, width: hovered ? 22 : 16, height: hovered ? 22 : 16, borderBottom: `2px solid ${cornerColor}22`, borderRight: `2px solid ${cornerColor}22`, zIndex: 2, transition: "all 0.3s ease", pointerEvents: "none" }} />
-
-      <Link to={`/projects/${project.slug}`} className="block">
-        <div
+      <div className="md:col-span-1 flex items-center">
+        <span style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}>{project.year}</span>
+      </div>
+      <div className="md:col-span-3">
+        {navigable && href ? (
+          <Link to={href} className="block w-full" tabIndex={-1} aria-hidden>
+            {thumb}
+          </Link>
+        ) : (
+          thumb
+        )}
+      </div>
+      <div className="md:col-span-4 flex flex-col justify-center gap-1">
+        {navigable && href ? (
+          <Link to={href}>
+            <h3
+              style={{ fontSize: "0.92rem", fontWeight: 500, color: "var(--p-fg)" }}
+              className="group-hover:opacity-50 transition-opacity"
+            >
+              {project.title}
+              <span style={{ fontWeight: 300, color: "var(--p-fg-35)", marginLeft: "0.375rem" }}>
+                — {project.subtitle}
+              </span>
+            </h3>
+          </Link>
+        ) : (
+          <h3 style={{ fontSize: "0.92rem", fontWeight: 500, color: "var(--p-fg)" }}>
+            {project.title}
+            <span style={{ fontWeight: 300, color: "var(--p-fg-35)", marginLeft: "0.375rem" }}>
+              — {project.subtitle}
+            </span>
+          </h3>
+        )}
+        <p style={{ fontSize: "0.78rem", lineHeight: 1.6, color: "var(--p-fg-45)" }}>
+          {project.description}
+        </p>
+      </div>
+      <div className="md:col-span-2 flex flex-col justify-center gap-2">
+        <p style={{ fontSize: "0.72rem", color: ACCENT + "99" }}>{project.role}</p>
+        <span
+          className="inline-block px-2 py-0.5 w-fit"
           style={{
-            transform: hovered
-              ? `perspective(900px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale(1.02)`
-              : "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)",
-            transition: hovered ? "transform 0.08s ease-out" : "transform 0.5s ease-out",
-            transformStyle: "preserve-3d",
+            fontSize: "0.62rem",
+            fontWeight: 500,
+            color: "#fff",
+            backgroundColor: statusColor + "E6",
           }}
         >
-          <div
-            className="relative overflow-hidden mb-4"
-            style={{ aspectRatio: "16/10", backgroundColor: "var(--p-surface)" }}
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-            />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: `radial-gradient(circle at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.3) 0%, transparent 65%)`,
-                opacity: hovered ? 1 : 0,
-                transition: "opacity 0.3s",
-              }}
-            />
-            <div
-              className="absolute inset-0 flex items-center justify-center transition-all duration-300"
-              style={{ backgroundColor: "rgba(0,0,0,0.68)", opacity: hovered ? 1 : 0 }}
-            >
-              <span
-                className="text-white border border-white/40 px-5 py-2.5 uppercase"
-                style={{ fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.12em", backgroundColor: ACCENT + "CC" }}
-              >
-                View Case Study →
-              </span>
-            </div>
-            <div
-              className="absolute top-3 left-3 px-2 py-0.5"
-              style={{ fontSize: "0.62rem", fontWeight: 500, letterSpacing: "0.08em", color: "#fff", backgroundColor: statusColor + "E6" }}
-            >
-              {project.status}
-            </div>
-            <div
-              className="absolute top-3 right-3 px-2 py-0.5"
-              style={{ fontSize: "0.62rem", color: "var(--p-fg-35)", backgroundColor: "var(--p-bg)" }}
-            >
-              {project.year}
-            </div>
-          </div>
-        </div>
-      </Link>
-
-      <Link to={`/projects/${project.slug}`} className="block group/title">
-        <h3
-          className="mb-1 transition-opacity duration-200 group-hover/title:opacity-50"
-          style={{ fontSize: "0.92rem", fontWeight: 500, letterSpacing: "-0.01em", color: "var(--p-fg)" }}
-        >
-          {project.title}
-          <span style={{ fontWeight: 300, color: "var(--p-fg-35)", marginLeft: "0.375rem" }}>— {project.subtitle}</span>
-        </h3>
-      </Link>
-
-      <p className="mb-2 line-clamp-2" style={{ fontSize: "0.78rem", lineHeight: 1.6, color: "var(--p-fg-35)" }}>
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mb-3">
-        {project.tags.map((tag) => {
-          const color = getTagColor(tag);
-          return (
+          {project.status}
+        </span>
+      </div>
+      <div className="md:col-span-2 flex flex-col justify-center gap-3">
+        <div className="flex flex-wrap gap-1">
+          {project.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
               className="px-2 py-0.5"
               style={{
                 fontSize: "0.65rem",
-                letterSpacing: "0.04em",
-                border: `1px solid ${color}50`,
-                color: color,
-                backgroundColor: color + "10",
+                border: `1px solid ${ACCENT}30`,
+                color: ACCENT,
+                backgroundColor: ACCENT + "0A",
               }}
             >
               {tag}
             </span>
-          );
-        })}
-      </div>
-
-      <div className="flex items-center gap-4">
-        <Link
-          to={`/projects/${project.slug}`}
-          style={{ fontSize: "0.72rem", color: ACCENT, borderBottom: `1px solid ${ACCENT}40` }}
-          onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = ACCENT)}
-          onMouseLeave={(e) => (e.currentTarget.style.borderBottomColor = ACCENT + "40")}
-        >
-          Case study →
-        </Link>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 transition-colors duration-200"
-          style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <Github size={12} />
-          GitHub
-        </a>
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 transition-colors duration-200"
-            style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ExternalLink size={12} />
-            Live
-          </a>
+          ))}
+        </div>
+        {!project.comingSoon && (
+          <div className="flex items-center gap-3">
+            {href && (
+              <Link to={href} style={{ fontSize: "0.7rem", color: ACCENT }}>
+                Case study →
+              </Link>
+            )}
+            {project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1"
+                style={{ fontSize: "0.7rem", color: "var(--p-fg-35)" }}
+              >
+                <Github size={11} />
+                GitHub
+              </a>
+            ) : null}
+            {project.live ? (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1"
+                style={{ fontSize: "0.7rem", color: "var(--p-fg-35)" }}
+              >
+                <ExternalLink size={11} />
+                Live
+              </a>
+            ) : null}
+          </div>
         )}
       </div>
     </div>
@@ -188,12 +182,11 @@ export function AllProjects() {
   const [layout, setLayout] = useState<"grid" | "list">("grid");
 
   const visible = allProjects.filter(
-    (p) => activeTag === "All" || p.tags.includes(activeTag)
+    (p) => activeTag === "All" || p.tags.includes(activeTag),
   );
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif" }}>
-      {/* Page header */}
       <div className="pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="flex items-center gap-2 mb-10">
           <Link
@@ -203,7 +196,7 @@ export function AllProjects() {
             onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
           >
-            Alex Chen
+            Home
           </Link>
           <span style={{ fontSize: "0.75rem", color: "var(--p-fg-18)" }}>/</span>
           <span style={{ fontSize: "0.75rem", color: "var(--p-fg-45)" }}>All Projects</span>
@@ -218,7 +211,12 @@ export function AllProjects() {
               Work
             </span>
             <h1
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 300, letterSpacing: "-0.03em", color: "var(--p-fg)" }}
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 3rem)",
+                fontWeight: 300,
+                letterSpacing: "-0.03em",
+                color: "var(--p-fg)",
+              }}
             >
               All Projects
             </h1>
@@ -230,12 +228,14 @@ export function AllProjects() {
             </span>
             <div className="flex items-center ml-1" style={{ border: "1px solid var(--p-fg-12)" }}>
               <button
+                type="button"
                 onClick={() => setLayout("grid")}
                 className="p-2 transition-colors duration-150"
                 style={{ backgroundColor: layout === "grid" ? ACCENT : "transparent" }}
                 title="Grid view"
+                aria-pressed={layout === "grid"}
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
                   <rect x="0" y="0" width="6" height="6" fill={layout === "grid" ? "#fff" : "var(--p-fg-45)"} />
                   <rect x="8" y="0" width="6" height="6" fill={layout === "grid" ? "#fff" : "var(--p-fg-45)"} />
                   <rect x="0" y="8" width="6" height="6" fill={layout === "grid" ? "#fff" : "var(--p-fg-45)"} />
@@ -243,12 +243,14 @@ export function AllProjects() {
                 </svg>
               </button>
               <button
+                type="button"
                 onClick={() => setLayout("list")}
                 className="p-2 transition-colors duration-150"
                 style={{ backgroundColor: layout === "list" ? ACCENT : "transparent" }}
                 title="List view"
+                aria-pressed={layout === "list"}
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
                   <rect x="0" y="0" width="14" height="2.5" fill={layout === "list" ? "#fff" : "var(--p-fg-45)"} />
                   <rect x="0" y="5.5" width="14" height="2.5" fill={layout === "list" ? "#fff" : "var(--p-fg-45)"} />
                   <rect x="0" y="11" width="14" height="2.5" fill={layout === "list" ? "#fff" : "var(--p-fg-45)"} />
@@ -259,17 +261,17 @@ export function AllProjects() {
         </div>
       </div>
 
-      {/* Tag filters */}
       <div
         className="px-6 md:px-12 max-w-6xl mx-auto pt-6 pb-12"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
         <div className="flex flex-wrap gap-2">
-          {ALL_TAGS.map((tag) => {
+          {ALL_PROJECT_TAGS.map((tag) => {
             const active = activeTag === tag;
             return (
               <button
                 key={tag}
+                type="button"
                 onClick={() => setActiveTag(tag)}
                 className="px-3 py-1.5 border transition-all duration-200"
                 style={{
@@ -287,109 +289,17 @@ export function AllProjects() {
         </div>
       </div>
 
-      {/* Projects */}
       <div className="px-6 md:px-12 max-w-6xl mx-auto pb-28">
         {layout === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
             {visible.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard key={project.id} project={project} variant="grid" />
             ))}
           </div>
         ) : (
           <div style={{ borderTop: "1px solid var(--p-divide)" }}>
             {visible.map((project) => (
-              <div
-                key={project.id}
-                className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 py-6 -mx-4 px-4 transition-colors duration-200"
-                style={{ borderBottom: "1px solid var(--p-divide)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--p-hover)")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-              >
-                <div className="md:col-span-1 flex items-center">
-                  <span style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}>{project.year}</span>
-                </div>
-                <div className="md:col-span-3">
-                  <Link
-                    to={`/projects/${project.slug}`}
-                    className="block w-full overflow-hidden"
-                    style={{ aspectRatio: "16/9", backgroundColor: "var(--p-surface)" }}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                  </Link>
-                </div>
-                <div className="md:col-span-4 flex flex-col justify-center gap-1">
-                  <Link to={`/projects/${project.slug}`}>
-                    <h3
-                      style={{ fontSize: "0.92rem", fontWeight: 500, color: "var(--p-fg)" }}
-                      className="group-hover:opacity-50 transition-opacity"
-                    >
-                      {project.title}
-                      <span style={{ fontWeight: 300, color: "var(--p-fg-35)", marginLeft: "0.375rem" }}>
-                        — {project.subtitle}
-                      </span>
-                    </h3>
-                  </Link>
-                  <p style={{ fontSize: "0.78rem", lineHeight: 1.6, color: "var(--p-fg-45)" }}>
-                    {project.description}
-                  </p>
-                </div>
-                <div className="md:col-span-2 flex flex-col justify-center gap-2">
-                  <p style={{ fontSize: "0.72rem", color: ACCENT + "99" }}>{project.role}</p>
-                  <span
-                    className="inline-block px-2 py-0.5 w-fit"
-                    style={{ fontSize: "0.62rem", fontWeight: 500, color: "#fff", backgroundColor: (STATUS_COLORS[project.status] ?? "#999") + "E6" }}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-                <div className="md:col-span-2 flex flex-col justify-center gap-3">
-                  <div className="flex flex-wrap gap-1">
-                    {project.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5"
-                        style={{ fontSize: "0.65rem", border: `1px solid ${ACCENT}30`, color: ACCENT, backgroundColor: ACCENT + "0A" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 transition-colors duration-200"
-                      style={{ fontSize: "0.7rem", color: "var(--p-fg-35)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={11} />
-                      GitHub
-                    </a>
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 transition-colors duration-200"
-                        style={{ fontSize: "0.7rem", color: "var(--p-fg-35)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={11} />
-                        Live
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <ProjectListRow key={project.id} project={project} />
             ))}
           </div>
         )}
@@ -398,6 +308,7 @@ export function AllProjects() {
           <div className="py-24 text-center">
             <p style={{ fontSize: "0.9rem", color: "var(--p-fg-25)" }}>No projects match this filter.</p>
             <button
+              type="button"
               onClick={() => setActiveTag("All")}
               className="mt-4 transition-colors duration-200"
               style={{ fontSize: "0.82rem", color: ACCENT, borderBottom: `1px solid ${ACCENT}` }}

@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router";
-import { allProjects } from "../data/projects";
+import { allProjects, isProjectNavigable } from "../data/projects";
 import { getCaseStudy } from "../data/case-studies";
 import { CaseStudyShell } from "../components/case-study/CaseStudyShell";
 
@@ -10,14 +10,14 @@ export function ProjectDetailPage() {
   const idx = allProjects.findIndex((p) => p.slug === slug);
   const project = allProjects[idx];
 
-  if (!project) {
+  if (!project || !isProjectNavigable(project)) {
     return (
       <div
         className="min-h-screen flex flex-col items-center justify-center gap-4 px-6 text-center"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         <p style={{ fontSize: "0.9rem", color: "var(--p-fg-25)" }}>
-          Project not found.
+          {project?.comingSoon ? "This project is coming soon." : "Project not found."}
         </p>
         <Link to="/projects" style={{ fontSize: "0.82rem", color: ACCENT }}>
           ← Back to projects
@@ -26,9 +26,12 @@ export function ProjectDetailPage() {
     );
   }
 
+  const navigable = allProjects.filter(isProjectNavigable);
+  const navIdx = navigable.findIndex((p) => p.slug === slug);
+
   const study = getCaseStudy(project);
-  const prev = allProjects[idx - 1] ?? null;
-  const next = allProjects[idx + 1] ?? null;
+  const prev = navigable[navIdx - 1] ?? null;
+  const next = navigable[navIdx + 1] ?? null;
 
   if (!study.links || study.links.length === 0) {
     const derived: { label: string; href: string }[] = [];
