@@ -15,8 +15,8 @@ export const kin: Partial<CaseStudy> = {
   },
   overview: {
     title:
-      "Caregivers don't need another app. They need a place that already knows who last checked.",
-    body: "Kin is a mobile app for adult children managing an aging parent's medications — often from a distance, often with siblings, and always while running the rest of their life. It replaces the spreadsheet, the group text, and the pill organizer with one calm dashboard built around coordination, not just reminders. The core problem isn't a missing feature. Every existing tool has features. The problem is that none of them are designed around the caregiver's emotional reality: the low-grade anxiety of not knowing whether today's medications were taken, the coordination debt that builds between siblings, the guilt of living two hours away. Kin treats coordination as the product.",
+      "Kin: a mobile app for adult children managing an aging parent's medications",
+    body: "The idea came to me when I was struggling to take my own medication as a full-time student with two jobs. It made me go down a rabbit hole about medication reminders, and I realized that what felt like a personal struggle was a much bigger problem for family caregivers. They carry the mental burden of making sure their parents or relatives stay on top of medication every day, while also balancing their own lives. It was hard enough for me to remember my own vitamins.",
     // highlights: [{ value: "12", label: "Interviews" }], // optional stats box beside overview body
     // Overview image — first item renders full-width below the text (put file in public/images/kin/)
     media: [
@@ -30,8 +30,8 @@ export const kin: Partial<CaseStudy> = {
   },
   problem: {
     title:
-      "Caregivers aren't forgetting to care. They're forgetting who last checked.",
-    body: "Medisafe, CareZone, and the rest assume one patient, one caregiver, one schedule. Real caregiving rarely looks like that. A 38-year-old managing both parents' medications from two hours away — while coordinating with a brother who only helps when asked — has nothing built for her shape of the problem. So she cobbles: a Google Sheet, a notes app, a group text, and a constant background hum of \"did anyone check on Mom this morning?\"",
+      "The mental burden of caregiving is a constant struggle",
+    body: "The problem isn't reminding someone to take their pills. That part is the easy part. The hard part is everything around it: tracking what was taken and when, coordinating with siblings, managing refills across pharmacies, and never being sure whether today's doses actually happened. The uncertainty after the reminder is what exhausts caregivers, not the reminder itself.\n\nExisting tools don't fully address this. Medisafe and CareZone are built around a single patient with a single caregiver. They work well when one person is managing their own medication, but they fall apart the moment a family has two parents to manage, a sibling who lives in another city, or a patient who refuses to log their own doses. The category serves people who already have it together. Nobody designs for the families falling apart.",
     painPoints: [
       {
         title: "Multi-patient blindspot",
@@ -45,15 +45,15 @@ export const kin: Partial<CaseStudy> = {
         title: "Refill chaos",
         body: "Refills sit across multiple pharmacies on different cycles. The first sign of a gap is usually a missed dose.",
       },
-      {
-        title: "Dignity gap",
-        body: "Patients resent being 'tracked.' Apps that surveil instead of support get uninstalled — by the patient.",
-      },
+      // {
+      //   title: "Dignity gap",
+      //   body: "Patients resent being 'tracked.' Apps that surveil instead of support get uninstalled — by the patient.",
+      // },
     ],
-    quote: {
-      text: "I'm not worried about forgetting. I'm worried about not knowing.",
-      attribution: "Maya, 38, managing both parents' medications remotely",
-    },
+    // quote: {
+    //   text: "I'm not worried about forgetting. I'm worried about not knowing.",
+    //   attribution: "Maya, 38, managing both parents' medications remotely",
+    // },
   },
   context: {
     title:
