@@ -23,32 +23,26 @@ export type Project = {
 export const allProjects: Project[] = [
   {
     id: 1,
-    slug: "clarity",
+    slug: "kin",
     title: "Kin",
-    subtitle: "Caregiver Aid",
+    subtitle: "Medication management for family caregivers",
     description:
-      "A conversational tool that helps researchers synthesize academic papers using LLMs. Supports citation tracking, summary generation, and multi-paper comparison.",
-    tags: ["AI", "Product Design", "React"],
-    image:
-      "https://images.unsplash.com/photo-1772217360642-0f7a7b1b77d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMG1hY2hpbmUlMjBsZWFybmluZyUyMGFic3RyYWN0JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzMzNzY2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "A mobile app for adult children managing an aging parent's medications — one calm dashboard built around coordination, not just reminders.",
+    tags: ["Product Design", "iOS", "Healthcare"],
+    image: "/images/kin/overview-hero.png",
     year: "2026",
     status: "Featured",
-    role: "Product Designer & Engineer",
-    github: "https://github.com/alexchen/clarity",
-    live: "https://clarity-ai.vercel.app",
+    role: "Product Designer",
+    github: "",
+    live: "",
     overview:
-      "Clarity emerged from a personal frustration with academic research. Spending hours cross-referencing dozens of papers, losing threads, re-reading the same abstracts — I wanted a tool that could hold the entire context of a literature review and surface connections a human might miss.",
+      "Kin is a mobile app for adult children managing an aging parent's medications — often from a distance, often with siblings, and always while running the rest of their life.",
     problem:
-      "Researchers spend up to 40% of their time just managing sources — tracking what they've read, what's relevant, and how ideas connect across papers. Existing tools like Zotero and Mendeley solve storage, but not synthesis.",
+      "Caregivers aren't forgetting to care. They're forgetting who last checked. Most tools assume one patient, one caregiver, one schedule.",
     solution:
-      "I designed a chat-first interface where users drop in papers (PDF or DOI) and ask natural questions across their entire library. Under the hood, each paper is chunked, embedded, and stored in a vector DB. GPT-4 retrieves semantically relevant chunks to answer questions with inline citations.",
-    outcomes: [
-      "Reduced average literature review time by 60% in user testing with 12 PhD students",
-      "4.8/5 satisfaction score across 3 rounds of usability testing",
-      "Accepted to Stanford HAI workshop as a demo project",
-      "320+ waitlist sign-ups in the first two weeks",
-    ],
-    tech: ["React", "TypeScript", "OpenAI API", "Pinecone", "FastAPI", "Python", "Tailwind CSS"],
+      "A caregiver-centric home dashboard, family coordination tab, and dignity-first patient companion view — built around visibility and handoffs, not surveillance.",
+    outcomes: [],
+    tech: ["Figma", "FigJam", "Maze", "Notion"],
     secondaryImages: [
       "https://images.unsplash.com/photo-1625655164399-6e7b172727d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXNlYXJjaCUyMHBhcGVyJTIwbm90ZXMlMjBkZXNrJTIwbWluaW1hbHxlbnwxfHx8fDE3NzMzNzg5NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "https://images.unsplash.com/photo-1653548410459-5dffc2cef115?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9kdWN0JTIwaW50ZXJmYWNlJTIwd2lyZWZyYW1lJTIwcHJvdG90eXBlJTIwZGVzaWdufGVufDF8fHx8MTc3MzM3ODk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
