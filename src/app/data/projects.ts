@@ -21,8 +21,7 @@ export type Project = {
   secondaryImages: string[];
 };
 
-const PLACEHOLDER_IMAGE =
-  "https://images.unsplash.com/photo-1766503206606-27de0861e8a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080";
+import { projectThumbnail } from "./projectImages";
 
 const emptyCaseStudyFields = {
   overview: "",
@@ -42,7 +41,7 @@ export const allProjects: Project[] = [
     subtitle: "Human–computer interaction",
     description: "Research exploring how people interact with complex software systems.",
     tags: ["Research", "HCI"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("cse-research"),
     year: "2026",
     status: "Coming Soon",
     role: "Researcher",
@@ -57,7 +56,7 @@ export const allProjects: Project[] = [
     description:
       "Designing and building this portfolio — editorial layout, motion, and a case-study system for selected work.",
     tags: ["Product Design", "Web"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("portfolio-design"),
     year: "2026",
     status: "Featured",
     role: "Designer & Developer",
@@ -81,7 +80,7 @@ export const allProjects: Project[] = [
     description:
       "A mobile app for adult children managing an aging parent's medications — one calm dashboard built around coordination, not just reminders.",
     tags: ["Product Design", "iOS", "Healthcare"],
-    image: "/images/kin/overview-hero.png",
+    image: projectThumbnail("kin"),
     year: "2026",
     status: "Featured",
     role: "Product Designer",
@@ -100,24 +99,24 @@ export const allProjects: Project[] = [
   {
     id: 4,
     slug: "voting-literacy",
-    title: "Voting Literacy",
-    subtitle: "Civic education product",
+    title: "Vote Smart",
+    subtitle: "Civic education for first-time voters",
     description:
-      "Helping first-time and infrequent voters understand ballots, deadlines, and local races without overwhelm.",
+      "A mobile-first platform that helps voters understand their ballot, compare candidates, and follow a personalized checklist from registration to election day.",
     tags: ["Product Design", "Civic", "Mobile"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("voting-literacy"),
     year: "2025",
     status: "Case Study",
-    role: "Product Designer",
+    role: "UX/UI Designer",
     featured: true,
     overview:
-      "Voting Literacy makes local elections legible — what’s on the ballot, who’s running, and what matters before you arrive at the polls.",
+      "Vote Smart helps first-time and busy voters find unbiased information, compare candidates, and complete a personalized voting checklist — without partisan noise or dense official guides.",
     problem:
-      "Official voter guides are dense. Third-party apps optimize for national races and ignore the down-ballot decisions that shape daily life.",
+      "Voters struggle to find neutral, accessible information. Ballot language is intimidating, and most tools ignore the down-ballot races that matter locally.",
     solution:
-      "A guided flow that translates ballot language into plain summaries, with deadlines and reminders tied to the user’s jurisdiction.",
+      "A checklist-led mobile experience with plain-language ballot summaries, candidate comparison, and election calendar support — designed through empathize → define → ideate → prototype → test.",
     outcomes: [],
-    tech: ["Figma", "Research", "Prototyping"],
+    tech: ["Figma", "Miro", "Notion"],
     secondaryImages: [],
     github: "",
   },
@@ -128,7 +127,7 @@ export const allProjects: Project[] = [
     subtitle: "Nonprofit product partnership",
     description: "Product design work with a nonprofit partner through Develop for Good.",
     tags: ["Product Design", "Nonprofit"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("develop-for-good"),
     year: "2025",
     status: "Coming Soon",
     role: "Product Designer",
@@ -142,7 +141,7 @@ export const allProjects: Project[] = [
     subtitle: "Campus budget transparency",
     description: "Visualizing student government spending for clearer campus accountability.",
     tags: ["Data", "Web", "Civic"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("cses-tritonspend"),
     year: "2025",
     status: "Coming Soon",
     role: "Designer & Engineer",
@@ -157,7 +156,7 @@ export const allProjects: Project[] = [
     description:
       "Marketing and information architecture for Design Frontiers — UCSD’s design community org.",
     tags: ["Product Design", "Web"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("design-frontiers-website"),
     year: "2025",
     status: "Live",
     role: "Web Lead",
@@ -180,7 +179,7 @@ export const allProjects: Project[] = [
     subtitle: "Studio refresh",
     description: "Redesigning the public face of Design Co — UCSD’s student-run design studio.",
     tags: ["Product Design", "Web"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("design-co-redesign"),
     year: "2025",
     status: "Coming Soon",
     role: "Product Designer",
@@ -194,7 +193,7 @@ export const allProjects: Project[] = [
     subtitle: "Applied economics study",
     description: "A compact case study on an economics research project — methods, findings, and implications.",
     tags: ["Research", "Economics"],
-    image: PLACEHOLDER_IMAGE,
+    image: projectThumbnail("econ-research"),
     year: "2025",
     status: "Small Case Study",
     role: "Researcher",

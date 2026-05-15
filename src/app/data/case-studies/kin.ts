@@ -1,4 +1,7 @@
 import type { CaseStudy } from "../../components/case-study/types";
+import { projectImage, projectOverviewHero } from "../projectImages";
+
+const kinImg = (file: string) => projectImage("kin", file);
 
 export const kin: Partial<CaseStudy> = {
   client: "Personal",
@@ -18,10 +21,9 @@ export const kin: Partial<CaseStudy> = {
       "Kin: a mobile app for adult children managing an aging parent's medications",
     body: "The idea came to me when I was struggling to take my own medication as a full-time student with two jobs. It made me go down a rabbit hole about medication reminders, and I realized that what felt like a personal struggle was a much bigger problem for family caregivers. They carry the mental burden of making sure their parents or relatives stay on top of medication every day, while also balancing their own lives. It was hard enough for me to remember my own vitamins.",
     // highlights: [{ value: "12", label: "Interviews" }], // optional stats box beside overview body
-    // Overview image — first item renders full-width below the text (put file in public/images/kin/)
     media: [
       {
-        src: "/images/kin/overview-hero.png",
+        src: projectOverviewHero("kin"),
         alt: "Kin home dashboard showing today's medications across two parents",
         caption:
           "Home — today's medications across both parents, in one calm view.",
@@ -45,15 +47,12 @@ export const kin: Partial<CaseStudy> = {
         title: "Refill chaos",
         body: "Refills sit across multiple pharmacies on different cycles. The first sign of a gap is usually a missed dose.",
       },
-      // {
-      //   title: "Dignity gap",
-      //   body: "Patients resent being 'tracked.' Apps that surveil instead of support get uninstalled — by the patient.",
-      // },
+
     ],
-    // quote: {
-    //   text: "I'm not worried about forgetting. I'm worried about not knowing.",
-    //   attribution: "Maya, 38, managing both parents' medications remotely",
-    // },
+    quote: {
+      text: "I'm not worried about forgetting. I'm worried about not knowing.",
+      attribution: "Maya, 38, managing both parents' medications remotely",
+    },
   },
   context: {
     title:
@@ -141,19 +140,19 @@ export const kin: Partial<CaseStudy> = {
     },
     media: [
       {
-        src: "/images/kin/research-affinity.png",
+        src: kinImg("research-affinity.png"),
         alt: "Affinity diagram clustering interview quotes by theme",
         caption:
           "Affinity diagram — 5 interviews clustered into 4 thematic territories.",
       },
       {
-        src: "/images/kin/research-journey.png",
+        src: kinImg("research-journey.png"),
         alt: "Journey map of Maya's week of medication management",
         caption:
           "Maya's current week — every tool, every handoff, every silent worry.",
       },
       {
-        src: "/images/kin/research-personas.png",
+        src: kinImg("research-personas.png"),
         alt: "Three personas: Maya the primary caregiver, Robert the patient, Derek the sibling",
         caption:
           "Three personas. Each one's needs sit in tension with the others.",
@@ -209,7 +208,7 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: "/images/kin/ia-sitemap.png",
+        src: kinImg("ia-sitemap.png"),
         alt: "Information architecture diagram of Kin's four top-level tabs",
         caption:
           "Site map — four tabs, three levels of depth, no hidden coordination surface.",
@@ -247,7 +246,7 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: "/images/kin/ideation-sketches.png",
+        src: kinImg("ideation-sketches.png"),
         alt: "Crazy 8s sketches exploring the home dashboard",
         caption:
           "Crazy 8s for the home dashboard. The sixth one became the foundation.",
@@ -352,13 +351,13 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: "/images/kin/flows-setup.png",
+        src: kinImg("flows-setup.png"),
         alt: "First-time setup flow diagram with happy path and two edge cases",
         caption:
           "Setup flow — happy path plus two edge cases (no family invited, scan failure).",
       },
       {
-        src: "/images/kin/flows-refill.png",
+        src: kinImg("flows-refill.png"),
         alt: "Refill alert and handoff flow diagram",
         caption:
           "Refill handoff — the flow that surfaced the new 'handoff note' pattern.",
@@ -394,12 +393,12 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: "/images/kin/system-tokens.png",
+        src: kinImg("system-tokens.png"),
         alt: "Design tokens: color, typography, and spacing scale",
         caption: "Tokens — color, type, and spacing as a single source of truth.",
       },
       {
-        src: "/images/kin/system-components.png",
+        src: kinImg("system-components.png"),
         alt: "Component library: medication card, refill banner, activity row, and handoff note",
         caption: "Core components, each shown in all interactive states.",
       },
@@ -450,18 +449,18 @@ export const kin: Partial<CaseStudy> = {
     ],
     comparisons: [
       {
-        before: "/images/kin/iteration-switcher-before.png",
-        after: "/images/kin/iteration-switcher-after.png",
+        before: kinImg("iteration-switcher-before.png"),
+        after: kinImg("iteration-switcher-after.png"),
         label: "Patient switcher added at the top of Home",
       },
       {
-        before: "/images/kin/iteration-urgency-before.png",
-        after: "/images/kin/iteration-urgency-after.png",
+        before: kinImg("iteration-urgency-before.png"),
+        after: kinImg("iteration-urgency-after.png"),
         label: "Red alerts replaced with a tiered urgency model",
       },
       {
-        before: "/images/kin/iteration-handoff-before.png",
-        after: "/images/kin/iteration-handoff-after.png",
+        before: kinImg("iteration-handoff-before.png"),
+        after: kinImg("iteration-handoff-after.png"),
         label: "Directive handoff language replaced with neutral notes",
       },
     ],
@@ -489,22 +488,22 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: "/images/kin/final-home.png",
+        src: kinImg("final-home.png"),
         alt: "Final home dashboard showing today's medications across two patients",
         caption: "Home — today's view across both parents.",
       },
       {
-        src: "/images/kin/final-refill.png",
+        src: kinImg("final-refill.png"),
         alt: "Final refill alert with handoff to sibling",
         caption: "Refill alert with one-tap handoff.",
       },
       {
-        src: "/images/kin/final-patient.png",
+        src: kinImg("final-patient.png"),
         alt: "Final patient companion view",
         caption: "Patient companion view — a calm, read-only daily summary.",
       },
       {
-        src: "/images/kin/final-family.png",
+        src: kinImg("final-family.png"),
         alt: "Final family activity feed",
         caption: "Family feed — visibility without surveillance.",
       },

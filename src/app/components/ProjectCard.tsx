@@ -84,7 +84,7 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
         className={`w-full h-full object-cover transition-all duration-700 ${
           project.comingSoon
             ? "grayscale opacity-80"
-            : "grayscale group-hover:scale-105 group-hover:grayscale-0"
+            : "group-hover:grayscale group-hover:scale-105"
         }`}
       />
       {!prefersReducedMotion && navigable && (
