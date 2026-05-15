@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router";
 import { allProjects } from "../data/projects";
-import { getCaseStudy } from "../data/caseStudies";
+import { getCaseStudy } from "../data/case-studies";
 import { CaseStudyShell } from "../components/case-study/CaseStudyShell";
 
 const ACCENT = "#4338CA";
@@ -30,7 +30,6 @@ export function ProjectDetailPage() {
   const prev = allProjects[idx - 1] ?? null;
   const next = allProjects[idx + 1] ?? null;
 
-  // Attach GitHub / Live as default top-of-page links if not already provided.
   if (!study.links || study.links.length === 0) {
     const derived: { label: string; href: string }[] = [];
     if (project.github) derived.push({ label: "Source", href: project.github });

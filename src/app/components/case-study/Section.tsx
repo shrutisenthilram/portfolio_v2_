@@ -54,7 +54,7 @@ export function CaseSection({
       //   Increase this value if the section title hides under the navbar on scroll-to.
       // py-14 md:py-20 lg:py-24 — vertical padding inside each section.
       //   To reduce space BETWEEN sections, decrease these values (e.g. py-8 md:py-12 lg:py-16).
-      className="scroll-mt-28 py-14 md:py-20 lg:py-24"
+      className="scroll-mt-28 py-10  md:py-10 lg:py-10"
       // The thin line drawn above every section to visually separate them.
       // To remove these divider lines, delete this style prop entirely.
       style={{ borderTop: "1px solid var(--p-divide)" }}

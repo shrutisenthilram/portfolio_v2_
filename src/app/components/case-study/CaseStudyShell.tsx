@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import { Link } from "react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
-import type { CaseStudy, SectionDef } from "./types";
+import type { CaseStudy, CaseStudySectionKey, SectionDef } from "./types";
 import { CaseSidebar, MobileSectionNav } from "./Sidebar";
 import { useScrollSpy } from "./useScrollSpy";
-import { MetaPair, fadeInOnView } from "./primitives";
+import { MetaPair, PrototypeCTA, fadeInOnView } from "./primitives";
 import {
   OverviewSection,
   ProblemSection,
@@ -37,7 +37,7 @@ const SECTION_ORDER: {
   number: string;   // Decorative number shown in section header and sidebar
   label: string;    // Full label (sidebar desktop + section header)
   shortLabel?: string; // Shorter label used on mobile pill nav if provided
-  key: keyof Omit<CaseStudy, "slug" | "title" | "subtitle" | "tagline" | "year" | "status" | "heroImage" | "heroVideo" | "client" | "links" | "meta">;
+  key: CaseStudySectionKey;
 }[] = [
   { id: "overview", number: "01", label: "Overview", key: "overview" },
   { id: "problem", number: "02", label: "Problem", key: "problem" },
@@ -69,23 +69,38 @@ export function CaseStudyShell({
   study,
   prev,
   next,
+  children,
 }: {
   study: CaseStudy;
   prev?: { slug: string; title: string; subtitle: string } | null;
   next?: { slug: string; title: string; subtitle: string } | null;
+  children?: React.ReactNode;
 }) {
   // Filter SECTION_ORDER down to only the sections that actually have data.
   // This drives both the sidebar nav links and which section components render.
+  const hidden = useMemo(
+    () => new Set(study.hiddenSections ?? []),
+    [study.hiddenSections],
+  );
+
   const present: SectionDef[] = useMemo(
     () =>
-      SECTION_ORDER.filter((s) => Boolean(study[s.key])).map((s) => ({
+      SECTION_ORDER.filter(
+        (s) => Boolean(study[s.key]) && !hidden.has(s.key),
+      ).map((s) => ({
         id: s.id,
         number: s.number,
         label: s.label,
         shortLabel: s.shortLabel,
       })),
-    [study],
+    [study, hidden],
   );
+
+  const showSection = (key: CaseStudySectionKey) =>
+    Boolean(study[key]) && !hidden.has(key);
+
+  const prototypeHref =
+    study.links?.find((l) => l.href.startsWith("/kin"))?.href ?? null;
 
   // Tracks which section is currently scrolled into view.
   // Used to highlight the active item in the sidebar / mobile nav.
@@ -119,21 +134,55 @@ export function CaseStudyShell({
 
             {/* Each section renders only if its data key is present on `study`.
                 To hide a section entirely, remove it from caseStudies.ts for this project. */}
-            {study.overview && <OverviewSection data={study.overview} />}
-            {study.problem && <ProblemSection data={study.problem} />}
-            {study.context && <ContextSection data={study.context} />}
-            {study.research && <ResearchSection data={study.research} />}
-            {study.strategy && <StrategySection data={study.strategy} />}
-            {study.architecture && <ArchitectureSection data={study.architecture} />}
-            {study.ideation && <IdeationSection data={study.ideation} />}
-            {study.flows && <FlowsSection data={study.flows} />}
-            {study.designSystem && <DesignSystemSection data={study.designSystem} />}
-            {study.iteration && <IterationSection data={study.iteration} />}
-            {study.finalSolution && <FinalSolutionSection data={study.finalSolution} />}
-            {study.outcomes && <OutcomesSection data={study.outcomes} />}
+            {showSection("overview") && study.overview && (
+              <OverviewSection data={study.overview} />
+            )}
+            {showSection("problem") && study.problem && (
+              <ProblemSection data={study.problem} />
+            )}
+            {showSection("context") && study.context && (
+              <ContextSection data={study.context} />
+            )}
+            {showSection("research") && study.research && (
+              <ResearchSection data={study.research} />
+            )}
+            {showSection("strategy") && study.strategy && (
+              <StrategySection data={study.strategy} />
+            )}
+            {showSection("architecture") && study.architecture && (
+              <ArchitectureSection data={study.architecture} />
+            )}
+            {showSection("ideation") && study.ideation && (
+              <IdeationSection data={study.ideation} />
+            )}
+            {showSection("flows") && study.flows && (
+              <FlowsSection data={study.flows} />
+            )}
+            {showSection("designSystem") && study.designSystem && (
+              <DesignSystemSection data={study.designSystem} />
+            )}
+            {showSection("iteration") && study.iteration && (
+              <IterationSection data={study.iteration} />
+            )}
+            {showSection("finalSolution") && study.finalSolution && (
+              <FinalSolutionSection data={study.finalSolution} />
+            )}
+            {prototypeHref && (
+              <PrototypeCTA
+                href={prototypeHref}
+                title="Explore the Kin prototype"
+                description="Walk through every screen — design system, flows, and edge cases — in the interactive appendix."
+              />
+            )}
+            {showSection("outcomes") && study.outcomes && (
+              <OutcomesSection data={study.outcomes} />
+            )}
           </main>
         </div>
       </div>
+
+      {/* Optional showcase content — renders full-width between sections and footer */}
+      {children}
 
       {/* Bottom "Previous / Next project" navigation bar */}
       <FooterNav prev={prev} next={next} />
@@ -378,18 +427,6 @@ function MetaRow({ study }: { study: CaseStudy }) {
                   +{study.meta.stack.length - 4}
                 </span>
               )}
-            </span>
-          }
-        />
-
-        {/* Impact — shown in accent color to make it stand out.
-            To remove Impact, delete this entire <MetaPair> block and change
-            the grid class above from lg:grid-cols-5 to lg:grid-cols-4. */}
-        <MetaPair
-          label="Impact"
-          value={
-            <span style={{ color: ACCENT, letterSpacing: "-0.005em" }}>
-              {study.meta.impact}
             </span>
           }
         />

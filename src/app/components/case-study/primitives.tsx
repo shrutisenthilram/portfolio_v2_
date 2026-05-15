@@ -16,7 +16,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import type { Media, Highlight } from "./types";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -135,6 +137,77 @@ export function Caption({ children }: { children: ReactNode }) {
     >
       {children}
     </p>
+  );
+}
+
+/** CTA band linking to an interactive prototype appendix (e.g. /kin). */
+export function PrototypeCTA({
+  href,
+  title,
+  description,
+}: {
+  href: string;
+  title: string;
+  description?: string;
+}) {
+  return (
+    <motion.section
+      {...fadeInOnView}
+      className="my-16 md:my-20 py-10 md:py-12 px-6 md:px-10"
+      style={{
+        border: "1px solid var(--p-divide)",
+        backgroundColor: "var(--p-surface)",
+      }}
+      aria-label={title}
+    >
+      <div className="max-w-2xl">
+        <p
+          className="uppercase mb-3"
+          style={{
+            fontSize: "0.62rem",
+            letterSpacing: "0.18em",
+            color: "var(--p-fg-35)",
+          }}
+        >
+          Interactive appendix
+        </p>
+        <h3
+          style={{
+            fontSize: "clamp(1.25rem, 2.5vw, 1.6rem)",
+            fontWeight: 400,
+            letterSpacing: "-0.02em",
+            color: "var(--p-fg)",
+          }}
+        >
+          {title}
+        </h3>
+        {description && (
+          <p
+            className="mt-3"
+            style={{
+              fontSize: "0.92rem",
+              lineHeight: 1.7,
+              color: "var(--p-fg-65)",
+            }}
+          >
+            {description}
+          </p>
+        )}
+        <Link
+          to={href}
+          className="inline-flex items-center gap-2 mt-6"
+          style={{
+            fontSize: "0.88rem",
+            fontWeight: 500,
+            color: ACCENT,
+            textDecoration: "none",
+          }}
+        >
+          Open prototype
+          <ArrowRight size={16} aria-hidden />
+        </Link>
+      </div>
+    </motion.section>
   );
 }
 

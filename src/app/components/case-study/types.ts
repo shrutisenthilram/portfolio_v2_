@@ -34,8 +34,26 @@ export type Highlight = { value: string; label: string };
 // Fill this in via caseStudies.ts (keyed by project slug).
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Section keys that can be omitted from the scroll story via `hiddenSections`. */
+export type CaseStudySectionKey =
+  | "overview"
+  | "problem"
+  | "context"
+  | "research"
+  | "strategy"
+  | "architecture"
+  | "ideation"
+  | "flows"
+  | "designSystem"
+  | "iteration"
+  | "finalSolution"
+  | "outcomes";
+
 export type CaseStudy = {
   slug: string; // must match the project's slug in projects.ts
+
+  /** If set, these sections are not rendered even when data is present (Kin uses this to trim the arc). */
+  hiddenSections?: CaseStudySectionKey[];
 
   // ── Hero (required) ─────────────────────────────────────────────────────────
   // These populate the full-bleed hero image and text overlay at the top of the page.
@@ -63,7 +81,7 @@ export type CaseStudy = {
     team: string;      // Team description (e.g. "Solo design + eng, 2 ML advisors")
     stack: string[];   // Array of tech names. First 4 are shown, rest collapsed to "+N more".
     platform?: string; // Optional — only shown if set (e.g. "Web", "iOS", "Cross-platform")
-    impact: string;    // One-line result shown in accent color (e.g. "−60% time-to-synthesis")
+    impact?: string;   // Optional one-liner in meta row (omit if not deployed / no metric yet)
   };
 
   // ── 01 Overview ─────────────────────────────────────────────────────────────
@@ -75,6 +93,7 @@ export type CaseStudy = {
     body: string;           // Main body paragraph — the project summary.
     highlights?: Highlight[]; // Stats box on the right side (e.g. [{ value: "320+", label: "Waitlist" }])
                             // Leave empty/omit to hide the stats box.
+    media?: Media[];
   };
 
   // ── 02 Problem ───────────────────────────────────────────────────────────────
@@ -171,6 +190,7 @@ export type CaseStudy = {
     // steps: array of { label (step name), body (step description) }
     edgeCases?: string[];    // Bullet list of edge cases that were designed for
     accessibility?: string[]; // Bullet list of accessibility decisions made
+    media?: Media[];
   };
 
   // ── 09 Design System ─────────────────────────────────────────────────────────
@@ -188,6 +208,7 @@ export type CaseStudy = {
     //   sample: CSS color string — if set, a color swatch square is shown (e.g. "#4338CA")
     components?: string[];          // Component names as chips (e.g. ["Button", "Modal"])
     accessibilityNotes?: string[];  // Bullet list of accessibility decisions
+    media?: Media[];
   };
 
   // ── 10 Iteration & Testing ───────────────────────────────────────────────────
@@ -208,6 +229,7 @@ export type CaseStudy = {
     //   before: image URL for the "before" state
     //   after:  image URL for the "after" state
     //   label:  caption shown below both images
+    media?: Media[];
   };
 
   // ── 11 Final Solution ────────────────────────────────────────────────────────

@@ -55,18 +55,28 @@ const ACCENT = "#4338CA";
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function OverviewSection({ data }: { data: NonNullable<CaseStudy["overview"]> }) {
+  const hasHighlights = Boolean(data.highlights && data.highlights.length > 0);
+  const heroImage = data.media?.[0];
+  const galleryMedia = data.media && data.media.length > 1 ? data.media.slice(1) : [];
+
   return (
     <CaseSection
       id="overview"
       number="01"
       label="Overview"
-      eyebrow={data.eyebrow}    // optional tiny uppercase line above the title
-      title={data.title}        // large editorial heading — set in caseStudies.ts overview.title
+      eyebrow={data.eyebrow}
+      title={data.title}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-        {/* Left: main body paragraph */}
-        <div className="md:col-span-7">
+      <div className="space-y-10 md:space-y-12">
+        <div
+          className={
+            hasHighlights
+              ? "grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start"
+              : undefined
+          }
+        >
           <p
+            className={hasHighlights ? "md:col-span-7" : "max-w-3xl"}
             style={{
               fontSize: "clamp(1rem, 1.4vw, 1.12rem)",
               fontWeight: 300,
@@ -77,45 +87,53 @@ export function OverviewSection({ data }: { data: NonNullable<CaseStudy["overvie
           >
             {data.body}
           </p>
+
+          {hasHighlights && (
+            <div className="md:col-span-5">
+              <div
+                className="grid grid-cols-2 gap-y-6 gap-x-4 p-5 md:p-6"
+                style={{ border: "1px solid var(--p-divide)" }}
+              >
+                {data.highlights!.map((h) => (
+                  <div key={h.label}>
+                    <p
+                      style={{
+                        fontSize: "clamp(1.3rem, 2.2vw, 1.6rem)",
+                        fontWeight: 300,
+                        letterSpacing: "-0.02em",
+                        color: "var(--p-fg)",
+                      }}
+                    >
+                      {h.value}
+                    </p>
+                    <p
+                      className="uppercase mt-1"
+                      style={{
+                        fontSize: "0.6rem",
+                        letterSpacing: "0.14em",
+                        color: "var(--p-fg-35)",
+                      }}
+                    >
+                      {h.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Right: stats box — only renders if highlights array has items */}
-        {data.highlights && data.highlights.length > 0 && (
-          <div className="md:col-span-5">
-            {/* 2-column grid of stat cards inside a bordered box */}
-            <div
-              className="grid grid-cols-2 gap-y-6 gap-x-4 p-5 md:p-6"
-              style={{ border: "1px solid var(--p-divide)" }}
-            >
-              {data.highlights.map((h) => (
-                <div key={h.label}>
-                  {/* The big number / value — e.g. "320+", "4.8/5" */}
-                  <p
-                    style={{
-                      fontSize: "clamp(1.3rem, 2.2vw, 1.6rem)",
-                      fontWeight: 300,
-                      letterSpacing: "-0.02em",
-                      color: "var(--p-fg)",
-                    }}
-                  >
-                    {h.value}
-                  </p>
-                  {/* The label below the number */}
-                  <p
-                    className="uppercase mt-1"
-                    style={{
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.14em",
-                      color: "var(--p-fg-35)",
-                    }}
-                  >
-                    {h.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {heroImage && (
+          <LazyImage
+            src={heroImage.src}
+            alt={heroImage.alt}
+            caption={heroImage.caption}
+            aspect={heroImage.aspect ?? "16/9"}
+            priority
+          />
         )}
+
+        {galleryMedia.length > 0 && <MediaGallery items={galleryMedia} />}
       </div>
     </CaseSection>
   );
@@ -632,6 +650,8 @@ export function FlowsSection({ data }: { data: NonNullable<CaseStudy["flows"]> }
           )}
         </div>
       )}
+
+      {data.media && data.media.length > 0 && <MediaGallery items={data.media} />}
     </CaseSection>
   );
 }
@@ -729,6 +749,7 @@ export function DesignSystemSection({
           </div>
         </div>
       )}
+      {data.media && data.media.length > 0 && <MediaGallery items={data.media} />}
     </CaseSection>
   );
 }
@@ -822,6 +843,7 @@ export function IterationSection({ data }: { data: NonNullable<CaseStudy["iterat
           ))}
         </div>
       )}
+      {data.media && data.media.length > 0 && <MediaGallery items={data.media} />}
     </CaseSection>
   );
 }
