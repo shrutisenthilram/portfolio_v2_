@@ -71,6 +71,22 @@ export function getCaseStudy(project: Project): CaseStudy {
   const curated = caseStudies[project.slug];
   if (!curated) return fallback;
 
+  if (curated.fullCaseStudyBoard) {
+    return {
+      slug: project.slug,
+      title: project.title,
+      subtitle: project.subtitle,
+      year: project.year,
+      status: project.status,
+      heroImage: project.image || fallback.heroImage,
+      meta: { ...fallback.meta, ...curated.meta },
+      client: curated.client,
+      tagline: curated.tagline,
+      links: curated.links ?? fallback.links,
+      fullCaseStudyBoard: curated.fullCaseStudyBoard,
+    };
+  }
+
   return {
     ...fallback,
     ...curated,
@@ -99,5 +115,6 @@ export function getCaseStudy(project: Project): CaseStudy {
     iteration: mergeSection(fallback.iteration, curated.iteration),
     finalSolution: mergeSection(fallback.finalSolution, curated.finalSolution),
     outcomes: mergeSection(fallback.outcomes, curated.outcomes),
+    fullCaseStudyBoard: curated.fullCaseStudyBoard,
   };
 }

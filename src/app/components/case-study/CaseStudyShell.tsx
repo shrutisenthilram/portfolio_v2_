@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import type { CaseStudy, CaseStudySectionKey, SectionDef } from "./types";
 import { CaseSidebar, MobileSectionNav } from "./Sidebar";
 import { useScrollSpy } from "./useScrollSpy";
-import { MetaPair, PrototypeCTA, fadeInOnView } from "./primitives";
+import { FullCaseStudyBoard, MetaPair, PrototypeCTA, fadeInOnView } from "./primitives";
 import {
   OverviewSection,
   ProblemSection,
@@ -78,23 +78,26 @@ export function CaseStudyShell({
 }) {
   // Filter SECTION_ORDER down to only the sections that actually have data.
   // This drives both the sidebar nav links and which section components render.
+  const fullBoard = study.fullCaseStudyBoard;
+
   const hidden = useMemo(
     () => new Set(study.hiddenSections ?? []),
     [study.hiddenSections],
   );
 
-  const present: SectionDef[] = useMemo(
-    () =>
-      SECTION_ORDER.filter(
-        (s) => Boolean(study[s.key]) && !hidden.has(s.key),
-      ).map((s) => ({
-        id: s.id,
-        number: s.number,
-        label: s.label,
-        shortLabel: s.shortLabel,
-      })),
-    [study, hidden],
-  );
+  const present: SectionDef[] = useMemo(() => {
+    if (fullBoard) {
+      return [{ id: "case-study", number: "01", label: "Case Study" }];
+    }
+    return SECTION_ORDER.filter(
+      (s) => Boolean(study[s.key]) && !hidden.has(s.key),
+    ).map((s) => ({
+      id: s.id,
+      number: s.number,
+      label: s.label,
+      shortLabel: s.shortLabel,
+    }));
+  }, [study, hidden, fullBoard]);
 
   const showSection = (key: CaseStudySectionKey) =>
     Boolean(study[key]) && !hidden.has(key);
@@ -132,39 +135,46 @@ export function CaseStudyShell({
             {/* Metadata strip: Role / Timeline / Team / Stack / Impact / links */}
             <MetaRow study={study} />
 
+            {fullBoard && (
+              <FullCaseStudyBoard
+                src={fullBoard.src}
+                alt={fullBoard.alt}
+              />
+            )}
+
             {/* Each section renders only if its data key is present on `study`.
                 To hide a section entirely, remove it from caseStudies.ts for this project. */}
-            {showSection("overview") && study.overview && (
+            {!fullBoard && showSection("overview") && study.overview && (
               <OverviewSection data={study.overview} />
             )}
-            {showSection("problem") && study.problem && (
+            {!fullBoard && showSection("problem") && study.problem && (
               <ProblemSection data={study.problem} />
             )}
-            {showSection("context") && study.context && (
+            {!fullBoard && showSection("context") && study.context && (
               <ContextSection data={study.context} />
             )}
-            {showSection("research") && study.research && (
+            {!fullBoard && showSection("research") && study.research && (
               <ResearchSection data={study.research} />
             )}
-            {showSection("strategy") && study.strategy && (
+            {!fullBoard && showSection("strategy") && study.strategy && (
               <StrategySection data={study.strategy} />
             )}
-            {showSection("architecture") && study.architecture && (
+            {!fullBoard && showSection("architecture") && study.architecture && (
               <ArchitectureSection data={study.architecture} />
             )}
-            {showSection("ideation") && study.ideation && (
+            {!fullBoard && showSection("ideation") && study.ideation && (
               <IdeationSection data={study.ideation} />
             )}
-            {showSection("flows") && study.flows && (
+            {!fullBoard && showSection("flows") && study.flows && (
               <FlowsSection data={study.flows} />
             )}
-            {showSection("designSystem") && study.designSystem && (
+            {!fullBoard && showSection("designSystem") && study.designSystem && (
               <DesignSystemSection data={study.designSystem} />
             )}
-            {showSection("iteration") && study.iteration && (
+            {!fullBoard && showSection("iteration") && study.iteration && (
               <IterationSection data={study.iteration} />
             )}
-            {showSection("finalSolution") && study.finalSolution && (
+            {!fullBoard && showSection("finalSolution") && study.finalSolution && (
               <FinalSolutionSection data={study.finalSolution} />
             )}
             {prototypeHref && (
@@ -174,7 +184,7 @@ export function CaseStudyShell({
                 description="Walk through every screen — design system, flows, and edge cases — in the interactive appendix."
               />
             )}
-            {showSection("outcomes") && study.outcomes && (
+            {!fullBoard && showSection("outcomes") && study.outcomes && (
               <OutcomesSection data={study.outcomes} />
             )}
           </main>

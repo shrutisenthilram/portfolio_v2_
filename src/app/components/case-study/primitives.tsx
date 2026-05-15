@@ -474,6 +474,25 @@ export function StatGrid({ items }: { items: Highlight[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// FullCaseStudyBoard — one tall Figma export at native resolution (no aspect crop)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function FullCaseStudyBoard({ src, alt }: { src: string; alt?: string }) {
+  return (
+    <motion.figure {...fadeInOnView} id="case-study" className="block w-full scroll-mt-28">
+      <img
+        src={src}
+        alt={alt ?? "Case study"}
+        loading="eager"
+        decoding="async"
+        className="block w-full h-auto max-w-full"
+        style={{ border: "1px solid var(--p-divide)" }}
+      />
+    </motion.figure>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // LazyImage
 // A single image with optional caption, lazy loading, hover scale effect,
 // and a bordered container that maintains a fixed aspect ratio.

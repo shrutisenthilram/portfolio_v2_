@@ -55,6 +55,12 @@ export type CaseStudy = {
   /** If set, these sections are not rendered even when data is present (Kin uses this to trim the arc). */
   hiddenSections?: CaseStudySectionKey[];
 
+  /**
+   * One full Figma export shown below the meta row (natural height, no crop).
+   * When set, modular sections are skipped.
+   */
+  fullCaseStudyBoard?: Media;
+
   // ── Hero (required) ─────────────────────────────────────────────────────────
   // These populate the full-bleed hero image and text overlay at the top of the page.
 
