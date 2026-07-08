@@ -9,35 +9,36 @@ import {
   type Project,
 } from "../data/projects";
 import { ProjectCard } from "../components/ProjectCard";
+import { ImageWithFallback, ImagePlaceholder } from "../components/figma/ImageWithFallback";
 import { INDIGO } from "../data/tagColors";
 
 const ACCENT = INDIGO;
 
-const STATUS_COLORS: Record<string, string> = {
-  Featured: INDIGO,
-  "Case Study": "#059669",
-  Live: "#0891b2",
-  "Coming Soon": "#6b7280",
-  "Small Case Study": "#0d9488",
-};
+// Only "Coming Soon" gets a badge here — it signals a real functional state
+// (not yet clickable). Per-project status labels (Concept/Team/Shipped/
+// Teardown) were removed; a general recruiter audience doesn't need them.
+const COMING_SOON_COLOR = "#6b7280";
 
 function ProjectListRow({ project }: { project: Project }) {
   const navigable = isProjectNavigable(project);
   const href = getProjectHref(project);
-  const statusColor = STATUS_COLORS[project.status] ?? "#999";
 
   const thumb = (
     <div
       className="relative w-full overflow-hidden group/thumb"
       style={{ aspectRatio: "16/9", backgroundColor: "var(--p-surface)" }}
     >
-      <img
-        src={project.image}
-        alt=""
-        className={`w-full h-full object-cover transition-all duration-500 ${
-          project.comingSoon ? "grayscale opacity-80" : "grayscale group-hover/thumb:grayscale-0"
-        }`}
-      />
+      {project.image ? (
+        <ImageWithFallback
+          src={project.image}
+          alt=""
+          className={`w-full h-full object-cover transition-all duration-500 ${
+            project.comingSoon ? "grayscale opacity-80" : "grayscale group-hover/thumb:grayscale-0"
+          }`}
+        />
+      ) : (
+        <ImagePlaceholder className="w-full h-full" />
+      )}
       {project.comingSoon && (
         <div
           className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -110,17 +111,19 @@ function ProjectListRow({ project }: { project: Project }) {
       </div>
       <div className="md:col-span-2 flex flex-col justify-center gap-2">
         <p style={{ fontSize: "0.72rem", color: ACCENT + "99" }}>{project.role}</p>
-        <span
-          className="inline-block px-2 py-0.5 w-fit"
-          style={{
-            fontSize: "0.62rem",
-            fontWeight: 500,
-            color: "#fff",
-            backgroundColor: statusColor + "E6",
-          }}
-        >
-          {project.status}
-        </span>
+        {project.comingSoon && (
+          <span
+            className="inline-block px-2 py-0.5 w-fit"
+            style={{
+              fontSize: "0.62rem",
+              fontWeight: 500,
+              color: "#fff",
+              backgroundColor: COMING_SOON_COLOR + "E6",
+            }}
+          >
+            {project.status}
+          </span>
+        )}
       </div>
       <div className="md:col-span-2 flex flex-col justify-center gap-3">
         <div className="flex flex-wrap gap-1">

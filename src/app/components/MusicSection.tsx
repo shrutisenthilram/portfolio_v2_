@@ -3,6 +3,17 @@ import { useState, useEffect } from "react";
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
+// TODO(personalize): year/genre for this entry are my best-guess metadata for
+// the real song, not a personal claim — double check them. Add real cover art
+// to /public/images and point `art` at it when you have it.
+const FEATURED_DEFAULT = {
+  title: "Master of None",
+  artist: "Beach House",
+  year: 2010,
+  art: "",
+  genre: "Dream Pop",
+};
+
 const albums = [
   {
     title: "Hurry Up Tomorrow",
@@ -64,25 +75,16 @@ const albums = [
 
 const YEARS = ["All", "2025", "2024", "2023", "2022", "2020", "2016"];
 
-const BARS = [3, 5, 8, 6, 4, 7, 5, 3, 6, 8, 4, 5];
-
 function VinylPlayer({ album }: { album: typeof albums[0] }) {
+  // Purely decorative, constant slow spin — not tied to any playback state.
   const [angle, setAngle] = useState(0);
-  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setAngle((a) => (a + 1.2) % 360);
-      setTick((t) => t + 1);
+      setAngle((a) => (a + 0.3) % 360);
     }, 30);
     return () => clearInterval(id);
   }, []);
-
-  // Waveform bars oscillate
-  const barHeight = (i: number) => {
-    const base = BARS[i % BARS.length];
-    return base + Math.sin(tick * 0.12 + i * 0.7) * 3;
-  };
 
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 md:gap-12">
@@ -160,11 +162,15 @@ function VinylPlayer({ album }: { album: typeof albums[0] }) {
             boxShadow: "0 2px 10px rgba(0,0,0,0.4)",
           }}
         >
-          <img
-            src={album.art}
-            alt={album.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          {album.art ? (
+            <img
+              src={album.art}
+              alt={`${album.title} album cover`}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          ) : (
+            <div style={{ width: "100%", height: "100%", backgroundColor: ACCENT }} />
+          )}
         </div>
 
         {/* Center hole dot */}
@@ -184,25 +190,10 @@ function VinylPlayer({ album }: { album: typeof albums[0] }) {
         />
       </div>
 
-      {/* Track info + waveform */}
+      {/* Track info */}
       <div style={{ minWidth: 0 }}>
-        {/* Now playing label */}
+        {/* Static label — not tied to any playback state */}
         <div className="flex items-center gap-2 mb-3">
-          <div style={{ display: "flex", alignItems: "flex-end", gap: 2, height: 14 }}>
-            {BARS.slice(0, 5).map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  width: 2,
-                  height: `${barHeight(i)}px`,
-                  backgroundColor: CORAL,
-                  borderRadius: 1,
-                  transition: "height 0.05s ease",
-                  opacity: 0.9,
-                }}
-              />
-            ))}
-          </div>
           <span
             style={{
               fontSize: "0.6rem",
@@ -212,7 +203,7 @@ function VinylPlayer({ album }: { album: typeof albums[0] }) {
               fontWeight: 500,
             }}
           >
-            Now Playing
+            On Repeat
           </span>
         </div>
 
@@ -246,46 +237,6 @@ function VinylPlayer({ album }: { album: typeof albums[0] }) {
         >
           {album.genre}
         </span>
-
-        {/* Waveform visualizer */}
-        <div
-          className="mt-6 flex items-end gap-0.5"
-          style={{ height: 28 }}
-        >
-          {BARS.map((_, i) => (
-            <div
-              key={i}
-              style={{
-                width: 3,
-                height: `${barHeight(i)}px`,
-                backgroundColor: i < 7 ? ACCENT : "var(--p-fg-12)",
-                borderRadius: 1.5,
-                transition: "height 0.05s ease",
-              }}
-            />
-          ))}
-          <div
-            style={{
-              width: 3,
-              height: 3,
-              borderRadius: "50%",
-              backgroundColor: ACCENT,
-              alignSelf: "flex-end",
-              marginLeft: 2,
-            }}
-          />
-        </div>
-        <div
-          style={{
-            marginTop: 4,
-            display: "flex",
-            justifyContent: "space-between",
-            maxWidth: "calc(12 * 3px + 11 * 2px + 10px)",
-          }}
-        >
-          <span style={{ fontSize: "0.6rem", color: "var(--p-fg-25)" }}>1:47</span>
-          <span style={{ fontSize: "0.6rem", color: "var(--p-fg-25)" }}>4:12</span>
-        </div>
       </div>
     </div>
   );
@@ -293,7 +244,7 @@ function VinylPlayer({ album }: { album: typeof albums[0] }) {
 
 export function MusicSection() {
   const [activeYear, setActiveYear] = useState("All");
-  const [nowPlaying, setNowPlaying] = useState(albums[0]);
+  const [nowPlaying, setNowPlaying] = useState(FEATURED_DEFAULT);
 
   const filtered =
     activeYear === "All"
@@ -302,6 +253,7 @@ export function MusicSection() {
 
   return (
     <section
+      id="music"
       style={{
         fontFamily: "'Inter', sans-serif",
         borderTop: "1px solid var(--p-divide)",
@@ -322,7 +274,7 @@ export function MusicSection() {
         Music
       </span>
 
-      {/* Currently listening + album list side by side */}
+      {/* Featured pick + favorites list side by side */}
       <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start">
         {/* Left: vinyl player — takes up most of the space */}
         <div className="flex-1 min-w-0">
@@ -335,7 +287,7 @@ export function MusicSection() {
               color: "var(--p-fg)",
             }}
           >
-            Currently Listening To
+            On Repeat
           </h2>
           <VinylPlayer album={nowPlaying} />
         </div>

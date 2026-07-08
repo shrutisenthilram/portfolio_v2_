@@ -24,9 +24,8 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           {[
-            { label: "GitHub", href: "#" },
-            { label: "LinkedIn", href: "#" },
-            { label: "", href: "#" },
+            { label: "GitHub", href: "https://github.com/shrutisenthilram" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/shrutisenthilram/" },
           ].map(({ label, href }) => (
             <a
               key={label}

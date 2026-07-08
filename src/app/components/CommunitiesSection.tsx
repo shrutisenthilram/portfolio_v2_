@@ -3,6 +3,10 @@ import { Instagram } from "lucide-react";
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
+// TODO(personalize): Instagram icon now links to https://instagram.com/<handle>
+// using the `handle` field below — it only renders when a real handle is set.
+// "Design Co @ UCSD" has handle: "@" (not real) so its icon is hidden; add the
+// real handle and description text when you have them.
 const communities = [
   {
     name: "ACM @ UCSD",
@@ -235,14 +239,18 @@ export function CommunitiesSection() {
                       {community.role}
                     </p>
                   </div>
-                  <a
-                    href="#"
-                    className="ml-auto transition-opacity duration-200 hover:opacity-60"
-                    style={{ color: "var(--p-fg-35)" }}
-                    aria-label="Instagram"
-                  >
-                    <Instagram size={14} />
-                  </a>
+                  {community.handle && community.handle.length > 1 && (
+                    <a
+                      href={`https://instagram.com/${community.handle.replace(/^@/, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto transition-opacity duration-200 hover:opacity-60"
+                      style={{ color: "var(--p-fg-35)" }}
+                      aria-label="Instagram"
+                    >
+                      <Instagram size={14} />
+                    </a>
+                  )}
                 </div>
 
                 <div
@@ -254,15 +262,17 @@ export function CommunitiesSection() {
                   }}
                 />
 
-                <p
-                  style={{
-                    fontSize: "0.82rem",
-                    lineHeight: 1.75,
-                    color: "var(--p-fg-45)",
-                  }}
-                >
-                  {community.description}
-                </p>
+                {community.description && (
+                  <p
+                    style={{
+                      fontSize: "0.82rem",
+                      lineHeight: 1.75,
+                      color: "var(--p-fg-45)",
+                    }}
+                  >
+                    {community.description}
+                  </p>
+                )}
               </div>
 
               {/* Right — scattered polaroids */}

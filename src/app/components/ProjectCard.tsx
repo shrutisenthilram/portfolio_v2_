@@ -5,18 +5,14 @@ import type { Project } from "../data/projects";
 import { getProjectHref, isProjectNavigable } from "../data/projects";
 import { getTagColor, INDIGO, CORAL } from "../data/tagColors";
 import { useMotionProfile } from "./motion/useMotionProfile";
+import { ImageWithFallback, ImagePlaceholder } from "./figma/ImageWithFallback";
 
 const ACCENT = INDIGO;
 
-const STATUS_COLORS: Record<string, string> = {
-  Featured: INDIGO,
-  "Case Study": "#059669",
-  Live: "#0891b2",
-  "Open Source": "#7c3aed",
-  Experiment: "#d97706",
-  "Coming Soon": "#6b7280",
-  "Small Case Study": "#0d9488",
-};
+// Only "Coming Soon" gets a badge — it signals a real functional state
+// (not yet clickable). Per-project status labels (Concept/Team/Shipped/
+// Teardown) were removed; a general recruiter audience doesn't need them.
+const COMING_SOON_COLOR = "#6b7280";
 
 type ProjectCardProps = {
   project: Project;
@@ -33,7 +29,6 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
   const navigable = isProjectNavigable(project);
   const href = getProjectHref(project);
   const cornerColor = getTagColor(project.tags[0] ?? "");
-  const statusColor = STATUS_COLORS[project.status] ?? "#999";
   const tiltMax = (variant === "featured" ? 12 : 10) * intensityScale;
 
   const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
@@ -78,15 +73,19 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
         marginBottom: variant === "featured" ? "1.25rem" : "1rem",
       }}
     >
-      <img
-        src={project.image}
-        alt=""
-        className={`w-full h-full object-cover transition-all duration-700 ${
-          project.comingSoon
-            ? "grayscale opacity-80"
-            : "group-hover:grayscale group-hover:scale-105"
-        }`}
-      />
+      {project.image ? (
+        <ImageWithFallback
+          src={project.image}
+          alt=""
+          className={`w-full h-full object-cover transition-all duration-700 ${
+            project.comingSoon
+              ? "grayscale opacity-80"
+              : "group-hover:grayscale group-hover:scale-105"
+          }`}
+        />
+      ) : (
+        <ImagePlaceholder className="w-full h-full" />
+      )}
       {!prefersReducedMotion && navigable && (
         <div
           className="absolute inset-0 pointer-events-none"
@@ -140,7 +139,7 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
         >
           ★ FEATURED
         </div>
-      ) : (
+      ) : project.comingSoon ? (
         <div
           className="absolute top-3 left-3 md:top-4 md:left-4 px-2 py-0.5"
           style={{
@@ -148,12 +147,12 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
             fontWeight: 500,
             letterSpacing: "0.08em",
             color: "#fff",
-            backgroundColor: statusColor + "E6",
+            backgroundColor: COMING_SOON_COLOR + "E6",
           }}
         >
           {project.status}
         </div>
-      )}
+      ) : null}
     </div>
   );
 

@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { AllProjects } from "./pages/AllProjects";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
+import { ProjectCaseStudyPage } from "./pages/ProjectCaseStudyPage";
 import { AboutPage } from "./pages/AboutPage";
 import { PlaygroundPage } from "./pages/PlaygroundPage";
 import { PaletteDemo } from "./pages/PaletteDemo";
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "about", Component: AboutPage },
       { path: "projects", Component: AllProjects },
       { path: "projects/:slug", Component: ProjectDetailPage },
+      { path: "projects/:slug/case-study", Component: ProjectCaseStudyPage },
       { path: "playground", Component: PlaygroundPage },
       { path: "palette-demo", Component: PaletteDemo },
     ],

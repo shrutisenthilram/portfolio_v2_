@@ -1,19 +1,18 @@
+// The deeper design case study, at /projects/:slug/case-study. This is the
+// same rich, multi-section CaseStudyShell experience every project used to
+// show directly at /projects/:slug — now reachable via the "View Full Design
+// Case Study →" button on a project's PRD overview page (ProjectDetailPage),
+// or directly by URL for any project (harmless either way, since it's the
+// same content that renders at /projects/:slug for projects without a PRD).
 import { useParams, Link } from "react-router";
+import { ArrowLeft } from "lucide-react";
 import { allProjects, isProjectNavigable } from "../data/projects";
 import { getCaseStudy } from "../data/case-studies";
-import { getPrd } from "../data/prds";
 import { CaseStudyShell } from "../components/case-study/CaseStudyShell";
-import { PrdShell } from "../components/prd/PrdShell";
 
 const ACCENT = "#4338CA";
 
-// The primary /projects/:slug page. For a project with a PRD (see
-// src/app/data/prds/index.ts — currently Kin, Vote Smart, Design Frontiers),
-// this renders the PRD overview with a CTA into the deeper design case study
-// at /projects/:slug/case-study (ProjectCaseStudyPage.tsx). Every other
-// project (Eno, Portfolio Design, and all "Coming Soon" projects) keeps the
-// original single-page case study experience, unchanged.
-export function ProjectDetailPage() {
+export function ProjectCaseStudyPage() {
   const { slug } = useParams<{ slug: string }>();
   const idx = allProjects.findIndex((p) => p.slug === slug);
   const project = allProjects[idx];
@@ -36,25 +35,10 @@ export function ProjectDetailPage() {
 
   const navigable = allProjects.filter(isProjectNavigable);
   const navIdx = navigable.findIndex((p) => p.slug === slug);
-  const prev = navigable[navIdx - 1] ?? null;
-  const next = navigable[navIdx + 1] ?? null;
-  const prevProp = prev ? { slug: prev.slug, title: prev.title, subtitle: prev.subtitle } : null;
-  const nextProp = next ? { slug: next.slug, title: next.title, subtitle: next.subtitle } : null;
 
   const study = getCaseStudy(project);
-  const prd = getPrd(project.slug);
-
-  if (prd) {
-    return (
-      <PrdShell
-        study={study}
-        prd={prd}
-        caseStudyHref={`/projects/${project.slug}/case-study`}
-        prev={prevProp}
-        next={nextProp}
-      />
-    );
-  }
+  const prev = navigable[navIdx - 1] ?? null;
+  const next = navigable[navIdx + 1] ?? null;
 
   if (!study.links || study.links.length === 0) {
     const derived: { label: string; href: string }[] = [];
@@ -63,5 +47,23 @@ export function ProjectDetailPage() {
     if (derived.length > 0) study.links = derived;
   }
 
-  return <CaseStudyShell study={study} prev={prevProp} next={nextProp} />;
+  return (
+    <>
+      {/* Breadcrumb back to this project's overview/PRD page */}
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10 lg:px-14 pt-6">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="inline-flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-60"
+          style={{ fontSize: "0.75rem", color: "var(--p-fg-35)" }}
+        >
+          <ArrowLeft size={12} /> Back to project overview
+        </Link>
+      </div>
+      <CaseStudyShell
+        study={study}
+        prev={prev ? { slug: prev.slug, title: prev.title, subtitle: prev.subtitle } : null}
+        next={next ? { slug: next.slug, title: next.title, subtitle: next.subtitle } : null}
+      />
+    </>
+  );
 }

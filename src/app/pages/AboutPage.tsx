@@ -2,11 +2,15 @@ import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { MagneticButton } from "../components/MagneticButton";
 import { CommunitiesSection } from "../components/CommunitiesSection";
-import { MusicSection } from "../components/MusicSection";
+// TODO: revisit music section
+// import { MusicSection } from "../components/MusicSection";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
+// TODO(personalize) before deploying:
+// - href="#" (~line 468) — dead link, point at your real GitHub/LinkedIn/etc.
+// - mailto:alex@example.com (~line 895) — replace with your real email
 const education = [
   {
     degree: "BS Computer Science",
@@ -112,30 +116,29 @@ const skills = [
 ];
 
 const interests = [
-  { label: "Human-Computer Interaction", icon: "⌨" },
-  { label: "Generative AI & Design Tools", icon: "✦" },
-  { label: "Open Source Software", icon: "⊕" },
-  { label: "Photography & Visual Arts", icon: "◎" },
-  { label: "Urban Cycling", icon: "⬡" },
-  { label: "Speculative Fiction", icon: "◈" },
+  { label: "Running", icon: "◐" },
+  { label: "Piano", icon: "♪" },
+  { label: "Learning Guitar", icon: "♬" },
+  { label: "Reading", icon: "▤" },
+  { label: "Music", icon: "∿" },
 ];
 
 const values = [
   {
-    title: "Craft over velocity",
-    body: "I'd rather ship one thing beautifully than five things carelessly. The details are the product.",
+    title: "Progress over perfect",
+    body: "I'd rather ship something rough and improve it in the real world than sit on a polished idea nobody's used yet.",
   },
   {
-    title: "Curiosity as method",
-    body: "The best ideas come from asking obvious questions until they become non-obvious answers.",
+    title: "Start with people, not assumptions",
+    body: "Before I design or build anything, I want to talk to the people who'll actually use it — instinct is a starting point, not an answer.",
   },
   {
-    title: "Design is a conversation",
-    body: "Every interface is an argument about what matters. I try to make that argument clearly.",
+    title: "Clarity before polish",
+    body: "If it doesn't function clearly, it doesn't matter how it looks. I notice whether something works before I notice whether it's pretty.",
   },
   {
-    title: "Open by default",
-    body: "I share work early, write publicly, and contribute to OSS — ideas compound when they're in the open.",
+    title: "Comfortable juggling",
+    body: "I do my best work with a few things moving at once — it keeps me sharp instead of stuck.",
   },
 ];
 
@@ -150,19 +153,19 @@ const stats = [
 const currently = [
   {
     label: "Building",
-    value: "An AI design-review tool for Figma plugins",
+    value: "This portfolio, Kin, and a couple other side projects",
   },
   {
     label: "Reading",
-    value: "The Design of Everyday Things — Don Norman",
+    value: "Big Little Lies",
   },
   {
     label: "Learning",
-    value: "Rust + WebAssembly for interactive graphics",
+    value: "Machine learning",
   },
   {
     label: "Listening to",
-    value: "Four Tet, Floating Points, Bicep",
+    value: "Olivia Rodrigo's new album",
   },
 ];
 
@@ -429,16 +432,6 @@ export function AboutPage() {
               that help people think, learn, and work more
               effectively — without getting in the way.
             </p>
-            <p
-              className="max-w-lg"
-              style={{
-                fontSize: "0.88rem",
-                lineHeight: 1.8,
-                color: "var(--p-fg-45)",
-              }}
-            >
-              
-            </p>
 
             <div className="flex flex-wrap gap-4 mt-10">
               <MagneticButton
@@ -465,7 +458,9 @@ export function AboutPage() {
               </MagneticButton>
               <MagneticButton
                 as="a"
-                href="#"
+                href="https://drive.google.com/file/d/1lkLAkAtCbMyIuyhAY7I_820Z4pDXwhKw/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 pb-0.5 transition-colors duration-200"
                 style={{
                   fontSize: "0.875rem",
@@ -512,7 +507,7 @@ export function AboutPage() {
               {[
                 {
                   k: "Based in",
-                  v: "San Francisco, CA",
+                  v: "San Diego (Bay Area native)",
                   coral: false,
                 },
                 {
@@ -521,12 +516,14 @@ export function AboutPage() {
                   coral: true,
                 },
                 { k: "Focus", v: "CS × Design", coral: false },
+                // TODO(personalize): add your site URL here (e.g. { k: "Website", v: "yoursite.dev", coral: false })
+                // — row is hidden below while v is empty so it doesn't render a blank value.
                 {
                   k: "Website",
                   v: "",
                   coral: false,
                 },
-              ].map(({ k, v, coral }) => (
+              ].filter(({ v }) => v !== "").map(({ k, v, coral }) => (
                 <div
                   key={k}
                   className="flex items-baseline gap-3"
@@ -864,8 +861,8 @@ export function AboutPage() {
       {/* ── Communities ── */}
       <CommunitiesSection />
 
-      {/* ── Music ── */}
-      <MusicSection />
+      {/* TODO: revisit music section */}
+      {/* <MusicSection /> */}
 
       {/* ── CTA strip ── */}
       <div
@@ -892,7 +889,7 @@ export function AboutPage() {
         <div className="flex flex-wrap items-center justify-center gap-6">
           <MagneticButton
             as="a"
-            href="mailto:alex@example.com"
+            href="mailto:senthilramshruti@gmail.com"
             className="inline-flex items-center gap-3 px-6 py-3 text-white transition-colors duration-300"
             style={{
               backgroundColor: ACCENT,

@@ -5,7 +5,10 @@ export type Project = {
   subtitle: string;
   description: string;
   tags: string[];
-  image: string;
+  // Optional: "Coming Soon" projects without real artwork yet omit this
+  // entirely rather than pointing at a placeholder path — ProjectCard.tsx
+  // and AllProjects.tsx render a graceful placeholder box when it's unset.
+  image?: string;
   year: string;
   status: string;
   role: string;
@@ -39,9 +42,9 @@ export const allProjects: Project[] = [
     slug: "cse-research",
     title: "CSE Research",
     subtitle: "Human–computer interaction",
-    description: "Research exploring how people interact with complex software systems.",
+    description:
+      "Researching multi-agent vision-language model pipelines that generate photorealistic material/shader code for 3D scenes from tutorial videos — outperforming one-shot generation baselines. Advised by Prof. Manmohan Chandraker, UCSD Jacobs School of Engineering.",
     tags: ["Research", "HCI"],
-    image: projectThumbnail("cse-research"),
     year: "2026",
     status: "Coming Soon",
     role: "Researcher",
@@ -54,13 +57,13 @@ export const allProjects: Project[] = [
     title: "Portfolio Design",
     subtitle: "Personal site & brand",
     description:
-      "Designing and building this portfolio — editorial layout, motion, and a case-study system for selected work.",
+      "An evolving personal portfolio — reflecting the design choices I made to express my own product and design sensibility, from layout to case-study structure.",
     tags: ["Product Design", "Web"],
     image: projectThumbnail("portfolio-design"),
     year: "2026",
-    status: "Featured",
+    status: "Coming Soon",
     role: "Designer & Developer",
-    featured: true,
+    comingSoon: true,
     overview:
       "A portfolio built to read like a case study, not a template — with room for process, visuals, and honest project status.",
     problem:
@@ -82,7 +85,7 @@ export const allProjects: Project[] = [
     tags: ["Product Design", "iOS", "Healthcare"],
     image: projectThumbnail("kin"),
     year: "2026",
-    status: "Featured",
+    status: "Concept Project",
     role: "Product Designer",
     featured: true,
     overview:
@@ -106,7 +109,7 @@ export const allProjects: Project[] = [
     tags: ["Product Design", "Civic", "Mobile"],
     image: projectThumbnail("voting-literacy"),
     year: "2025",
-    status: "Case Study",
+    status: "Team Project",
     role: "UX/UI Designer",
     featured: true,
     overview:
@@ -127,7 +130,6 @@ export const allProjects: Project[] = [
     subtitle: "Nonprofit product partnership",
     description: "Product design work with a nonprofit partner through Develop for Good.",
     tags: ["Product Design", "Nonprofit"],
-    image: projectThumbnail("develop-for-good"),
     year: "2025",
     status: "Coming Soon",
     role: "Product Designer",
@@ -139,9 +141,9 @@ export const allProjects: Project[] = [
     slug: "cses-tritonspend",
     title: "CSES TritonSpend",
     subtitle: "Campus budget transparency",
-    description: "Visualizing student government spending for clearer campus accountability.",
+    description:
+      "A budgeting app helping UCSD students track irregular campus expenses — dining dollars, meal plans, and other fluctuating costs — in one place.",
     tags: ["Data", "Web", "Civic"],
-    image: projectThumbnail("cses-tritonspend"),
     year: "2025",
     status: "Coming Soon",
     role: "Designer & Engineer",
@@ -158,7 +160,7 @@ export const allProjects: Project[] = [
     tags: ["Product Design", "Web"],
     image: projectThumbnail("design-frontiers-website"),
     year: "2025",
-    status: "Live",
+    status: "Shipped Project",
     role: "Web Lead",
     featured: true,
     overview:
@@ -177,9 +179,9 @@ export const allProjects: Project[] = [
     slug: "design-co-redesign",
     title: "Design Co Website Redesign",
     subtitle: "Studio refresh",
-    description: "Redesigning the public face of Design Co — UCSD’s student-run design studio.",
+    description:
+      "A full redesign of Design Co's main organizational website — adding backend admin tools, improved user interaction, and infrastructure to support the club's growth.",
     tags: ["Product Design", "Web"],
-    image: projectThumbnail("design-co-redesign"),
     year: "2025",
     status: "Coming Soon",
     role: "Product Designer",
@@ -191,12 +193,13 @@ export const allProjects: Project[] = [
     slug: "econ-research",
     title: "Econ Research",
     subtitle: "Applied economics study",
-    description: "A compact case study on an economics research project — methods, findings, and implications.",
+    description:
+      "Building an AI-assisted data extraction pipeline using Python, OCR, and LLMs to convert historical economic documents into structured, benchmarked datasets.",
     tags: ["Research", "Economics"],
-    image: projectThumbnail("econ-research"),
     year: "2025",
-    status: "Small Case Study",
+    status: "Coming Soon",
     role: "Researcher",
+    comingSoon: true,
     overview:
       "An applied economics project examining how policy and behavior interact in a real-world dataset.",
     problem:
@@ -207,6 +210,43 @@ export const allProjects: Project[] = [
     tech: ["Stata", "R", "LaTeX"],
     secondaryImages: [],
     github: "",
+  },
+  {
+    id: 10,
+    slug: "eno-checkout-teardown",
+    title: "Product Teardown: Capital One Eno — Virtual Card Checkout",
+    subtitle: "Self-directed product critique",
+    description:
+      "A product teardown of Capital One's Eno virtual card feature — identifying real reliability friction from public user reviews and proposing a redesigned checkout flow.",
+    tags: ["Product Design", "Teardown"],
+    year: "2026",
+    status: "Coming Soon",
+    role: "Independent Reviewer · Not affiliated with Capital One",
+    comingSoon: true,
+    overview:
+      "Eno's virtual card feature lets users generate a one-time card number for secure online purchases — a strong idea undermined by slow generation, inconsistent browser support, and manual copy-paste into checkout.",
+    problem:
+      "Public reviews consistently report virtual card generation taking up to 2-3 minutes, unreliable performance outside Chrome, and no auto-fill into the merchant's checkout form — friction that defeats the feature's speed/security value and pushes users back to their real card.",
+    solution:
+      "\"Quick Card\" — a persistent, pre-generated virtual card with native browser autofill and explicit loading states, reducing friction without abandoning the security model.",
+    outcomes: [],
+    tech: ["Figma"],
+    secondaryImages: [],
+    github: "",
+  },
+  {
+    id: 11,
+    slug: "lpl-financial-internship",
+    title: "Product Development Intern — LPL Financial",
+    subtitle: "Advisor platform, failsafe system",
+    description:
+      "Contributing to LPL's internal advisor platform, designing and launching a new failsafe system for financial advisors.",
+    tags: ["Product Design"],
+    year: "2026",
+    status: "Coming Soon",
+    role: "Product Development Intern",
+    comingSoon: true,
+    ...emptyCaseStudyFields,
   },
 ];
 

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { MagneticButton } from "./MagneticButton";
-import portraitImg from "@/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg";
-import heroImg from "@/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
@@ -256,44 +254,6 @@ export function Hero() {
 
   </div>
 </div>
-        {/* Portrait
-        <div className="hidden sm:flex md:col-span-4 justify-center md:justify-end">
-          <div className="relative w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72">
-            <div
-              className="absolute inset-0"
-              style={{ border: "1px solid var(--p-divide)" }}
-            />
-            <div
-              className="absolute -top-3 -right-3 w-full h-full"
-              style={{ border: `1px solid ${ACCENT}60` }}
-            />
-            <div
-              className="w-full h-full overflow-hidden"
-              style={{ backgroundColor: "var(--p-surface)" }}
-            >
-              <img
-                src="src/images/5.jpg"
-                alt="Portrait"
-                className="w-full h-full object-cover"
-                style={{ filter: "none", transition: "filter 0.7s ease" }}
-                onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-                onMouseLeave={(e) => (e.currentTarget.style.filter = "none")}
-              />
-            </div>
-            <div
-              className="absolute -bottom-6 left-0"
-              style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
-            >
-            yay
-            </div>
-          </div>
-        </div> */}
-      </div>
-
-
-      <div className="mt-10 md:mt-16 flex items-center gap-4">
-         
-        <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--p-fg-35)" }}></span>
       </div>
     </section>
   );

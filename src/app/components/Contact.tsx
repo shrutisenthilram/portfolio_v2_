@@ -3,11 +3,18 @@ import { MagneticButton } from "./MagneticButton";
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
-const contactLinks = [
-  { label: "Email", value: "senthilramshruti@gmail.com", href: "mailto:senthilramshruti@gmail.com" },
-  { label: "GitHub", value: "github.com/shrutisenthilram", href: "#" },
-  { label: "LinkedIn", value: "linkedin.com/in/shrutisenthilram/", href: "#" },
-  { label: "Resume", value: "Download PDF", href: "#" },
+// GitHub/LinkedIn hrefs below point to the URLs shown in their "value" field —
+// double check those are correct.
+const contactLinks: { label: string; value: string; href: string; external: boolean }[] = [
+  { label: "Email", value: "senthilramshruti@gmail.com", href: "mailto:senthilramshruti@gmail.com", external: false },
+  { label: "GitHub", value: "github.com/shrutisenthilram", href: "https://github.com/shrutisenthilram", external: false },
+  { label: "LinkedIn", value: "linkedin.com/in/shrutisenthilram/", href: "https://linkedin.com/in/shrutisenthilram/", external: false },
+  {
+    label: "Resume",
+    value: "Download PDF",
+    href: "https://drive.google.com/file/d/1lkLAkAtCbMyIuyhAY7I_820Z4pDXwhKw/view?usp=sharing",
+    external: true,
+  },
 ];
 
 export function Contact() {
@@ -81,7 +88,7 @@ export function Contact() {
 
         {/* Right — links */}
         <div className="md:col-span-5 flex flex-col justify-center">
-          {contactLinks.map(({ label, value, href }) => (
+          {contactLinks.map(({ label, value, href, external }) => (
             <div
               key={label}
               className="group py-4 md:py-5"
@@ -95,6 +102,7 @@ export function Contact() {
               </span>
               <a
                 href={href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="inline-flex items-center gap-2 transition-colors duration-200"
                 style={{ fontSize: "0.9rem", fontWeight: 400, color: "var(--p-fg)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}

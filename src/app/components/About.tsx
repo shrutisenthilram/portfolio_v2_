@@ -10,10 +10,11 @@ const education = [
 ];
 
 const interests = [
-  "Human-Computer Interaction",
-  "Generative AI & Design Tools",
-  "Open Source Software",
-  "Web Development",
+  "Running",
+  "Piano",
+  "Learning Guitar",
+  "Reading",
+  "Music",
 ];
 
 export function About() {
@@ -67,7 +68,7 @@ export function About() {
           </div>
           <div className="space-y-2 mt-1 sm:mt-0">
             {[
-              { k: "Based in", v: "San Francisco, CA", coral: false },
+              { k: "Based in", v: "San Diego (Bay Area native)", coral: false },
               { k: "Availability", v: "Summer 2026", coral: true },
               { k: "Focus", v: "Product", coral: false },
             ].map(({ k, v, coral }) => (
@@ -98,7 +99,7 @@ export function About() {
             more effectively.
           </p>
           <p className="mb-8" style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}>
-            Outside of academics, I love running, reading, playing the piano, and drinking iced coffees :)
+            Outside of academics, I love running (currently chasing a faster mile), playing piano, learning guitar, reading, and always have iced coffee in hand.
           </p>
           <Link
             to="/about"

@@ -7,6 +7,7 @@ import type { CaseStudy, CaseStudySectionKey, SectionDef } from "./types";
 import { CaseSidebar, MobileSectionNav } from "./Sidebar";
 import { useScrollSpy } from "./useScrollSpy";
 import { FullCaseStudyBoard, MetaPair, PrototypeCTA, fadeInOnView } from "./primitives";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import {
   OverviewSection,
   ProblemSection,
@@ -218,7 +219,16 @@ export function CaseStudyShell({
 //   To increase intensity, raise the second number in each useTransform array.
 // ─────────────────────────────────────────────────────────────────────────────
 
-function ImmersiveHero({ study }: { study: CaseStudy }) {
+export function ImmersiveHero({
+  study,
+  cta,
+}: {
+  study: CaseStudy;
+  /** Optional prominent button rendered right under the tagline, above the fold.
+   *  Used by PrdShell to link from a project's PRD overview into its deeper
+   *  design case study. Omit for the regular case-study hero (no button). */
+  cta?: { label: string; href: string };
+}) {
   // If the user has "reduce motion" enabled in their OS, skip all animations.
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
@@ -264,7 +274,7 @@ function ImmersiveHero({ study }: { study: CaseStudy }) {
             className="w-full h-full object-cover"
           />
         ) : (
-          <img
+          <ImageWithFallback
             src={study.heroImage}
             alt={study.title}
             className="w-full h-full object-cover"
@@ -288,7 +298,12 @@ function ImmersiveHero({ study }: { study: CaseStudy }) {
       <div className="absolute inset-x-0 bottom-0">
         <div className="max-w-[1320px] mx-auto px-6 md:px-10 lg:px-14 pb-10 md:pb-14">
 
-          {/* Row of small pill badges: client name, status, year */}
+          {/* Row of small pill badges: client name, year.
+              Note: the per-project status badge (e.g. "Concept Project",
+              "Teardown") was removed here — only "Coming Soon" projects show
+              a status badge now, and coming-soon projects never reach this
+              page (they're not navigable), so there's no case where a status
+              badge belongs on this hero at all anymore. */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -308,19 +323,6 @@ function ImmersiveHero({ study }: { study: CaseStudy }) {
                 {study.client}
               </span>
             )}
-            {/* Status badge (e.g. "Featured", "Case Study") */}
-            <span
-              className="uppercase px-2 py-0.5"
-              style={{
-                fontSize: "0.6rem",
-                letterSpacing: "0.16em",
-                color: "#fff",
-                backgroundColor: "rgba(255,255,255,0.15)",
-                border: "1px solid rgba(255,255,255,0.2)",
-              }}
-            >
-              {study.status}
-            </span>
             {/* Year badge */}
             <span
               className="px-2 py-0.5"
@@ -378,6 +380,35 @@ function ImmersiveHero({ study }: { study: CaseStudy }) {
           >
             {study.tagline ?? study.subtitle}
           </motion.p>
+
+          {/* Optional CTA — e.g. "View Full Design Case Study →" on PRD pages.
+              Deliberately styled as a translucent glass button over the photo,
+              not a solid/loud color, so it reads as "more if you want it"
+              rather than competing with the title/tagline above it. */}
+          {cta && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+              className="mt-6"
+            >
+              <Link
+                to={cta.href}
+                className="inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-200 hover:gap-3 hover:bg-white/20"
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 500,
+                  color: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.14)",
+                  border: "1px solid rgba(255,255,255,0.45)",
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                }}
+              >
+                {cta.label}
+              </Link>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
@@ -398,7 +429,7 @@ function ImmersiveHero({ study }: { study: CaseStudy }) {
 // It auto-hides if study.links is empty.
 // ─────────────────────────────────────────────────────────────────────────────
 
-function MetaRow({ study }: { study: CaseStudy }) {
+export function MetaRow({ study }: { study: CaseStudy }) {
   return (
     <motion.section
       {...fadeInOnView} // fades in as it scrolls into view
@@ -479,7 +510,7 @@ function MetaRow({ study }: { study: CaseStudy }) {
 // To hide this entirely, remove <FooterNav ... /> from CaseStudyShell above.
 // ─────────────────────────────────────────────────────────────────────────────
 
-function FooterNav({
+export function FooterNav({
   prev,
   next,
 }: {

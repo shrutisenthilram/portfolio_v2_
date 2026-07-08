@@ -13,15 +13,31 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
   const { src, alt, style, className, ...rest } = props
 
   return didError ? (
+    <ImagePlaceholder className={className} style={style} />
+  ) : (
+    <img src={src} alt={alt} className={className} style={style} {...rest} onError={handleError} />
+  )
+}
+
+// The same "no image" visual used when a real image 404s, but for cases
+// where there's intentionally no `src` to try at all (e.g. a "Coming Soon"
+// project with no artwork yet). Renders directly — no network request,
+// no error state to wait on.
+export function ImagePlaceholder({
+  className,
+  style,
+}: {
+  className?: string
+  style?: React.CSSProperties
+}) {
+  return (
     <div
       className={`inline-block bg-gray-100 text-center align-middle ${className ?? ''}`}
       style={style}
     >
       <div className="flex items-center justify-center w-full h-full">
-        <img src={ERROR_IMG_SRC} alt="Error loading image" {...rest} data-original-url={src} />
+        <img src={ERROR_IMG_SRC} alt="" />
       </div>
     </div>
-  ) : (
-    <img src={src} alt={alt} className={className} style={style} {...rest} onError={handleError} />
   )
 }

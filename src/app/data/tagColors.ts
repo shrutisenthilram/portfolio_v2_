@@ -54,6 +54,9 @@ const TAG_COLOR_MAP: Record<string, string> = {
 
   // Featured / Awards → AMBER
   "Featured":       AMBER,
+
+  // Critique / Teardown → CORAL (research family)
+  "Teardown":       CORAL,
 };
 
 export function getTagColor(tag: string): string {

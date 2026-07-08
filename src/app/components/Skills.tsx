@@ -7,60 +7,61 @@ const columns = [
   {
     title: "Technical Skills",
     items: [
-      { name: "TypeScript / JavaScript", level: 95, color: SKY },
-      { name: "React & Next.js", level: 90, color: INDIGO },
-      { name: "Python / PyTorch", level: 80, color: VIOLET },
-      { name: "Systems (C/C++)", level: 70, color: SKY },
-      { name: "SQL & NoSQL", level: 75, color: EMERALD },
-      { name: "Computer Vision", level: 65, color: CORAL },
+      { name: "TypeScript / JavaScript", color: SKY },
+      { name: "React & Next.js", color: INDIGO },
+      { name: "Python / PyTorch", color: VIOLET },
+      { name: "Systems (C/C++)", color: SKY },
+      { name: "SQL & NoSQL", color: EMERALD },
+      { name: "Computer Vision", color: CORAL },
     ],
   },
   {
     title: "Tools & Craft",
     items: [
-      { name: "Figma", level: 95, color: INDIGO },
-      { name: "Git & GitHub", level: 90, color: EMERALD },
-      { name: "Vercel / AWS", level: 75, color: SKY },
-      { name: "Framer", level: 80, color: CORAL },
-      { name: "Storybook", level: 70, color: AMBER },
-      { name: "Notion / Linear", level: 85, color: VIOLET },
+      { name: "Figma", color: INDIGO },
+      { name: "Git & GitHub", color: EMERALD },
+      { name: "Vercel / AWS", color: SKY },
+      { name: "Framer", color: CORAL },
+      { name: "Storybook", color: AMBER },
+      { name: "Notion / Linear", color: VIOLET },
     ],
   },
   {
     title: "Leadership & Orgs",
     items: [
-      { name: "Design Co @ UCSD - Industry Relations Coordinator", level: 0, color: INDIGO },
-      { name: "CSES OpenSource - VP of Product", level: 0, color: CORAL },
-      { name: "ACM @ UCSD - Public Relations Director", level: 0, color: SKY },
-      { name: "Econ Undergraduate Research Assistant", level: 0, color: EMERALD },
-      { name: "Claude Ambassador", level: 0, color: AMBER },
-      { name: "Autodesk Ambassador", level: 0, color: VIOLET },
+      { name: "Design Co @ UCSD - Industry Relations Coordinator", color: INDIGO },
+      { name: "CSES OpenSource - VP of Product", color: CORAL },
+      { name: "ACM @ UCSD - Public Relations Director", color: SKY },
+      { name: "Econ Undergraduate Research Assistant", color: EMERALD },
+      { name: "Claude Ambassador", color: AMBER },
+      { name: "Autodesk Ambassador", color: VIOLET },
     ],
   },
 ];
 
 const experiences = [
-  // {
-  //   role: "Product Design Intern",
-  //   company: "Figma",
-  //   period: "Summer 2025",
-  //   desc: "Worked on editor performance and plugin UX improvements.",
-  //   color: INDIGO,
-  // },
-  // {
-  //   role: "Research Engineering Intern",
-  //   company: "Anthropic",
-  //   period: "Winter 2025",
-  //   desc: "Built evaluation tooling for LLM safety benchmarks.",
-  //   color: SKY,
-  // },
-  // {
-  //   role: "Software Engineer Intern",
-  //   company: "Stripe",
-  //   period: "Summer 2024",
-  //   desc: "Improved Dashboard accessibility across the billing surface.",
-  //   color: EMERALD,
-  // },
+  {
+    role: "Product Intern",
+    company: "LPL Financial",
+    period: "2026 – Present",
+    desc: "Working on LPL's internal advisor platform, helping launch a new failsafe system from scratch under a fast, compressed timeline — partnering cross-functionally to scope and ship a net-new feature with no existing precedent to build from.",
+    color: INDIGO,
+  },
+  {
+    // TODO(personalize): no timeframe was given for this role — fill in the real period.
+    role: "VP of Product",
+    company: "CSES Open Source",
+    period: "",
+    desc: "Set product vision and scope for new open-source projects alongside the VP of Technology and executive board. Ran weekly syncs with a team of PMs to keep each project's roadmap user-centric and technically feasible, acting as the connective layer between engineers, PMs, and non-technical stakeholders.",
+    color: CORAL,
+  },
+  {
+    role: "Undergraduate Research Assistant",
+    company: "Economics Lab",
+    period: "Jan 2026 – Present",
+    desc: "Built AI-assisted digitization pipelines using LLMs and OCR to support large-scale empirical economics research. Designed Python workflows for document validation and automated QA, systematically identifying LLM failure modes (hallucination, omission, formatting errors), and built gold-standard annotated datasets to benchmark model accuracy and improve extraction reliability.",
+    color: EMERALD,
+  },
 ];
 
 export function Skills() {
@@ -90,7 +91,9 @@ export function Skills() {
         </div>
         <MagneticButton
           as="a"
-          href="#"
+          href="https://drive.google.com/file/d/1lkLAkAtCbMyIuyhAY7I_820Z4pDXwhKw/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:block pb-0.5 transition-all duration-200"
           style={{ fontSize: "0.82rem", fontWeight: 400, color: ACCENT, borderBottom: `1px solid ${ACCENT}` }}
           strength={0.2}
@@ -99,7 +102,9 @@ export function Skills() {
         </MagneticButton>
       </div>
 
-      {/* Experience */}
+      {/* Experience — hidden when there's no data, to avoid an empty-looking section.
+          TODO(personalize): add real entries to the `experiences` array above to bring this back. */}
+      {experiences.length > 0 && (
       <div className="mb-16 md:mb-20">
         <h3
           className="uppercase tracking-widest mb-6 md:mb-8"
@@ -156,6 +161,7 @@ export function Skills() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Skills grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
@@ -167,26 +173,14 @@ export function Skills() {
             >
               {col.title}
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {col.items.map((item) => (
-                <li key={item.name}>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span style={{ fontSize: "0.82rem", color: "var(--p-fg-65)" }}>{item.name}</span>
-                    {item.level > 0 && (
-                      <span style={{ fontSize: "0.68rem", color: item.color }}>{item.level}%</span>
-                    )}
-                  </div>
-                  <div className="h-0.5 w-full" style={{ backgroundColor: "var(--p-fg-08)" }}>
-                    {item.level > 0 && (
-                      <div
-                        className="h-0.5 transition-all duration-700"
-                        style={{
-                          width: `${item.level}%`,
-                          background: `linear-gradient(90deg, ${item.color}60, ${item.color})`,
-                        }}
-                      />
-                    )}
-                  </div>
+                <li key={item.name} className="flex items-center gap-2.5">
+                  <span
+                    className="w-1 h-1 rounded-full shrink-0"
+                    style={{ backgroundColor: item.color + "80" }}
+                  />
+                  <span style={{ fontSize: "0.82rem", color: "var(--p-fg-65)" }}>{item.name}</span>
                 </li>
               ))}
             </ul>

@@ -20,6 +20,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import type { Media, Highlight } from "./types";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Shared motion config
@@ -480,7 +481,7 @@ export function StatGrid({ items }: { items: Highlight[] }) {
 export function FullCaseStudyBoard({ src, alt }: { src: string; alt?: string }) {
   return (
     <motion.figure {...fadeInOnView} id="case-study" className="block w-full scroll-mt-28">
-      <img
+      <ImageWithFallback
         src={src}
         alt={alt ?? "Case study"}
         loading="eager"
@@ -529,7 +530,7 @@ export function LazyImage({
           border: "1px solid var(--p-divide)",   // subtle border around image
         }}
       >
-        <img
+        <ImageWithFallback
           src={src}
           alt={alt ?? caption ?? ""}
           loading={priority ? "eager" : "lazy"}  // lazy = only loads when near viewport
@@ -806,7 +807,7 @@ export function BeforeAfter({
                 border: "1px solid var(--p-divide)",
               }}
             >
-              <img
+              <ImageWithFallback
                 src={item.src}
                 alt={`${label ?? "Comparison"} — ${item.tag}`}
                 loading="lazy"
