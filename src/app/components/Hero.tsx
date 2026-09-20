@@ -3,12 +3,12 @@ import { MagneticButton } from "./MagneticButton";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
+
 const ROLES = [
-  { label: "Designer", article: "a" as const },
-  { label: "Engineer", article: "an" as const },
   { label: "Builder", article: "a" as const },
+  { label: "Product Thinker", article: "a" as const },
+  { label: "Software Engineer", article: "a" as const },
   { label: "Problem Solver", article: "a" as const },
-  { label: "Artist", article: "an" as const },
 ];
 
 export function Hero() {
@@ -18,16 +18,20 @@ export function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setRoleVisible(false);
+
       setTimeout(() => {
         setRoleIdx((i) => (i + 1) % ROLES.length);
         setRoleVisible(true);
       }, 320);
     }, 2400);
+
     return () => clearInterval(interval);
   }, []);
 
   const scrollToWork = () => {
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("work")?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -40,11 +44,16 @@ export function Hero() {
       <div className="mb-6 md:mb-10 flex items-center gap-4 flex-wrap">
         <span
           className="tracking-widest uppercase"
-          style={{ fontSize: "0.7rem", fontWeight: 400, letterSpacing: "0.15em", color: "var(--p-fg-35)" }}
+          style={{
+            fontSize: "0.7rem",
+            fontWeight: 400,
+            letterSpacing: "0.15em",
+            color: "var(--p-fg-35)",
+          }}
         >
           Portfolio — 2026
         </span>
-        {/* Coral availability badge */}
+
         <span
           className="flex items-center gap-2 px-2.5 py-1"
           style={{
@@ -55,17 +64,34 @@ export function Hero() {
           <span className="relative flex items-center justify-center w-2 h-2">
             <span
               className="absolute inline-block w-2 h-2 rounded-full animate-ping"
-              style={{ backgroundColor: CORAL, opacity: 0.5 }}
+              style={{
+                backgroundColor: CORAL,
+                opacity: 0.5,
+              }}
             />
-            <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: CORAL }} />
+
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full"
+              style={{
+                backgroundColor: CORAL,
+              }}
+            />
           </span>
-          <span style={{ fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.08em", color: CORAL }}>
+
+          <span
+            style={{
+              fontSize: "0.65rem",
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              color: CORAL,
+            }}
+          >
             OPEN TO OPPORTUNITIES
           </span>
         </span>
       </div>
 
-      {/* Main content grid */}
+      {/* Main content */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
         {/* Headline */}
         <div className="md:col-span-8">
@@ -80,15 +106,22 @@ export function Hero() {
             }}
           >
             Hi, I'm Shruti <br />
-            <span style={{ fontWeight: 500 }}>{ROLES[roleIdx].article} </span>
+
+            <span style={{ fontWeight: 500 }}>
+              {ROLES[roleIdx].article}{" "}
+            </span>
+
             <span
               style={{
                 fontWeight: 500,
                 color: ACCENT,
                 display: "inline-block",
                 opacity: roleVisible ? 1 : 0,
-                transform: roleVisible ? "translateY(0px)" : "translateY(10px)",
-                transition: "opacity 0.32s ease, transform 0.32s ease",
+                transform: roleVisible
+                  ? "translateY(0px)"
+                  : "translateY(10px)",
+                transition:
+                  "opacity 0.32s ease, transform 0.32s ease",
                 textDecoration: "underline",
                 textDecorationColor: ACCENT + "40",
                 textUnderlineOffset: "6px",
@@ -98,11 +131,18 @@ export function Hero() {
             </span>
             .
           </h1>
+
           <p
-            className="mb-8 md:mb-12 max-w-md"
-            style={{ fontSize: "0.95rem", fontWeight: 400, lineHeight: 1.7, color: "var(--p-fg-45)" }}
+            className="mb-8 md:mb-12 max-w-lg"
+            style={{
+              fontSize: "0.95rem",
+              fontWeight: 400,
+              lineHeight: 1.7,
+              color: "var(--p-fg-45)",
+            }}
           >
-            I design and build thoughtful digital products focused on human-centered design.
+            I build thoughtful products at the intersection of software,
+            AI, and human-centered design.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 md:gap-8">
@@ -114,19 +154,32 @@ export function Hero() {
                 fontSize: "0.875rem",
                 fontWeight: 500,
                 boxShadow: `0 4px 20px ${CORAL}35`,
-                transition: "background-color 0.3s ease, box-shadow 0.3s ease",
+                transition:
+                  "background-color 0.3s ease, box-shadow 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = CORAL;
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 6px 28px ${ACCENT}50`;
+                (
+                  e.currentTarget as HTMLElement
+                ).style.backgroundColor = CORAL;
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = `0 6px 28px ${ACCENT}50`;
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = ACCENT;
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${CORAL}35`;
+                (
+                  e.currentTarget as HTMLElement
+                ).style.backgroundColor = ACCENT;
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = `0 4px 20px ${CORAL}35`;
               }}
             >
               View Work
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </MagneticButton>
 
             <MagneticButton
@@ -147,113 +200,165 @@ export function Hero() {
             </MagneticButton>
           </div>
         </div>
-{/* Photo collage */}
-<div className="hidden sm:flex md:col-span-4 justify-center md:justify-end pr-6 md:pr-3 pl-12 md:pl-0">
-  <div className="relative w-44 h-60 sm:w-52 sm:h-72 md:w-60 md:h-80 my-8 sm:my-10 md:my-12">
 
-    {/* Accent photo — top right, peeking out (hover: lift + tilt) */}
-    <div
-      className="hero-photo absolute -top-6 -right-5 sm:-right-7 w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 overflow-hidden z-20"
-      style={{
-        border: `1px solid ${ACCENT}40`,
-        boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
-        transition: "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translate(28px, -26px) rotate(12deg) scale(1.14)";
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 28px 50px ${ACCENT}55`;
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translate(0,0) rotate(0deg) scale(1)";
-        (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 22px rgba(0,0,0,0.10)";
-      }}
-    >
-      <img
-        src="/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
-        alt=""
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-    </div>
+        {/* Photo collage */}
+        <div className="hidden sm:flex md:col-span-4 justify-center md:justify-end pr-6 md:pr-3 pl-12 md:pl-0">
+          <div className="relative w-44 h-60 sm:w-52 sm:h-72 md:w-60 md:h-80 my-8 sm:my-10 md:my-12">
+            
+            {/* Top accent photo */}
+            <div
+              className="hero-photo absolute -top-6 -right-5 sm:-right-7 w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 overflow-hidden z-20"
+              style={{
+                border: `1px solid ${ACCENT}40`,
+                boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+                transition:
+                  "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
+              }}
+              onMouseEnter={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translate(28px, -26px) rotate(12deg) scale(1.14)";
 
-    {/* Main photo — keeps the double-border signature, hover: lift + scale */}
-    <div
-      className="absolute inset-0 pointer-events-none"
-      style={{ border: "1px solid var(--p-divide)" }}
-    />
-    <div
-      className="absolute -top-3 -right-3 w-full h-full pointer-events-none"
-      style={{ border: `1px solid ${ACCENT}60` }}
-    />
-    <div
-      className="hero-photo relative w-full h-full overflow-hidden z-10"
-      style={{
-        transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.55s ease",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translateY(-24px) scale(1.08) rotate(-1.5deg)";
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 40px 70px ${ACCENT}45`;
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translateY(0) scale(1) rotate(0deg)";
-        (e.currentTarget as HTMLElement).style.boxShadow = "none";
-      }}
-    >
-      <img
-        src="/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
-        alt="Portrait"
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-    </div>
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = `0 28px 50px ${ACCENT}55`;
+              }}
+              onMouseLeave={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translate(0,0) rotate(0deg) scale(1)";
 
-    {/* Accent photo — bottom left, peeking out (hover: drop + tilt) */}
-    <div
-      className="hero-photo absolute -bottom-6 -left-5 sm:-left-7 w-24 h-28 sm:w-28 sm:h-32 md:w-32 md:h-36 overflow-hidden z-20"
-      style={{
-        border: "1px solid var(--p-divide)",
-        boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
-        transition: "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translate(-28px, 26px) rotate(-12deg) scale(1.14)";
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 28px 50px ${CORAL}5c`;
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = "translate(0,0) rotate(0deg) scale(1)";
-        (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 22px rgba(0,0,0,0.10)";
-      }}
-    >
-      <img
-        src="/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
-        alt=""
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-    </div>
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow =
+                  "0 8px 22px rgba(0,0,0,0.10)";
+              }}
+            >
+              <img
+                src="/images/397CE1FB-7394-4173-B734-A8B26660FAB0_4_5005_c.jpeg"
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
 
-    {/* Caption */}
-    <div
-      className="absolute -bottom-10 right-0"
-      style={{ fontSize: "0.65rem", letterSpacing: "0.1em", color: "var(--p-fg-25)" }}
-    >
-      MOMENTS — 2025
-    </div>
+            {/* Main photo borders */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                border: "1px solid var(--p-divide)",
+              }}
+            />
 
-  </div>
-</div>
+            <div
+              className="absolute -top-3 -right-3 w-full h-full pointer-events-none"
+              style={{
+                border: `1px solid ${ACCENT}60`,
+              }}
+            />
+
+            {/* Main photo */}
+            <div
+              className="hero-photo relative w-full h-full overflow-hidden z-10"
+              style={{
+                transition:
+                  "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.55s ease",
+              }}
+              onMouseEnter={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translateY(-24px) scale(1.08) rotate(-1.5deg)";
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = `0 40px 70px ${ACCENT}45`;
+              }}
+              onMouseLeave={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translateY(0) scale(1) rotate(0deg)";
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = "none";
+              }}
+            >
+              <img
+                src="/images/5615C8D8-5E7E-4F30-92F3-2E8959446F6E_1_102_o.jpeg"
+                alt="Portrait"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+
+            {/* Bottom accent photo */}
+            <div
+              className="hero-photo absolute -bottom-6 -left-5 sm:-left-7 w-24 h-28 sm:w-28 sm:h-32 md:w-32 md:h-36 overflow-hidden z-20"
+              style={{
+                border: "1px solid var(--p-divide)",
+                boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+                transition:
+                  "transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease",
+              }}
+              onMouseEnter={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translate(-28px, 26px) rotate(-12deg) scale(1.14)";
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow = `0 28px 50px ${CORAL}5c`;
+              }}
+              onMouseLeave={(e) => {
+                (
+                  e.currentTarget as HTMLElement
+                ).style.transform =
+                  "translate(0,0) rotate(0deg) scale(1)";
+
+                (
+                  e.currentTarget as HTMLElement
+                ).style.boxShadow =
+                  "0 8px 22px rgba(0,0,0,0.10)";
+              }}
+            >
+              <img
+                src="/images/9A87034E-1CA9-4E27-886F-7C26EC8DA856_4_5005_c.jpeg"
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+
+            {/* Caption */}
+            <div
+              className="absolute -bottom-10 right-0"
+              style={{
+                fontSize: "0.65rem",
+                letterSpacing: "0.1em",
+                color: "var(--p-fg-25)",
+              }}
+            >
+              MOMENTS
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

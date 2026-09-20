@@ -69,7 +69,7 @@ export function About() {
           <div className="space-y-2 mt-1 sm:mt-0">
             {[
               { k: "Based in", v: "San Diego (Bay Area native)", coral: false },
-              { k: "Availability", v: "Summer 2026", coral: true },
+              { k: "Availability", v: "Winter + Spring + Summer 2027", coral: true },
               { k: "Focus", v: "Product", coral: false },
             ].map(({ k, v, coral }) => (
               <div key={k} className="flex items-baseline gap-2">
