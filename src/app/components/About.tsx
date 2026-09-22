@@ -94,12 +94,12 @@ export function About() {
             className="mb-5"
             style={{ fontSize: "1rem", fontWeight: 300, lineHeight: 1.85, letterSpacing: "-0.005em", color: "var(--p-fg-65)" }}
           >
-            I'm a double major in CS and Business Econ at UC San Diego, with a focus on human-centered AI and product design. I'm passionate
-            about creating tools that help people think, learn, and collaborate
-            more effectively.
+            I'm a double major in CS and Business Econ at UC San Diego, with a focus on
+human-centered AI and product design. I'm passionate about building tools
+that help people think, learn, and collaborate more effectively.
           </p>
           <p className="mb-8" style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}>
-            Outside of academics, I love running (currently chasing a faster mile), playing piano, learning guitar, reading, and always have iced coffee in hand.
+            Outside of academics, I love going for walks and drinking iced lattes. I love playing the piano, painting, and trying new things!
           </p>
           <Link
             to="/about"
