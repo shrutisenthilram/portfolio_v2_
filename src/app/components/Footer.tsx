@@ -18,7 +18,7 @@ export function Footer() {
             © {year} Shruti Senthilram
           </span>
           <span style={{ fontSize: "0.75rem", color: CORAL + "70" }}>
-            made with iced coffees and a pinch of code
+            made with iced coffees and love
           </span>
         </div>
 
