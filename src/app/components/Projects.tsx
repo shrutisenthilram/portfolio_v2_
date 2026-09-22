@@ -1,9 +1,9 @@
-import { Link } from "react-router";
 import { CORAL } from "../data/tagColors";
 
 // ORIGINAL VERSION — commented out for reference, restore later if needed
 //
 // import { useState } from "react";
+// import { Link } from "react-router";
 // import { featuredProjects, ALL_PROJECT_TAGS } from "../data/projects";
 // import { ProjectCard } from "./ProjectCard";
 // import { INDIGO, CORAL } from "../data/tagColors";
@@ -157,27 +157,47 @@ export function Projects() {
       </div>
 
       <div
-        className="flex flex-col items-start gap-4 py-16 px-8 border"
+        className="relative flex flex-col items-start gap-4 py-16 px-8 border overflow-hidden"
         style={{ borderColor: "var(--p-fg-12)", borderStyle: "dashed" }}
       >
+        <div
+          className="absolute top-0 left-0 w-full h-2"
+          style={{
+            backgroundImage: `repeating-linear-gradient(45deg, ${CORAL}, ${CORAL} 10px, transparent 10px, transparent 20px)`,
+            opacity: 0.5,
+          }}
+        />
+
         <span
-          className="tracking-widest uppercase"
-          style={{ fontSize: "0.68rem", letterSpacing: "0.15em", color: CORAL }}
+          className="inline-flex items-center gap-2 px-3 py-1 tracking-widest uppercase"
+          style={{
+            fontSize: "0.68rem",
+            letterSpacing: "0.15em",
+            color: CORAL,
+            border: `1px solid ${CORAL}40`,
+            backgroundColor: `${CORAL}0d`,
+          }}
         >
+          <span
+            className="inline-block rounded-full"
+            style={{ width: 6, height: 6, backgroundColor: CORAL }}
+          />
           Under Construction
         </span>
+
         <p
           style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--p-fg-45)", maxWidth: "32rem" }}
         >
-          This section is being rebuilt. Case studies and project details are on their way, in the meantime, feel free to reach out if you'd like to see current work.
+          This section is getting a full rebuild, case studies, process breakdowns, and the details behind each project are on their way. In the meantime, I'd love to walk you through my current work directly.
         </p>
-        <Link
-          to="/contact"
+
+        
+          <a href="mailto:senthilramshruti@gmail.com"
           className="pb-0.5 transition-all duration-200"
           style={{ fontSize: "0.82rem", fontWeight: 400, color: CORAL, borderBottom: `1px solid ${CORAL}` }}
         >
           Get in touch →
-        </Link>
+        </a>
       </div>
     </section>
   );
