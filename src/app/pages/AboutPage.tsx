@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { MagneticButton } from "../components/MagneticButton";
+import { SITE } from "../data/site";
 import { CommunitiesSection } from "../components/CommunitiesSection";
 // TODO: revisit music section
 // import { MusicSection } from "../components/MusicSection";
@@ -8,23 +9,20 @@ import { CommunitiesSection } from "../components/CommunitiesSection";
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
-// TODO(personalize) before deploying:
-// - href="#" (~line 468) — dead link, point at your real GitHub/LinkedIn/etc.
-// - mailto:alex@example.com (~line 895) — replace with your real email
 const education = [
   {
     degree: "BS Computer Science",
     school: "UC San Diego",
     period: "2024 – 2027",
     detail:
-      "object oriented programming",
+      "Coursework includes object-oriented programming.",
   },
   {
     degree: "BS Business Economics",
     school: "UC San Diego",
     period: "2024 – 2027",
     detail:
-      "rady school of management",
+      "Rady School of Management.",
   },
   {
     degree: "Minor in Design",
@@ -74,43 +72,33 @@ const experiences = [
 
 const skills = [
   {
-    category: "Languages",
+    category: "Product",
     items: [
-      "TypeScript",
-      "JavaScript",
-      "Python",
-      "C / C++",
-      "SQL",
+      "Roadmapping",
+      "Prioritization",
+      "PRDs & specs",
+      "Competitive analysis",
+      "Cross-functional leadership",
     ],
   },
   {
-    category: "Frameworks",
+    category: "Engineering",
     items: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "PyTorch",
-      "Tailwind CSS",
+      "TypeScript / JavaScript",
+      "React & Next.js",
+      "Python / PyTorch",
+      "C / C++",
+      "SQL",
     ],
   },
   {
     category: "Design",
     items: [
       "Figma",
+      "Prototyping",
       "Framer",
       "Storybook",
       "Motion / GSAP",
-      "Prototyping",
-    ],
-  },
-  {
-    category: "Platforms",
-    items: [
-      "Vercel",
-      "AWS",
-      "Supabase",
-      "GitHub Actions",
-      "Docker",
     ],
   },
 ];
@@ -165,7 +153,7 @@ const currently = [
   },
   {
     label: "Listening to",
-    value: "Olivia Rodrigo's new album",
+    value: "Olivia Rodrigo",
   },
 ];
 
@@ -397,7 +385,7 @@ export function AboutPage() {
                     color: CORAL,
                   }}
                 >
-                  OPEN · SUMMER 2026
+                  {SITE.availability.toUpperCase()}
                 </span>
               </span>
             </div>
@@ -412,11 +400,12 @@ export function AboutPage() {
                 color: "var(--p-fg)",
               }}
             >
-              Designer,{" "}
+              Where engineering, business,{" "}
+              <br />
               <span style={{ fontStyle: "italic" }}>
-                engineer,
-              </span>
-              <br />& curious human.
+                and people
+              </span>{" "}
+              meet.
             </h1>
 
             <p
@@ -436,7 +425,7 @@ export function AboutPage() {
             <div className="flex flex-wrap gap-4 mt-10">
               <MagneticButton
                 as="a"
-                href="mailto:senthilramshruti@gmail.com"
+                href={`mailto:${SITE.email}`}
                 className="inline-flex items-center gap-3 px-6 py-3 text-white transition-colors duration-300"
                 style={{
                   backgroundColor: ACCENT,
@@ -458,7 +447,7 @@ export function AboutPage() {
               </MagneticButton>
               <MagneticButton
                 as="a"
-                href="https://drive.google.com/file/d/1lkLAkAtCbMyIuyhAY7I_820Z4pDXwhKw/view?usp=sharing"
+                href={SITE.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 pb-0.5 transition-colors duration-200"
@@ -470,7 +459,7 @@ export function AboutPage() {
                 }}
                 strength={0.2}
               >
-                Download Resume
+                View resume ↗
               </MagneticButton>
             </div>
           </div>
@@ -496,8 +485,8 @@ export function AboutPage() {
               />
               <img
                 src="/images/bbb.jpeg"
-                alt=""
-              
+                alt="Shruti standing next to a large balanced rock formation"
+                className="w-full object-cover"
                 style={{ aspectRatio: "4/5", display: "block" }}
               />
             </div>
@@ -511,19 +500,12 @@ export function AboutPage() {
                   coral: false,
                 },
                 {
-                  k: "Availability",
-                  v: "Summer 2026",
+                  k: "Open to",
+                  v: SITE.availability,
                   coral: true,
                 },
-                { k: "Focus", v: "CS × Design", coral: false },
-                // TODO(personalize): add your site URL here (e.g. { k: "Website", v: "yoursite.dev", coral: false })
-                // — row is hidden below while v is empty so it doesn't render a blank value.
-                {
-                  k: "Website",
-                  v: "",
-                  coral: false,
-                },
-              ].filter(({ v }) => v !== "").map(({ k, v, coral }) => (
+                { k: "Focus", v: "Product management", coral: false },
+              ].map(({ k, v, coral }) => (
                 <div
                   key={k}
                   className="flex items-baseline gap-3"
@@ -687,7 +669,7 @@ export function AboutPage() {
         }}
       >
         <SectionLabel>Skills & Tools</SectionLabel>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-10">
           {skills.map((col, ci) => (
             <div key={col.category}>
               <h4
@@ -696,7 +678,7 @@ export function AboutPage() {
                   fontSize: "0.65rem",
                   letterSpacing: "0.12em",
                   fontWeight: 400,
-                  color: ACCENT + "99",
+                  color: "var(--p-accent)",
                 }}
               >
                 {col.category}
@@ -708,7 +690,7 @@ export function AboutPage() {
                     className="flex items-center gap-2 cursor-default transition-colors duration-150"
                     style={{
                       fontSize: "0.82rem",
-                      color: "var(--p-fg-55)",
+                      color: "var(--p-fg-65)",
                     }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.color =
@@ -716,7 +698,7 @@ export function AboutPage() {
                     }
                     onMouseLeave={(e) =>
                       (e.currentTarget.style.color =
-                        "var(--p-fg-55)")
+                        "var(--p-fg-65)")
                     }
                   >
                     <span
@@ -889,7 +871,7 @@ export function AboutPage() {
         <div className="flex flex-wrap items-center justify-center gap-6">
           <MagneticButton
             as="a"
-            href="mailto:senthilramshruti@gmail.com"
+            href={`mailto:${SITE.email}`}
             className="inline-flex items-center gap-3 px-6 py-3 text-white transition-colors duration-300"
             style={{
               backgroundColor: ACCENT,

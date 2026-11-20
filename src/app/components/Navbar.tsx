@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
-import { Sun, Moon, Sparkles } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { SITE } from "../data/site";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
-// "About" is now a dedicated page; the rest scroll to home-page sections
+// These scroll to sections on the home page (or jump to them from other pages).
 const SCROLL_LINKS = [
-  { label: "About", id: "about" },
   { label: "Work", id: "work" },
-  { label: "Resume", id: "resume" },
+  { label: "Experience", id: "experience" },
+  { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -20,7 +21,6 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isPlayground = location.pathname === "/playground";
   const { theme, toggle } = useTheme();
   const isDark = theme === "dark";
 
@@ -46,10 +46,27 @@ export function Navbar() {
     if (isHome) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      // navigate handled by Link
     }
   };
+
+  const resumeButton = (
+    <a
+      href={SITE.resume}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-4 py-1.5 transition-colors duration-200"
+      style={{
+        fontSize: "0.8rem",
+        fontWeight: 500,
+        color: "var(--p-fg)",
+        border: "1px solid var(--p-fg-18)",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = CORAL)}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--p-fg-18)")}
+    >
+      Resume ↗
+    </a>
+  );
 
   return (
     <header
@@ -73,100 +90,51 @@ export function Navbar() {
             onClick={handleLogoClick}
             className="tracking-tight transition-colors duration-200 whitespace-nowrap"
             style={{ fontSize: "clamp(0.82rem, 2.6vw, 0.95rem)", fontWeight: 500, letterSpacing: "-0.01em", color: "var(--p-fg)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
+            onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
           >
-            Shruti Senthilram
+            {SITE.name}
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8" aria-label="Main">
             {SCROLL_LINKS.map(({ label, id }) => {
               const isActive = activeLink === label;
+              const common = {
+                className: "relative transition-colors duration-200 pb-0.5",
+                style: {
+                  fontSize: "0.85rem",
+                  fontWeight: 400,
+                  color: isActive ? ACCENT : "var(--p-fg-65)",
+                },
+                onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
+                  e.currentTarget.style.color = CORAL;
+                },
+                onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
+                  e.currentTarget.style.color = isActive ? ACCENT : "var(--p-fg-65)";
+                },
+              };
               return isHome ? (
-                <button
-                  key={label}
-                  onClick={() => handleNavClick(id, label)}
-                  className="relative transition-colors duration-200 pb-0.5"
-                  style={{
-                    fontSize: "0.85rem",
-                    fontWeight: 400,
-                    color: isActive ? ACCENT : "var(--p-fg-35)",
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = ACCENT; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = isActive ? ACCENT : "var(--p-fg-35)"; }}
-                >
+                <button key={label} onClick={() => handleNavClick(id, label)} {...common}>
                   {label}
-                  <span
-                    className="absolute bottom-0 left-0 h-px transition-all duration-300"
-                    style={{ width: isActive ? "100%" : "0%", backgroundColor: ACCENT }}
-                  />
                 </button>
               ) : (
-                <a
-                  key={label}
-                  href={`/#${id}`}
-                  className="relative transition-colors duration-200 pb-0.5"
-                  style={{ fontSize: "0.85rem", fontWeight: 400, color: "var(--p-fg-35)" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = ACCENT; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--p-fg-35)"; }}
-                >
+                <a key={label} href={`/#${id}`} {...common}>
                   {label}
                 </a>
               );
             })}
-{/* 
-            
-            <Link
-              to="/playground"
-              className="playground-btn flex items-center gap-1.5 px-3 py-1.5 transition-all duration-200 border"
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 500,
-                color: isPlayground ? "#fff" : ACCENT,
-                borderColor: isPlayground ? ACCENT : ACCENT + "60",
-                backgroundColor: isPlayground ? ACCENT : ACCENT + "10",
-                letterSpacing: "0.02em",
-              }}
-              onMouseEnter={(e) => {
-                if (!isPlayground) {
-                  e.currentTarget.style.backgroundColor = ACCENT + "22";
-                  e.currentTarget.style.borderColor = ACCENT + "99";
-                }
-                e.currentTarget.style.animation = "navbar-shake 0.4s ease";
-              }}
-              onMouseLeave={(e) => {
-                if (!isPlayground) {
-                  e.currentTarget.style.backgroundColor = ACCENT + "10";
-                  e.currentTarget.style.borderColor = ACCENT + "60";
-                }
-                e.currentTarget.style.animation = "";
-              }}
-            >
-              <Sparkles size={12} strokeWidth={1.8} />
-              Playground
-            </Link> */}
 
-            <style>{`
-              @keyframes navbar-shake {
-                0%   { transform: translateX(0); }
-                18%  { transform: translateX(-3px) rotate(-1deg); }
-                36%  { transform: translateX(3px) rotate(1deg); }
-                54%  { transform: translateX(-2px) rotate(-0.5deg); }
-                72%  { transform: translateX(2px) rotate(0.5deg); }
-                88%  { transform: translateX(-1px); }
-                100% { transform: translateX(0); }
-              }
-            `}</style>
+            {resumeButton}
 
             {/* Theme toggle */}
             <button
               onClick={toggle}
               aria-label="Toggle theme"
               className="transition-colors duration-200 p-1.5 -m-1.5"
-              style={{ color: "var(--p-fg-35)" }}
+              style={{ color: "var(--p-fg-65)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-35)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-65)")}
             >
               {isDark ? <Sun size={15} strokeWidth={1.6} /> : <Moon size={15} strokeWidth={1.6} />}
             </button>
@@ -178,7 +146,7 @@ export function Navbar() {
               onClick={toggle}
               aria-label="Toggle theme"
               className="p-1.5 transition-colors duration-200"
-              style={{ color: "var(--p-fg-35)" }}
+              style={{ color: "var(--p-fg-65)" }}
             >
               {isDark ? <Sun size={15} strokeWidth={1.6} /> : <Moon size={15} strokeWidth={1.6} />}
             </button>
@@ -186,6 +154,7 @@ export function Navbar() {
               className="flex flex-col gap-1.5 p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={menuOpen}
             >
               <span
                 className="block w-5 h-px transition-all duration-200"
@@ -196,10 +165,7 @@ export function Navbar() {
               />
               <span
                 className="block w-5 h-px transition-all duration-200"
-                style={{
-                  backgroundColor: "var(--p-fg)",
-                  opacity: menuOpen ? 0 : 1,
-                }}
+                style={{ backgroundColor: "var(--p-fg)", opacity: menuOpen ? 0 : 1 }}
               />
               <span
                 className="block w-5 h-px transition-all duration-200"
@@ -228,9 +194,7 @@ export function Navbar() {
                 key={label}
                 onClick={() => handleNavClick(id, label)}
                 className="text-left transition-colors duration-200"
-                style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-45)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-45)")}
+                style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-65)" }}
               >
                 {label}
               </button>
@@ -239,7 +203,7 @@ export function Navbar() {
                 key={label}
                 href={`/#${id}`}
                 className="text-left transition-colors duration-200"
-                style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-45)" }}
+                style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-65)" }}
               >
                 {label}
               </a>
@@ -247,21 +211,19 @@ export function Navbar() {
           )}
           <Link
             to="/projects"
-            className="transition-colors duration-200 mt-2"
+            className="transition-colors duration-200"
             style={{ fontSize: "1rem", fontWeight: 400, color: ACCENT }}
           >
-            All Projects →
+            All projects →
           </Link>
-          
-          {/* <Link
-            to="/playground"
-            onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-2 transition-colors duration-200"
-            style={{ fontSize: "1rem", fontWeight: 400, color: isPlayground ? CORAL : ACCENT }}
+          <a
+            href={SITE.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: "1rem", fontWeight: 500, color: CORAL }}
           >
-            <Sparkles size={14} strokeWidth={1.8} />
-            Playground
-          </Link> */}
+            Resume ↗
+          </a>
         </div>
       )}
     </header>

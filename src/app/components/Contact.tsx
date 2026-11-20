@@ -1,20 +1,13 @@
-import { MagneticButton } from "./MagneticButton";
+import { SITE } from "../data/site";
 
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
 
-// GitHub/LinkedIn hrefs below point to the URLs shown in their "value" field —
-// double check those are correct.
 const contactLinks: { label: string; value: string; href: string; external: boolean }[] = [
-  { label: "Email", value: "senthilramshruti@gmail.com", href: "mailto:senthilramshruti@gmail.com", external: false },
-  { label: "GitHub", value: "github.com/shrutisenthilram", href: "https://github.com/shrutisenthilram", external: false },
-  { label: "LinkedIn", value: "linkedin.com/in/shrutisenthilram/", href: "https://linkedin.com/in/shrutisenthilram/", external: false },
-  {
-    label: "Resume",
-    value: "Download PDF",
-    href: "https://drive.google.com/file/d/1lkLAkAtCbMyIuyhAY7I_820Z4pDXwhKw/view?usp=sharing",
-    external: true,
-  },
+  { label: "Email", value: SITE.email, href: `mailto:${SITE.email}`, external: false },
+  { label: "LinkedIn", value: SITE.linkedinLabel, href: SITE.linkedin, external: true },
+  { label: "GitHub", value: SITE.githubLabel, href: SITE.github, external: true },
+  { label: "Resume", value: "View resume (PDF)", href: SITE.resume, external: true },
 ];
 
 export function Contact() {
@@ -22,14 +15,14 @@ export function Contact() {
     <section
       id="contact"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-28 px-6 md:px-12 max-w-6xl mx-auto"
+      className="py-24 px-6 md:px-12 max-w-6xl mx-auto"
     >
       <span
         className="tracking-widest uppercase block mb-12 md:mb-16 pb-6"
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
-          color: "var(--p-fg-35)",
+          color: "var(--p-fg-45)",
           borderBottom: "1px solid var(--p-divide)",
         }}
       >
@@ -42,48 +35,35 @@ export function Contact() {
           <h2
             className="mb-6 md:mb-8 leading-tight"
             style={{
-              fontSize: "clamp(1.8rem, 5vw, 4rem)",
+              fontSize: "clamp(1.8rem, 5vw, 3.6rem)",
               fontWeight: 300,
               letterSpacing: "-0.03em",
               lineHeight: 1.08,
               color: "var(--p-fg)",
             }}
           >
-            Let's build something{" "}
+            Let's talk about{" "}
             <span className="italic" style={{ fontWeight: 300, color: CORAL }}>
-              together.
+              what you're building.
             </span>
           </h2>
           <p
             className="mb-8 md:mb-10"
-            style={{ fontSize: "0.9rem", lineHeight: 1.8, maxWidth: "28rem", color: "var(--p-fg-45)" }}
+            style={{ fontSize: "0.95rem", lineHeight: 1.8, maxWidth: "28rem", color: "var(--p-fg-65)" }}
           >
-            Open to internship and full-time opportunities, freelance projects,
-            and interesting conversations.
+            I'm looking for APM and PM opportunities for 2027. If you're hiring,
+            building something interesting, or just want to compare notes on
+            product, I'd love to hear from you.
           </p>
-
-          <MagneticButton
-            as="a"
-            href="mailto:senthilramshruti@gmail.com"
+          <a
+            href={`mailto:${SITE.email}`}
             className="inline-flex items-center gap-3 px-7 py-3.5 text-white transition-colors duration-300"
-            style={{
-              backgroundColor: ACCENT,
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              boxShadow: `0 4px 20px ${CORAL}35`,
-              transition: "background-color 0.3s ease, box-shadow 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.backgroundColor = CORAL;
-              (e.currentTarget as HTMLElement).style.boxShadow = `0 6px 28px ${ACCENT}50`;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.backgroundColor = ACCENT;
-              (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${CORAL}35`;
-            }}
+            style={{ backgroundColor: ACCENT, fontSize: "0.875rem", fontWeight: 500 }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = CORAL)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
           >
-            Say Hello →
-          </MagneticButton>
+            Say hello →
+          </a>
         </div>
 
         {/* Right — links */}
@@ -96,7 +76,7 @@ export function Contact() {
             >
               <span
                 className="block mb-1 uppercase"
-                style={{ fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--p-fg-35)" }}
+                style={{ fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--p-fg-45)" }}
               >
                 {label}
               </span>
@@ -104,14 +84,14 @@ export function Contact() {
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="inline-flex items-center gap-2 transition-colors duration-200"
-                style={{ fontSize: "0.9rem", fontWeight: 400, color: "var(--p-fg)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
+                style={{ fontSize: "0.92rem", fontWeight: 400, color: "var(--p-fg)", overflowWrap: "anywhere" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
               >
                 {value}
                 <span
                   className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  style={{ color: ACCENT }}
+                  style={{ color: CORAL }}
                 >
                   →
                 </span>
@@ -120,7 +100,6 @@ export function Contact() {
           ))}
         </div>
       </div>
-
     </section>
   );
 }

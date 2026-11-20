@@ -44,10 +44,12 @@
   --p-bg:      #ffffff;
   --p-surface: #f3f3f4;
   --p-fg:      #000000;
-  --p-fg-65:   rgba(0,0,0,0.65);
-  --p-fg-45:   rgba(0,0,0,0.45);
-  --p-fg-35:   rgba(0,0,0,0.35);
-  --p-fg-25:   rgba(0,0,0,0.25);
+  /* Text greys are tuned to meet WCAG AA (4.5:1) on white. */
+  --p-fg-65:   rgba(0,0,0,0.72);
+  --p-fg-45:   rgba(0,0,0,0.62);
+  --p-fg-35:   rgba(0,0,0,0.55);
+  --p-fg-25:   rgba(0,0,0,0.55);
+  --p-accent:  #4338CA;
   --p-fg-18:   rgba(0,0,0,0.18);
   --p-fg-12:   rgba(0,0,0,0.12);
   --p-fg-08:   rgba(0,0,0,0.08);
@@ -97,10 +99,13 @@
   --p-bg:      #0d0d0e;
   --p-surface: #1c1c1e;
   --p-fg:      #e8e8e8;
-  --p-fg-65:   rgba(232,232,232,0.72);
-  --p-fg-45:   rgba(232,232,232,0.55);
-  --p-fg-35:   rgba(232,232,232,0.44);
-  --p-fg-25:   rgba(232,232,232,0.32);
+  /* Text greys are tuned to meet WCAG AA (4.5:1) on the dark background. */
+  --p-fg-65:   rgba(232,232,232,0.74);
+  --p-fg-45:   rgba(232,232,232,0.62);
+  --p-fg-35:   rgba(232,232,232,0.58);
+  --p-fg-25:   rgba(232,232,232,0.56);
+  /* Lighter indigo for text and links on dark (the base indigo is too dark). */
+  --p-accent:  #818CF8;
   --p-fg-18:   rgba(232,232,232,0.22);
   --p-fg-12:   rgba(232,232,232,0.15);
   --p-fg-08:   rgba(232,232,232,0.10);

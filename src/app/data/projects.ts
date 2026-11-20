@@ -95,7 +95,7 @@ export const allProjects: Project[] = [
     solution:
       "A caregiver-centric home dashboard, family coordination tab, and dignity-first patient companion view — built around visibility and handoffs, not surveillance.",
     outcomes: [],
-    tech: ["Figma", "FigJam", "Maze", "Notion"],
+    tech: ["Figma", "FigJam", "Notion", "React"],
     secondaryImages: [],
     github: "",
   },
@@ -252,8 +252,13 @@ export const allProjects: Project[] = [
 
 export const featuredProjects = allProjects.filter((p) => p.featured);
 
+// Only finished projects appear in the public grid. Anything marked
+// comingSoon stays in this file but is hidden from the site until it's ready;
+// set comingSoon to false (and add real images) to publish it.
+export const publicProjects = allProjects.filter((p) => !p.comingSoon);
+
 const tagSet = new Set<string>();
-for (const p of allProjects) {
+for (const p of publicProjects) {
   for (const t of p.tags) tagSet.add(t);
 }
 

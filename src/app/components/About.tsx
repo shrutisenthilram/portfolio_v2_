@@ -1,7 +1,8 @@
+import { Link } from "react-router";
+import { SITE } from "../data/site";
+
 const ACCENT = "#4338CA";
 const CORAL = "#F97316";
-
-import { Link } from "react-router";
 
 const education = [
   { label: "BS Computer Science", sub: "UC San Diego · 2024–2027" },
@@ -9,12 +10,10 @@ const education = [
   { label: "Minor: Design", sub: "UC San Diego · 2024–2027" },
 ];
 
-const interests = [
-  "Running",
-  "Piano",
-  "Learning Guitar",
-  "Reading",
-  "Music",
+const facts = [
+  { k: "Based in", v: "San Diego (Bay Area native)", coral: false },
+  { k: "Open to", v: SITE.availability, coral: true },
+  { k: "Focus", v: "Product management", coral: false },
 ];
 
 export function About() {
@@ -29,145 +28,114 @@ export function About() {
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
-          color: "var(--p-fg-35)",
+          color: "var(--p-fg-45)",
           borderBottom: "1px solid var(--p-divide)",
         }}
       >
         About
       </span>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 md:gap-12">
-
-        {/* Portrait + quick facts */}
-        <div className="sm:col-span-1 md:col-span-3 flex sm:block items-start gap-8">
-          <div className="relative w-28 h-36 sm:w-36 sm:h-44 mb-0 sm:mb-8 shrink-0">
-            <div className="absolute inset-0 pointer-events-none z-10" style={{ border: "1px solid var(--p-fg-08)" }} />
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+        {/* Photo + quick facts */}
+        <div className="md:col-span-4">
+          <div className="relative w-40 h-52 sm:w-44 sm:h-56 mb-8">
             <div
               className="absolute -bottom-2 -right-2 w-full h-full pointer-events-none"
-              style={{ border: `1px solid ${ACCENT}30` }}
+              style={{ border: `1px solid ${ACCENT}50` }}
             />
             <img
-              src="/images/5.jpg"
-              alt="Shruti Senthilram"
-              className="w-full h-full object-cover"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-                filter: "grayscale(0%)",
-                transition: "filter 0.6s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)";
-              }}
+              src="/images/bbb.jpeg"
+              alt="Shruti standing next to a large balanced rock formation"
+              className="relative w-full h-full object-cover"
+              style={{ display: "block" }}
             />
           </div>
-          <div className="space-y-2 mt-1 sm:mt-0">
-            {[
-              { k: "Based in", v: "San Diego (Bay Area native)", coral: false },
-              { k: "Availability", v: "Winter + Spring + Summer 2027", coral: true },
-              { k: "Focus", v: "Product", coral: false },
-            ].map(({ k, v, coral }) => (
-              <div key={k} className="flex items-baseline gap-2">
-                <span className="w-20 shrink-0" style={{ fontSize: "0.72rem", color: "var(--p-fg-35)" }}>{k}</span>
-                <span className="flex items-center gap-1.5" style={{ fontSize: "0.78rem", color: coral ? CORAL : "var(--p-fg-65)", fontWeight: coral ? 500 : 400 }}>
-                  {coral && (
-                    <span className="relative flex items-center justify-center w-1.5 h-1.5 shrink-0" style={{ marginBottom: 1 }}>
-                      <span className="absolute inline-block w-1.5 h-1.5 rounded-full animate-ping" style={{ backgroundColor: CORAL, opacity: 0.5 }} />
-                      <span className="inline-block w-1 h-1 rounded-full" style={{ backgroundColor: CORAL }} />
-                    </span>
-                  )}
+          <dl className="space-y-3">
+            {facts.map(({ k, v, coral }) => (
+              <div key={k}>
+                <dt style={{ fontSize: "0.72rem", color: "var(--p-fg-45)" }}>{k}</dt>
+                <dd
+                  style={{
+                    fontSize: "0.88rem",
+                    color: coral ? CORAL : "var(--p-fg-65)",
+                    fontWeight: coral ? 500 : 400,
+                  }}
+                >
                   {v}
-                </span>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
 
         {/* Bio */}
-        <div className="sm:col-span-1 md:col-span-5">
+        <div className="md:col-span-5">
           <p
             className="mb-5"
-            style={{ fontSize: "1rem", fontWeight: 300, lineHeight: 1.85, letterSpacing: "-0.005em", color: "var(--p-fg-65)" }}
+            style={{
+              fontSize: "1.05rem",
+              fontWeight: 300,
+              lineHeight: 1.85,
+              letterSpacing: "-0.005em",
+              color: "var(--p-fg-65)",
+            }}
           >
-            I'm a double major in CS and Business Econ at UC San Diego, with a focus on
-human-centered AI and product design. I'm passionate about building tools
-that help people think, learn, and collaborate more effectively.
+            I'm a Computer Science and Business Economics double major at UC San
+            Diego with a minor in Design, and I'm working toward a career in
+            product management. I like the space where engineering, business,
+            and real people meet, which is why I've led product for open-source
+            teams, interned on an advisor platform at LPL Financial, and
+            researched AI systems.
           </p>
-          <p className="mb-8" style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}>
-            Outside of academics, I love going for walks and drinking iced lattes. I love playing the piano, painting, and trying new things!
+          <p
+            className="mb-8"
+            style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "var(--p-fg-45)" }}
+          >
+            Outside of academics, I love going for walks and drinking iced
+            lattes. I play the piano, paint, and enjoy trying new things.
           </p>
           <Link
             to="/about"
-            className="inline-flex items-center gap-2 pb-0.5 transition-all duration-200 group"
-            style={{ fontSize: "0.82rem", color: ACCENT, borderBottom: `1px solid ${ACCENT}40` }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = CORAL;
-              e.currentTarget.style.borderBottomColor = CORAL;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = ACCENT;
-              e.currentTarget.style.borderBottomColor = ACCENT + "40";
+            className="inline-flex items-center gap-2 pb-0.5 transition-colors duration-200 group"
+            style={{
+              fontSize: "0.85rem",
+              color: "var(--p-accent)",
+              borderBottom: `1px solid ${ACCENT}60`,
             }}
           >
-            Learn more about me
+            More about me
             <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </Link>
         </div>
 
-        {/* Education + Interests */}
-        <div className="sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-8 md:gap-10">
-          <div>
-            <h4
-              className="uppercase tracking-widest mb-4"
-              style={{ fontSize: "0.68rem", letterSpacing: "0.12em", fontWeight: 400, color: ACCENT + "99" }}
-            >
-              Education
-            </h4>
-            <div className="space-y-4">
-              {education.map((item) => (
-                <div
-                  key={item.label}
-                  className="pl-4 transition-all duration-200 hover:pl-5"
-                  style={{ borderLeft: `2px solid ${ACCENT}20` }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderLeftColor = ACCENT)}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderLeftColor = ACCENT + "20")}
-                >
-                  <p style={{ fontSize: "0.85rem", fontWeight: 500, color: "var(--p-fg)" }}>{item.label}</p>
-                  <p style={{ fontSize: "0.75rem", color: "var(--p-fg-35)" }}>{item.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4
-              className="uppercase tracking-widest mb-4"
-              style={{ fontSize: "0.68rem", letterSpacing: "0.12em", fontWeight: 400, color: ACCENT + "99" }}
-            >
-              Interests
-            </h4>
-            <ul className="space-y-2">
-              {interests.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2 transition-colors duration-200 cursor-default"
-                  style={{ fontSize: "0.82rem", color: "var(--p-fg-45)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-45)")}
-                >
-                  <span className="w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: ACCENT + "60" }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {/* Education */}
+        <div className="md:col-span-3">
+          <h3
+            className="uppercase tracking-widest mb-4"
+            style={{
+              fontSize: "0.68rem",
+              letterSpacing: "0.12em",
+              fontWeight: 500,
+              color: "var(--p-accent)",
+            }}
+          >
+            Education
+          </h3>
+          <div className="space-y-4">
+            {education.map((item) => (
+              <div
+                key={item.label}
+                className="pl-4"
+                style={{ borderLeft: `2px solid ${ACCENT}40` }}
+              >
+                <p style={{ fontSize: "0.88rem", fontWeight: 500, color: "var(--p-fg)" }}>
+                  {item.label}
+                </p>
+                <p style={{ fontSize: "0.76rem", color: "var(--p-fg-45)" }}>{item.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
-
       </div>
     </section>
   );

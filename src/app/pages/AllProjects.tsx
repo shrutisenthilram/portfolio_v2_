@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Github, ExternalLink } from "lucide-react";
 import {
-  allProjects,
+  publicProjects,
   ALL_PROJECT_TAGS,
   getProjectHref,
   isProjectNavigable,
@@ -184,7 +184,7 @@ export function AllProjects() {
   const [activeTag, setActiveTag] = useState("All");
   const [layout, setLayout] = useState<"grid" | "list">("grid");
 
-  const visible = allProjects.filter(
+  const visible = publicProjects.filter(
     (p) => activeTag === "All" || p.tags.includes(activeTag),
   );
 

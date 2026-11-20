@@ -333,7 +333,7 @@ export function ResearchSection({ data }: { data: NonNullable<CaseStudy["researc
       {/* Synthesized insights — key findings as callout cards */}
       {data.insights && data.insights.length > 0 && (
         <div>
-          <Eyebrow>Synthesized Insights</Eyebrow>
+          <Eyebrow>{data.insightsLabel ?? "Synthesized Insights"}</Eyebrow>
           <div className="mt-5">
             <CalloutGrid items={data.insights} columns={data.insights.length >= 3 ? 3 : 2} />
           </div>
@@ -517,11 +517,11 @@ export function ArchitectureSection({ data }: { data: NonNullable<CaseStudy["arc
 // Shows the design directions explored before settling on the final approach.
 //
 // Layout:
-//   - data.explorations → cards with a "Shipped / Evolved / Cut" status badge
+//   - data.explorations → cards with a "Kept / Evolved / Cut" status badge
 //   - data.media → MediaGallery (sketches, wireframes, explorations)
 //
 // Each exploration card has an outcome badge:
-//   "kept"    → "Shipped" in accent blue
+//   "kept"    → "Kept" in accent blue
 //   "evolved" → "Evolved" in teal
 //   "cut"     → "Cut" in muted gray
 // ─────────────────────────────────────────────────────────────────────────────
@@ -532,7 +532,7 @@ export function IdeationSection({ data }: { data: NonNullable<CaseStudy["ideatio
     NonNullable<NonNullable<CaseStudy["ideation"]>["explorations"]>[number]["outcome"] & string,
     { label: string; color: string }
   > = {
-    kept: { label: "Shipped", color: ACCENT },          // this idea made it to production
+    kept: { label: "Kept", color: ACCENT },             // this idea made it into the final design
     evolved: { label: "Evolved", color: "#0891b2" },    // this idea changed shape along the way
     cut: { label: "Cut", color: "var(--p-fg-35)" },     // this idea was intentionally dropped
   };

@@ -1,4 +1,5 @@
-const ACCENT = "#4338CA";
+import { SITE } from "../data/site";
+
 const CORAL = "#F97316";
 
 export function Footer() {
@@ -13,27 +14,25 @@ export function Footer() {
         className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         style={{ borderTop: "1px solid var(--p-divide)" }}
       >
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-          <span style={{ fontSize: "0.75rem", color: "var(--p-fg-25)" }}>
-            © {year} Shruti Senthilram
-          </span>
-          <span style={{ fontSize: "0.75rem", color: CORAL + "70" }}>
-            made with iced coffees and love
-          </span>
-        </div>
+        <span style={{ fontSize: "0.78rem", color: "var(--p-fg-45)" }}>
+          © {year} {SITE.name}
+        </span>
 
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           {[
-            { label: "GitHub", href: "https://github.com/shrutisenthilram" },
-            { label: "LinkedIn", href: "https://linkedin.com/in/shrutisenthilram/" },
+            { label: "LinkedIn", href: SITE.linkedin },
+            { label: "GitHub", href: SITE.github },
+            { label: "Resume", href: SITE.resume },
           ].map(({ label, href }) => (
             <a
               key={label}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors duration-200"
-              style={{ fontSize: "0.75rem", color: "var(--p-fg-25)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-25)")}
+              style={{ fontSize: "0.78rem", color: "var(--p-fg-45)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg-45)")}
             >
               {label}
             </a>

@@ -133,6 +133,7 @@ export type CaseStudy = {
     body?: string;
     methods?: { label: string; detail: string }[];   // Numbered list of research methods used
     insights?: { title: string; body: string }[];    // Callout cards for key findings
+    insightsLabel?: string;                          // Heading above the insights (default: "Synthesized Insights")
     quote?: { text: string; attribution?: string };  // Standout research quote
     media?: Media[]; // Images: affinity maps, journey maps, screenshots of research sessions
   };

@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router";
 import { motion } from "motion/react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { CursorFollower } from "./CursorFollower";
 import { ThemeProvider } from "../context/ThemeContext";
 
 function PageWrapper() {
@@ -22,9 +21,7 @@ function PageWrapper() {
         color: "var(--p-fg)",
       }}
     >
-      <CursorFollower />
       <Navbar />
-      
 
       {/*
         No AnimatePresence — old page unmounts instantly, new page fades in.

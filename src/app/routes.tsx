@@ -5,8 +5,9 @@ import { AllProjects } from "./pages/AllProjects";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ProjectCaseStudyPage } from "./pages/ProjectCaseStudyPage";
 import { AboutPage } from "./pages/AboutPage";
-import { PlaygroundPage } from "./pages/PlaygroundPage";
-import { PaletteDemo } from "./pages/PaletteDemo";
+import { NotFound } from "./pages/NotFound";
+// PlaygroundPage and PaletteDemo are intentionally not routed: they hold
+// placeholder content and are not part of the public site.
 import { KinLayout } from "./kin/KinLayout";
 import { DesignSystemPage } from "./kin/DesignSystemPage";
 import { NavigationMapPage } from "./kin/NavigationMapPage";
@@ -31,8 +32,7 @@ export const router = createBrowserRouter([
       { path: "projects", Component: AllProjects },
       { path: "projects/:slug", Component: ProjectDetailPage },
       { path: "projects/:slug/case-study", Component: ProjectCaseStudyPage },
-      { path: "playground", Component: PlaygroundPage },
-      { path: "palette-demo", Component: PaletteDemo },
+      { path: "*", Component: NotFound },
     ],
   },
   {

@@ -12,8 +12,7 @@ const communities = [
     name: "ACM @ UCSD",
     role: "Public Relations Director",
     handle: "@acm_ucsd",
-    description:
-      "ACM",
+    description: "",
     color: ACCENT,
     photos: [
       {

@@ -1,18 +1,13 @@
 import type { CaseStudy } from "../../components/case-study/types";
-import { projectImage, projectOverviewHero } from "../projectImages";
-
-const kinImg = (file: string) => projectImage("kin", file);
-
 export const kin: Partial<CaseStudy> = {
   client: "Personal",
   tagline: "One calm view for everyone keeping someone well.",
-  hiddenSections: ["strategy"],
   links: [{ label: "Prototype", href: "/kin" }],
   meta: {
     role: "Product Designer",
     timeline: "12 weeks · 2026",
-    team: "Solo design, with 5 caregivers in research",
-    stack: ["Figma", "FigJam", "Maze", "Notion", "Otter"],
+    team: "Solo",
+    stack: ["Figma", "FigJam", "Notion", "React"],
     platform: "iOS",
     // impact: "Your one-line result — shows in the meta row under the hero",
   },
@@ -23,10 +18,9 @@ export const kin: Partial<CaseStudy> = {
     // highlights: [{ value: "12", label: "Interviews" }], // optional stats box beside overview body
     media: [
       {
-        src: projectOverviewHero("kin"),
-        alt: "Kin home dashboard showing today's medications across two parents",
-        caption:
-          "Home — today's medications across both parents, in one calm view.",
+        src: "/images/kin/overview-hero.png",
+        alt: "Kin home dashboard and medication detail screens",
+        caption: "Home and medication detail, from the Kin prototype.",
       },
     ],
   },
@@ -49,10 +43,6 @@ export const kin: Partial<CaseStudy> = {
       },
 
     ],
-    quote: {
-      text: "I'm not worried about forgetting. I'm worried about not knowing.",
-      attribution: "Maya, 38, managing both parents' medications remotely",
-    },
   },
   context: {
     title:
@@ -92,70 +82,106 @@ export const kin: Partial<CaseStudy> = {
     ],
   },
   research: {
-    title: "Six weeks listening before a single screen existed.",
-    body: "I started from the assumption that I didn't understand caregiving — only its symptoms. Interviews were structured to surface emotional texture, not feature requests.",
+    title: "Where the problem came from, and what I still need to learn.",
+    body: "Kin began as a personal frustration and a review of existing tools. I haven't yet run primary research with caregivers, so the points below are working hypotheses drawn from my own experience, a review of existing apps, and published caregiver statistics. Testing them with real caregivers is the next step.",
     methods: [
       {
-        label: "5 semi-structured interviews",
+        label: "Personal experience",
         detail:
-          "Adult children currently managing an aging parent's medications, 30–45 minutes each.",
+          "Struggling to stay on top of my own medication as a full-time student with two jobs.",
       },
       {
-        label: "1-week diary study",
+        label: "Competitive review",
         detail:
-          "3 participants logged every medication-related action — including the ones that didn't happen.",
+          "Medisafe, CareZone, and Caring Village, reviewed for multi-user support and how each treats the patient.",
       },
       {
-        label: "Competitive audit",
+        label: "Published statistics",
         detail:
-          "Medisafe, CareZone, and Caring Village rated across 8 dimensions including multi-user support and dignity.",
+          "Caregiver and aging-population figures, cited in the context above.",
       },
       {
-        label: "30-person survey",
+        label: "Planned: caregiver interviews",
+        detail: "Not yet run. These will test the hypotheses below.",
+      },
+      {
+        label: "Planned: usability testing",
         detail:
-          "Current tools, household composition, error frequency, and unmet needs.",
+          "Not yet run. The prototype's four core flows will be tested with caregivers.",
       },
     ],
+    insightsLabel: "Working Hypotheses",
     insights: [
       {
-        title: "Caregivers want to feel in control, not be in control.",
+        title: "Hypothesis: caregivers want to feel in control, not be in control.",
         body: "Total control is exhausting. The job of the app is to lift the cognitive load, not return it as a settings panel.",
       },
       {
-        title: "The scariest moment isn't a missed dose. It's not knowing if one was missed.",
-        body: "Uncertainty drives more anxiety than failure. Visibility is the product.",
+        title: "Hypothesis: the scariest moment is not knowing if a dose was missed.",
+        body: "Uncertainty may drive more anxiety than failure itself. If so, visibility is the product.",
       },
       {
-        title: "Coordination is the third user.",
-        body: "Every caregiving relationship has a quieter second person. Designing around them — gently — was the unlock.",
+        title: "Hypothesis: coordination is the third user.",
+        body: "Every caregiving relationship has a quieter second person. Designing around them, gently, may be the unlock.",
       },
       {
-        title: "Refills are the #1 logistical failure point.",
-        body: "Surfacing refill needs 5+ days early shifted the entire emotional valence of the app.",
+        title: "Hypothesis: refills are the biggest logistical failure point.",
+        body: "Surfacing refill needs 5+ days early could change the emotional tone of the whole app.",
       },
     ],
-    quote: {
-      text: "This is the first time I've seen something that actually understands what it's like to do this.",
-      attribution: "Synthesis from 5 interviews",
+  },
+  strategy: {
+    title: "Who it's for, and what v1 includes.",
+    body: "Kin's bet is to design for the caregiver first and make coordination visible. These are the scope decisions that follow from it.",
+    targetUsers: [
+      {
+        label: "Primary: the caregiver",
+        detail:
+          "Adult children, often long-distance and splitting the work with siblings, managing an aging parent's medications.",
+      },
+      {
+        label: "Secondary: the patient",
+        detail:
+          "Gets a dignity-first companion view: read-only by default and never required to log doses.",
+      },
+      {
+        label: "Tertiary: siblings and co-caregivers",
+        detail: "Need shared visibility and a no-blame way to hand off tasks.",
+      },
+    ],
+    goals: [
+      "Lift the cognitive load of caregiving instead of returning it as settings.",
+      "Make it obvious what was done today, and by whom.",
+      "Move tasks between caregivers without blame.",
+      "Surface refills early, in calm tones.",
+    ],
+    mvp: {
+      included: [
+        "Home dashboard across every patient",
+        "Handoff notes between caregivers",
+        "Patient companion view",
+        "Tiered urgency for refill alerts",
+        "Manual and photo-scan medication entry",
+      ],
+      excluded: [
+        "Full pharmacy API integration",
+        "A feature-rich patient interface",
+        "Android parity",
+      ],
     },
-    media: [
+    // metrics: intentionally omitted until target success metrics are defined.
+    risks: [
       {
-        src: kinImg("research-affinity.png"),
-        alt: "Affinity diagram clustering interview quotes by theme",
-        caption:
-          "Affinity diagram — 5 interviews clustered into 4 thematic territories.",
+        label: "Not yet validated with users",
+        body: "The problem and the hypotheses are untested with real caregivers. Interviews and usability testing come next.",
       },
       {
-        src: kinImg("research-journey.png"),
-        alt: "Journey map of Maya's week of medication management",
-        caption:
-          "Maya's current week — every tool, every handoff, every silent worry.",
+        label: "Trust",
+        body: "Medication data is high-stakes. A single visible bug could erode adoption permanently.",
       },
       {
-        src: kinImg("research-personas.png"),
-        alt: "Three personas: Maya the primary caregiver, Robert the patient, Derek the sibling",
-        caption:
-          "Three personas. Each one's needs sit in tension with the others.",
+        label: "Patient pushback",
+        body: "If the patient feels surveilled, they may refuse the companion view and the coordination loop weakens.",
       },
     ],
   },
@@ -206,14 +232,6 @@ export const kin: Partial<CaseStudy> = {
       "Family lives at the top level because coordination is the unsolved problem in the category.",
       "Pharmacy is separate from Patients because refills are operations, not health data.",
     ],
-    media: [
-      {
-        src: kinImg("ia-sitemap.png"),
-        alt: "Information architecture diagram of Kin's four top-level tabs",
-        caption:
-          "Site map — four tabs, three levels of depth, no hidden coordination surface.",
-      },
-    ],
   },
   ideation: {
     title: "Branches I walked down — and what I cut.",
@@ -242,14 +260,6 @@ export const kin: Partial<CaseStudy> = {
         title: "Splitwise-style handoff notes",
         body: "Shared accountability without blame. Borrowed from how Splitwise handles shared expenses — neutral language, transparent history.",
         outcome: "kept",
-      },
-    ],
-    media: [
-      {
-        src: kinImg("ideation-sketches.png"),
-        alt: "Crazy 8s sketches exploring the home dashboard",
-        caption:
-          "Crazy 8s for the home dashboard. The sixth one became the foundation.",
       },
     ],
   },
@@ -349,20 +359,6 @@ export const kin: Partial<CaseStudy> = {
       "Dynamic Type supported across all type styles for elderly users who may share the device.",
       "Reduced-motion respected for confirmation animations.",
     ],
-    media: [
-      {
-        src: kinImg("flows-setup.png"),
-        alt: "First-time setup flow diagram with happy path and two edge cases",
-        caption:
-          "Setup flow — happy path plus two edge cases (no family invited, scan failure).",
-      },
-      {
-        src: kinImg("flows-refill.png"),
-        alt: "Refill alert and handoff flow diagram",
-        caption:
-          "Refill handoff — the flow that surfaced the new 'handoff note' pattern.",
-      },
-    ],
   },
   designSystem: {
     title: "Warm, restrained, and built to lower the temperature.",
@@ -391,83 +387,11 @@ export const kin: Partial<CaseStudy> = {
       "Dynamic Type support throughout the type scale.",
       "Touch targets meet 44×44pt minimum.",
     ],
-    media: [
-      {
-        src: kinImg("system-tokens.png"),
-        alt: "Design tokens: color, typography, and spacing scale",
-        caption: "Tokens — color, type, and spacing as a single source of truth.",
-      },
-      {
-        src: kinImg("system-components.png"),
-        alt: "Component library: medication card, refill banner, activity row, and handoff note",
-        caption: "Core components, each shown in all interactive states.",
-      },
-    ],
   },
-  iteration: {
-    title: "What testing made me change my mind about.",
-    rounds: [
-      {
-        round: "Round 1 · 3 caregivers",
-        change: "Single home view, no patient switcher.",
-        result:
-          "Every participant asked 'which mom is this?' within 30 seconds. Added a patient switcher at the top of Home — instant clarity.",
-      },
-      {
-        round: "Round 2 · 3 caregivers",
-        change: "Refill alerts rendered in red with a bell icon.",
-        result:
-          "Even low-urgency alerts triggered anxiety. Replaced with a tiered amber → red model. Stress reports dropped, action rates held.",
-      },
-      {
-        round: "Round 3 · 2 caregivers + 1 patient",
-        change: "Family lived inside Settings.",
-        result:
-          "Both caregivers missed it for 5+ minutes during testing. Promoted Family to a top-level tab and the entire coordination story clicked.",
-      },
-      {
-        round: "Round 4 · 2 sibling pairs",
-        change:
-          "Task handoff used directive language ('You need to refill Mom's Lisinopril').",
-        result:
-          "Triggered the exact 'I thought you handled it' guilt the app was meant to remove. Reframed as neutral 'handoff notes' — the new UI pattern that became the keystone of the system.",
-      },
-    ],
-    experiments: [
-      {
-        hypothesis:
-          "Caregivers will prefer richer patient data over a calmer view.",
-        result:
-          "Rejected. 4 of 5 chose the calmer view in head-to-head tests. Density was read as anxiety.",
-      },
-      {
-        hypothesis:
-          "Patients will resist any companion view, regardless of design.",
-        result:
-          "Partially rejected. With explicit privacy controls and a read-only default, the patient testers willingly opened it daily.",
-      },
-    ],
-    comparisons: [
-      {
-        before: kinImg("iteration-switcher-before.png"),
-        after: kinImg("iteration-switcher-after.png"),
-        label: "Patient switcher added at the top of Home",
-      },
-      {
-        before: kinImg("iteration-urgency-before.png"),
-        after: kinImg("iteration-urgency-after.png"),
-        label: "Red alerts replaced with a tiered urgency model",
-      },
-      {
-        before: kinImg("iteration-handoff-before.png"),
-        after: kinImg("iteration-handoff-after.png"),
-        label: "Directive handoff language replaced with neutral notes",
-      },
-    ],
-  },
+  // Iteration & testing is intentionally omitted until real usability tests are run.
   finalSolution: {
     title: "A mobile app that lowers the temperature of caregiving.",
-    body: "The shipped prototype is quieter than the category. That's the point. Trust, in this domain, is built through restraint.",
+    body: "The prototype is quieter than the category. That's the point. Trust, in this domain, is built through restraint.",
     highlights: [
       {
         title: "One calm Home",
@@ -488,24 +412,24 @@ export const kin: Partial<CaseStudy> = {
     ],
     media: [
       {
-        src: kinImg("final-home.png"),
-        alt: "Final home dashboard showing today's medications across two patients",
-        caption: "Home — today's view across both parents.",
+        src: "/images/kin/final-home.png",
+        alt: "Kin home dashboard with today's progress, family on duty, and the day's schedule",
+        caption: "Home: today's progress, who's on duty, and the day's schedule.",
       },
       {
-        src: kinImg("final-refill.png"),
-        alt: "Final refill alert with handoff to sibling",
-        caption: "Refill alert with one-tap handoff.",
+        src: "/images/kin/final-refill.png",
+        alt: "Kin refill board with color-coded supply bars and the refill request flow",
+        caption: "Refills: calm, tiered urgency and a two-step request flow.",
       },
       {
-        src: kinImg("final-patient.png"),
-        alt: "Final patient companion view",
-        caption: "Patient companion view — a calm, read-only daily summary.",
+        src: "/images/kin/final-patient.png",
+        alt: "Kin patient companion view and medication reminder screen",
+        caption: "Patient companion view: a calm daily list and a gentle reminder.",
       },
       {
-        src: kinImg("final-family.png"),
-        alt: "Final family activity feed",
-        caption: "Family feed — visibility without surveillance.",
+        src: "/images/kin/final-family.png",
+        alt: "Kin family activity feed and member detail with permissions",
+        caption: "Family feed: visibility without surveillance.",
       },
     ],
   },
@@ -520,14 +444,16 @@ export const kin: Partial<CaseStudy> = {
       },
       {
         title: "Inventing 'handoff notes' was the unlock.",
-        body: "No competitor had a no-blame coordination pattern. Borrowing the emotional posture from Splitwise and applying it to medication created the most-cited moment in testing.",
+        body: "None of the apps I reviewed has a no-blame coordination pattern. I borrowed the emotional posture from Splitwise and applied it to medication. Testing it with real caregivers is the next step.",
       },
       {
-        title: "Calm shipped this.",
+        title: "Restraint shaped this.",
         body: "Cutting pharmacy APIs, drug interaction warnings, and the doctor portal felt like loss. They were also what allowed the core loop to feel mature.",
       },
     ],
     nextSteps: [
+      "Interview caregivers to validate the hypotheses above.",
+      "Usability-test the prototype's four core flows with caregivers.",
       "Live pharmacy API integration for in-app refill ordering.",
       "AI-powered drug interaction warnings (with caregiver-readable explanations, not clinical jargon).",
       "Longitudinal health trend views to support doctor appointments.",

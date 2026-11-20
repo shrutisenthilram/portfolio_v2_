@@ -29,7 +29,7 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
   const navigable = isProjectNavigable(project);
   const href = getProjectHref(project);
   const cornerColor = getTagColor(project.tags[0] ?? "");
-  const tiltMax = (variant === "featured" ? 12 : 10) * intensityScale;
+  const tiltMax = 0 * intensityScale; // tilt effect disabled for a calmer, more professional feel
 
   const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     if (!isFinePointer || prefersReducedMotion) return;
