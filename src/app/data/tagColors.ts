@@ -1,9 +1,9 @@
-export const INDIGO  = "#4338CA";
-export const CORAL   = "#F97316";
-export const EMERALD = "#10B981";
-export const AMBER   = "#F59E0B";
-export const SKY     = "#06B6D4";
-export const VIOLET  = "#7C3AED";
+export const INDIGO  = "#B65670";
+export const CORAL   = "#557A63";
+export const EMERALD = "#6B7F45";
+export const AMBER   = "#A87432";
+export const SKY     = "#4F7C82";
+export const VIOLET  = "#7F5C8F";
 
 const TAG_COLOR_MAP: Record<string, string> = {
   // Design / Tech → INDIGO
@@ -54,6 +54,23 @@ const TAG_COLOR_MAP: Record<string, string> = {
 
   // Featured / Awards → AMBER
   "Featured":       AMBER,
+
+  // Fintech / Investing → SKY
+  "Fintech":        SKY,
+  "Investing":      SKY,
+
+  // ML / AI → VIOLET
+  "ML":             VIOLET,
+  "AI":             VIOLET,
+
+  // Engineering / Product / Open source → INDIGO
+  "SWE":            INDIGO,
+  "Engineering":    INDIGO,
+  "Product":        INDIGO,
+  "Open Source":    INDIGO,
+
+  // Leadership → EMERALD
+  "Leadership":     EMERALD,
 
   // Critique / Teardown → CORAL (research family)
   "Teardown":       CORAL,

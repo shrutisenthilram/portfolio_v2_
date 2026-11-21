@@ -211,8 +211,8 @@ export type CaseStudy = {
     tokens?: { label: string; value: string; sample?: string }[];
     // tokens: design tokens displayed in a grid.
     //   label: token name (e.g. "Primary", "Body/Sm")
-    //   value: the value (e.g. "#4338CA", "14px / 1.5")
-    //   sample: CSS color string — if set, a color swatch square is shown (e.g. "#4338CA")
+    //   value: the value (e.g. "#B65670", "14px / 1.5")
+    //   sample: CSS color string — if set, a color swatch square is shown (e.g. "#B65670")
     components?: string[];          // Component names as chips (e.g. ["Button", "Modal"])
     accessibilityNotes?: string[];  // Bullet list of accessibility decisions
     media?: Media[];

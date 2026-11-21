@@ -1,7 +1,7 @@
 import { Instagram } from "lucide-react";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // TODO(personalize): Instagram icon now links to https://instagram.com/<handle>
 // using the `handle` field below — it only renders when a real handle is set.

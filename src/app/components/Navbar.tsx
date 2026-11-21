@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { TinyBloom } from "./FloralArt";
 import { SITE } from "../data/site";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // These scroll to sections on the home page (or jump to them from other pages).
 const SCROLL_LINKS = [
   { label: "Work", id: "work" },
-  { label: "Experience", id: "experience" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ];
+
+// A real page (not a section on the home page).
+const PLAYGROUND_LINK = { label: "Playground", to: "/playground" };
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -93,7 +96,10 @@ export function Navbar() {
             onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
           >
-            {SITE.name}
+            <span className="inline-flex items-center gap-2">
+              <TinyBloom size={16} />
+              {SITE.name}
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -124,6 +130,22 @@ export function Navbar() {
                 </a>
               );
             })}
+
+            <Link
+              to={PLAYGROUND_LINK.to}
+              className="relative transition-colors duration-200 pb-0.5"
+              style={{
+                fontSize: "0.85rem",
+                fontWeight: 400,
+                color: location.pathname === PLAYGROUND_LINK.to ? ACCENT : "var(--p-fg-65)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = location.pathname === PLAYGROUND_LINK.to ? ACCENT : "var(--p-fg-65)")
+              }
+            >
+              {PLAYGROUND_LINK.label}
+            </Link>
 
             {resumeButton}
 
@@ -209,6 +231,13 @@ export function Navbar() {
               </a>
             )
           )}
+          <Link
+            to={PLAYGROUND_LINK.to}
+            className="transition-colors duration-200"
+            style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-65)" }}
+          >
+            {PLAYGROUND_LINK.label}
+          </Link>
           <Link
             to="/projects"
             className="transition-colors duration-200"

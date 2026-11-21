@@ -1,20 +1,21 @@
+import { BranchRule, EdgeVine } from "./FloralArt";
 import { Link } from "react-router";
 import { featuredProjects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
+import { LockedNotice, useLocked } from "./Locked";
 
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 export function Projects() {
+  const locked = useLocked("projects");
   return (
     <section
       id="work"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="pt-14 pb-24 px-6 md:px-12 max-w-6xl mx-auto"
+      className="relative pt-4 pb-6 px-6 md:px-12 max-w-6xl mx-auto"
     >
-      <div
-        className="flex items-end justify-between mb-10 pb-6"
-        style={{ borderBottom: "1px solid var(--p-divide)" }}
-      >
+      <EdgeVine side="left" top="58%" />
+      <div className="flex items-end justify-between mb-6">
         <div>
           <span
             className="tracking-widest uppercase block mb-3"
@@ -32,7 +33,9 @@ export function Projects() {
           >
             Featured Projects
           </h2>
+          <BranchRule className="mt-3" />
         </div>
+        {!locked && (
         <Link
           to="/projects"
           className="hidden sm:inline-flex items-center gap-2 pb-0.5 transition-colors duration-200"
@@ -40,9 +43,14 @@ export function Projects() {
         >
           All projects →
         </Link>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+      {locked ? (
+        <LockedNotice area="projects" />
+      ) : (
+      <>
+      <div className={`grid grid-cols-1 ${featuredProjects.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"} gap-8 md:gap-6`}>
         {featuredProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} variant="featured" />
         ))}
@@ -55,6 +63,8 @@ export function Projects() {
       >
         All projects →
       </Link>
+      </>
+      )}
     </section>
   );
 }

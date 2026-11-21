@@ -1,24 +1,20 @@
 import type { CaseStudy } from "../../components/case-study/types";
 import type { Project } from "../projects";
-import { cseResearch } from "./cse-research";
 import { csesTritonspend } from "./cses-tritonspend";
 import { designCoRedesign } from "./design-co-redesign";
 import { designFrontiersWebsite } from "./design-frontiers-website";
 import { developForGood } from "./develop-for-good";
 import { econResearch } from "./econ-research";
-import { enoCheckoutTeardown } from "./eno-checkout-teardown";
 import { kin } from "./kin";
 import { portfolioDesign } from "./portfolio-design";
 import { votingLiteracy } from "./voting-literacy";
 
 export const caseStudies: Record<string, Partial<CaseStudy>> = {
-  "cse-research": cseResearch,
   "cses-tritonspend": csesTritonspend,
   "design-co-redesign": designCoRedesign,
   "design-frontiers-website": designFrontiersWebsite,
   "develop-for-good": developForGood,
   "econ-research": econResearch,
-  "eno-checkout-teardown": enoCheckoutTeardown,
   kin,
   "portfolio-design": portfolioDesign,
   "voting-literacy": votingLiteracy,

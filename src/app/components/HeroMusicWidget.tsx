@@ -1,5 +1,5 @@
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // Static "current favorite" — not live playback data, just a hardcoded pick.
 // TODO(personalize): add the album cover image (drop it in /public/images and

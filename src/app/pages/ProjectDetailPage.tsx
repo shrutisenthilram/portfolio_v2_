@@ -4,8 +4,10 @@ import { getCaseStudy } from "../data/case-studies";
 import { getPrd } from "../data/prds";
 import { CaseStudyShell } from "../components/case-study/CaseStudyShell";
 import { PrdShell } from "../components/prd/PrdShell";
+import { ProjectPage } from "../components/project/ProjectPage";
+import { getContentProject } from "../../content/projects";
 
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 // The primary /projects/:slug page. For a project with a PRD (see
 // src/app/data/prds/index.ts — currently Kin, Vote Smart, Design Frontiers),
@@ -40,6 +42,12 @@ export function ProjectDetailPage() {
   const next = navigable[navIdx + 1] ?? null;
   const prevProp = prev ? { slug: prev.slug, title: prev.title, subtitle: prev.subtitle } : null;
   const nextProp = next ? { slug: next.slug, title: next.title, subtitle: next.subtitle } : null;
+
+  // Projects defined in src/content/projects/*.json use the standard template.
+  const contentProject = getContentProject(project.slug);
+  if (contentProject) {
+    return <ProjectPage project={contentProject} prev={prevProp} next={nextProp} />;
+  }
 
   const study = getCaseStudy(project);
   const prd = getPrd(project.slug);

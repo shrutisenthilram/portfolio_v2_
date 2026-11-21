@@ -10,7 +10,7 @@ import { allProjects, isProjectNavigable } from "../data/projects";
 import { getCaseStudy } from "../data/case-studies";
 import { CaseStudyShell } from "../components/case-study/CaseStudyShell";
 
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 export function ProjectCaseStudyPage() {
   const { slug } = useParams<{ slug: string }>();

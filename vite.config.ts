@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { adminApi, stripDraftsFromBuild } from './admin/api-plugin'
 
 export default defineConfig({
   plugins: [
@@ -9,6 +10,10 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    // Local-only content editor API (dev server only, see admin/api-plugin.ts)
+    adminApi(),
+    // Drafts never ship in the production bundle
+    stripDraftsFromBuild(),
   ],
   resolve: {
     alias: {

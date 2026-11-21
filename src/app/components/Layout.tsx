@@ -14,7 +14,7 @@ function PageWrapper() {
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen site-root"
       style={{
         fontFamily: "'Inter', sans-serif",
         backgroundColor: "var(--p-bg)",

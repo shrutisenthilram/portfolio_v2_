@@ -1,7 +1,8 @@
 import { Link } from "react-router";
+import { Bouquet } from "../components/FloralArt";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 export function NotFound() {
   return (
@@ -9,6 +10,7 @@ export function NotFound() {
       style={{ fontFamily: "'Inter', sans-serif" }}
       className="min-h-[70vh] flex flex-col justify-center pt-28 pb-16 px-6 md:px-12 max-w-6xl mx-auto"
     >
+      <Bouquet className="w-24 mb-6" />
       <span
         className="tracking-widest uppercase block mb-6"
         style={{ fontSize: "0.7rem", letterSpacing: "0.15em", color: "var(--p-fg-45)" }}

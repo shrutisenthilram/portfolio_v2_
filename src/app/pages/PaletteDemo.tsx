@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
-const INDIGO  = "#4338CA";
-const CORAL   = "#F97316";
+const INDIGO  = "#B65670";
+const CORAL   = "#557A63";
 const EMERALD = "#10B981";
 const AMBER   = "#F59E0B";
 const SKY     = "#06B6D4";

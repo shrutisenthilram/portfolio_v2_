@@ -25,7 +25,7 @@ import {
 
 // Indigo accent used for links, highlights, and the Impact meta value.
 // Change this hex to retheme the whole case study page's accent color.
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 // Master list of all 12 possible sections, in display order.
 // "key" must match the field name on the CaseStudy type (from types.ts).
