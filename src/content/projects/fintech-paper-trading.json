@@ -1,0 +1,43 @@
+{
+  "slug": "fintech-paper-trading",
+  "status": "draft",
+  "featured": false,
+  "year": "2026",
+  "image": "",
+  "timeline": "",
+  "team": "Solo",
+  "stack": [],
+  "headlineResult": "",
+  "links": [
+    {
+      "label": "GitHub",
+      "href": ""
+    },
+    {
+      "label": "Live demo",
+      "href": ""
+    }
+  ],
+  "problem": "",
+  "users": "",
+  "goals": [],
+  "metrics": [],
+  "decisions": [],
+  "solution": "",
+  "build": "",
+  "media": [],
+  "results": [],
+  "reflection": "",
+  "nextSteps": [],
+  "order": 10,
+  "kind": "product",
+  "title": "Paper-Trading Learning App (working title)",
+  "subtitle": "Investing basics for first-time investors",
+  "summary": "A paper-trading app that teaches first-time investors using simulated money only. Educational, not investment advice.",
+  "tags": [
+    "Fintech",
+    "Product",
+    "SWE"
+  ],
+  "role": "Product Manager & Engineer"
+}

@@ -2,7 +2,6 @@ import type { Prd } from "../../components/prd/types";
 import { kinPrd } from "./kin";
 import { voteSmartPrd } from "./voting-literacy";
 import { designFrontiersPrd } from "./design-frontiers-website";
-import { enoPrd } from "./eno-checkout-teardown";
 
 // Projects with a PRD get a PRD overview as the primary content at
 // /projects/:slug, with a CTA into the deeper design case study at
@@ -13,7 +12,6 @@ export const prds: Record<string, Prd> = {
   kin: kinPrd,
   "voting-literacy": voteSmartPrd,
   "design-frontiers-website": designFrontiersPrd,
-  "eno-checkout-teardown": enoPrd,
 };
 
 export function getPrd(slug: string): Prd | undefined {

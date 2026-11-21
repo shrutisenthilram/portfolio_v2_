@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { SITE } from "../data/site";
+import { Branch, EdgeVine } from "./FloralArt";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 const education = [
   { label: "BS Computer Science", sub: "UC San Diego · 2024–2027" },
@@ -11,7 +12,7 @@ const education = [
 ];
 
 const facts = [
-  { k: "Based in", v: "San Diego (Bay Area native)", coral: false },
+  { k: "Based in", v: "Bay Area (SF)", coral: false },
   { k: "Open to", v: SITE.availability, coral: true },
   { k: "Focus", v: "Product management", coral: false },
 ];
@@ -21,31 +22,30 @@ export function About() {
     <section
       id="about"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-10 px-6 md:px-12 max-w-6xl mx-auto"
+      className="relative py-2 px-6 md:px-12 max-w-6xl mx-auto"
     >
-      <span
-        className="tracking-widest uppercase block mb-9 md:mb-12 pb-5"
-        style={{
-          fontSize: "0.68rem",
-          letterSpacing: "0.15em",
-          color: "var(--p-fg-45)",
-          borderBottom: "1px solid var(--p-divide)",
-        }}
-      >
-        About
-      </span>
+      <EdgeVine side="right" top="40%" />
+      <div className="flex items-center gap-4 mb-5 md:mb-7">
+        <span
+          className="tracking-widest uppercase block"
+          style={{
+            fontSize: "0.68rem",
+            letterSpacing: "0.15em",
+            color: "var(--p-fg-45)",
+          }}
+        >
+          About
+        </span>
+        <Branch className="w-12 pointer-events-none" />
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
         {/* Photo + quick facts */}
         <div className="md:col-span-4">
-          <div className="relative w-40 h-52 sm:w-44 sm:h-56 mb-8">
-            <div
-              className="absolute -bottom-2 -right-2 w-full h-full pointer-events-none"
-              style={{ border: `1px solid ${ACCENT}50` }}
-            />
+          <div className="relative w-44 h-56 sm:w-52 sm:h-64 mb-6">
             <img
-              src="/images/bbb.jpeg"
-              alt="Shruti standing next to a large balanced rock formation"
+              src={SITE.headshot}
+              alt="Portrait of Shruti Senthilram"
               className="relative w-full h-full object-cover"
               style={{ display: "block" }}
             />

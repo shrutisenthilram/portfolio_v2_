@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import type { SectionDef } from "./types";
 
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);

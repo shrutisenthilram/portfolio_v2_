@@ -125,7 +125,20 @@ export function ProjectCard({ project, variant = "grid", visible = true }: Proje
       >
         {project.year}
       </div>
-      {variant === "featured" && project.featured && !project.comingSoon ? (
+      {project.draft ? (
+        <div
+          className="absolute top-3 left-3 md:top-4 md:left-4 px-2 py-0.5"
+          style={{
+            fontSize: "0.62rem",
+            fontWeight: 600,
+            letterSpacing: "0.1em",
+            color: "#fff",
+            backgroundColor: CORAL,
+          }}
+        >
+          DRAFT
+        </div>
+      ) : variant === "featured" && project.featured && !project.comingSoon ? (
         <div
           className="absolute top-3 left-3 md:top-4 md:left-4 px-2 py-0.5 flex items-center gap-1.5"
           style={{

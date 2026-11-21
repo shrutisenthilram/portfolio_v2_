@@ -39,7 +39,7 @@ import {
 } from "./primitives";
 
 // Shared accent color — used for "To Gain" labels in tradeoffs, MVP scope border, etc.
-const ACCENT = "#4338CA";
+const ACCENT = "#B65670";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 01 · Overview
@@ -701,7 +701,7 @@ export function DesignSystemSection({
                 style={{ borderBottom: "1px solid var(--p-divide)" }}
               >
                 {/* Optional color swatch — a small square showing the token's color.
-                    Set token.sample to a CSS color value (e.g. "#4338CA") to show it. */}
+                    Set token.sample to a CSS color value (e.g. "#B65670") to show it. */}
                 {tk.sample && (
                   <span
                     aria-hidden
@@ -719,7 +719,7 @@ export function DesignSystemSection({
                   <p className="uppercase" style={{ fontSize: "0.6rem", letterSpacing: "0.16em", color: "var(--p-fg-35)" }}>
                     {tk.label}
                   </p>
-                  {/* Token value — e.g. "#4338CA", "14px / 1.5" */}
+                  {/* Token value — e.g. "#B65670", "14px / 1.5" */}
                   <p className="tabular-nums" style={{ fontSize: "0.82rem", color: "var(--p-fg)" }}>
                     {tk.value}
                   </p>

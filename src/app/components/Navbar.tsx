@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { TinyBloom } from "./FloralArt";
 import { SITE } from "../data/site";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // These scroll to sections on the home page (or jump to them from other pages).
 const SCROLL_LINKS = [
   { label: "Work", id: "work" },
-  { label: "Experience", id: "experience" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ];
@@ -93,7 +93,10 @@ export function Navbar() {
             onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--p-fg)")}
           >
-            {SITE.name}
+            <span className="inline-flex items-center gap-2">
+              <TinyBloom size={16} />
+              {SITE.name}
+            </span>
           </Link>
 
           {/* Desktop Nav */}

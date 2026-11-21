@@ -28,7 +28,7 @@ import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 // Indigo accent — same value used in CaseStudyShell.tsx.
 // Change here to retheme all primitive highlights globally.
-export const ACCENT = "#4338CA";
+export const ACCENT = "#B65670";
 
 // Spread this onto any <motion.*> element to get a fade-up-on-scroll effect.
 // initial: starts invisible and 16px below its final position.

@@ -6,8 +6,8 @@ import { CommunitiesSection } from "../components/CommunitiesSection";
 // TODO: revisit music section
 // import { MusicSection } from "../components/MusicSection";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 const education = [
   {
@@ -496,7 +496,7 @@ export function AboutPage() {
               {[
                 {
                   k: "Based in",
-                  v: "San Diego (Bay Area native)",
+                  v: "Bay Area (SF)",
                   coral: false,
                 },
                 {

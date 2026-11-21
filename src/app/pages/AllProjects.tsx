@@ -111,6 +111,14 @@ function ProjectListRow({ project }: { project: Project }) {
       </div>
       <div className="md:col-span-2 flex flex-col justify-center gap-2">
         <p style={{ fontSize: "0.72rem", color: ACCENT + "99" }}>{project.role}</p>
+        {project.draft && (
+          <span
+            className="inline-block px-2 py-0.5 w-fit"
+            style={{ fontSize: "0.62rem", fontWeight: 600, color: "#fff", backgroundColor: "#557A63" }}
+          >
+            DRAFT
+          </span>
+        )}
         {project.comingSoon && (
           <span
             className="inline-block px-2 py-0.5 w-fit"

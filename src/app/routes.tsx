@@ -22,7 +22,21 @@ import { EmptyStatesPage } from "./kin/EmptyStatesPage";
 import { NotificationPrefsPage } from "./kin/NotificationPrefsPage";
 import { OnboardingPage } from "./kin/OnboardingPage";
 
+// The /admin editor exists only in local development. In a production build
+// import.meta.env.DEV is false, so this route (and the editor code) is removed.
+const devOnlyRoutes = import.meta.env.DEV
+  ? [
+      {
+        path: "/admin",
+        lazy: async () => ({
+          Component: (await import("./admin/AdminPage")).AdminPage,
+        }),
+      },
+    ]
+  : [];
+
 export const router = createBrowserRouter([
+  ...devOnlyRoutes,
   {
     path: "/",
     Component: Layout,

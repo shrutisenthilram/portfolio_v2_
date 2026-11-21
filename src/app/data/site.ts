@@ -17,6 +17,5 @@ export const SITE = {
   availability: "Open to APM & PM roles · 2027",
   headline: "I turn messy problems into",
   headlineAccent: "shipped products.",
-  proof:
-    "CS + Business Econ at UC San Diego · Product Development Intern at LPL Financial · VP of Product at CSES Open Source",
+  proof: "Currently @ Cloudflare",
 } as const;

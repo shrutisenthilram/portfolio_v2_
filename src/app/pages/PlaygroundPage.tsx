@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 // ↓ Add your blog posts here

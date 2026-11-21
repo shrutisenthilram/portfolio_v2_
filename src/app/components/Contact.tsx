@@ -1,7 +1,8 @@
+import { BranchRule, EdgeVine } from "./FloralArt";
 import { SITE } from "../data/site";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 const contactLinks: { label: string; value: string; href: string; external: boolean }[] = [
   { label: "Email", value: SITE.email, href: `mailto:${SITE.email}`, external: false },
@@ -15,25 +16,25 @@ export function Contact() {
     <section
       id="contact"
       style={{ fontFamily: "'Inter', sans-serif" }}
-      className="py-24 px-6 md:px-12 max-w-6xl mx-auto"
+      className="relative pt-6 pb-32 md:pt-8 md:pb-32 px-6 md:px-12 max-w-6xl mx-auto"
     >
+      <EdgeVine side="left" top="48%" />
       <span
-        className="tracking-widest uppercase block mb-12 md:mb-16 pb-6"
+        className="tracking-widest uppercase block mb-5 md:mb-6"
         style={{
           fontSize: "0.68rem",
           letterSpacing: "0.15em",
           color: "var(--p-fg-45)",
-          borderBottom: "1px solid var(--p-divide)",
         }}
       >
         Contact
       </span>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         {/* Left — headline */}
         <div className="md:col-span-7">
           <h2
-            className="mb-6 md:mb-8 leading-tight"
+            className="mb-3 leading-tight"
             style={{
               fontSize: "clamp(1.8rem, 5vw, 3.6rem)",
               fontWeight: 300,
@@ -47,6 +48,7 @@ export function Contact() {
               what you're building.
             </span>
           </h2>
+          <BranchRule className="mb-5" />
           <p
             className="mb-8 md:mb-10"
             style={{ fontSize: "0.95rem", lineHeight: 1.8, maxWidth: "28rem", color: "var(--p-fg-65)" }}

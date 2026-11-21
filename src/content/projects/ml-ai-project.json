@@ -1,0 +1,39 @@
+{
+  "slug": "ml-ai-project",
+  "status": "draft",
+  "featured": false,
+  "year": "2026",
+  "image": "",
+  "timeline": "",
+  "team": "Solo",
+  "stack": [],
+  "headlineResult": "",
+  "links": [
+    {
+      "label": "GitHub",
+      "href": ""
+    }
+  ],
+  "problem": "",
+  "users": "",
+  "goals": [],
+  "metrics": [],
+  "decisions": [],
+  "solution": "",
+  "build": "",
+  "media": [],
+  "results": [],
+  "reflection": "",
+  "nextSteps": [],
+  "order": 50,
+  "kind": "engineering",
+  "title": "ML / AI Project (working title)",
+  "subtitle": "To be defined",
+  "summary": "A new machine learning or AI project. Describe the problem and approach once it is chosen.",
+  "tags": [
+    "ML",
+    "AI",
+    "SWE"
+  ],
+  "role": "ML Engineer"
+}

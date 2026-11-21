@@ -1,0 +1,33 @@
+{
+  "slug": "software-project",
+  "status": "draft",
+  "featured": false,
+  "year": "2026",
+  "image": "",
+  "timeline": "",
+  "team": "Solo",
+  "stack": [],
+  "headlineResult": "",
+  "links": [],
+  "problem": "",
+  "users": "",
+  "goals": [],
+  "metrics": [],
+  "decisions": [],
+  "solution": "",
+  "build": "",
+  "media": [],
+  "results": [],
+  "reflection": "",
+  "nextSteps": [],
+  "order": 45,
+  "kind": "engineering",
+  "title": "Software Project (working title)",
+  "subtitle": "A shipped full-stack project",
+  "summary": "A software engineering project showing end-to-end building: architecture, tradeoffs, and what shipped. Idea to be decided.",
+  "tags": [
+    "Software",
+    "Full-Stack"
+  ],
+  "role": "Software Engineer"
+}

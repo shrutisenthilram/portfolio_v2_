@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-const ACCENT = "#4338CA";
-const CORAL = "#F97316";
+const ACCENT = "#B65670";
+const CORAL = "#557A63";
 
 // TODO(personalize): year/genre for this entry are my best-guess metadata for
 // the real song, not a personal claim — double check them. Add real cover art
