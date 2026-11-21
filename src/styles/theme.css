@@ -352,3 +352,8 @@
 @media (prefers-reduced-motion: reduce) {
   .iced-latte, .iced-latte-ice { animation: none; }
 }
+
+/* Playground garden: planted flowers grow up from the ground point */
+.garden-flower { transform-origin: 50% 100%; animation: garden-grow 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; pointer-events: none; }
+@keyframes garden-grow { from { transform: scale(0.05); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .garden-flower { animation: none; } }

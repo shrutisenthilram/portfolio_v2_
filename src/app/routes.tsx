@@ -6,8 +6,8 @@ import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ProjectCaseStudyPage } from "./pages/ProjectCaseStudyPage";
 import { AboutPage } from "./pages/AboutPage";
 import { NotFound } from "./pages/NotFound";
-// PlaygroundPage and PaletteDemo are intentionally not routed: they hold
-// placeholder content and are not part of the public site.
+import { PlaygroundPage } from "./pages/PlaygroundPage";
+// PaletteDemo is intentionally not routed: it holds placeholder content.
 import { KinLayout } from "./kin/KinLayout";
 import { DesignSystemPage } from "./kin/DesignSystemPage";
 import { NavigationMapPage } from "./kin/NavigationMapPage";
@@ -32,6 +32,12 @@ const devOnlyRoutes = import.meta.env.DEV
           Component: (await import("./admin/AdminPage")).AdminPage,
         }),
       },
+      {
+        path: "/admin/playground",
+        lazy: async () => ({
+          Component: (await import("./admin/PlaygroundAdmin")).PlaygroundAdmin,
+        }),
+      },
     ]
   : [];
 
@@ -44,6 +50,7 @@ export const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "about", Component: AboutPage },
       { path: "projects", Component: AllProjects },
+      { path: "playground", Component: PlaygroundPage },
       { path: "projects/:slug", Component: ProjectDetailPage },
       { path: "projects/:slug/case-study", Component: ProjectCaseStudyPage },
       { path: "*", Component: NotFound },

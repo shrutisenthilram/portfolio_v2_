@@ -453,9 +453,14 @@ function AdminInner() {
             local only · not on the live site
           </span>
         </div>
-        <a href="/" style={{ fontSize: "0.78rem", color: "var(--p-accent)" }}>
-          ← View site
-        </a>
+        <div className="flex gap-5">
+          <a href="/admin/playground" style={{ fontSize: "0.78rem", color: "var(--p-accent)" }}>
+            Playground admin
+          </a>
+          <a href="/" style={{ fontSize: "0.78rem", color: "var(--p-accent)" }}>
+            ← View site
+          </a>
+        </div>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] min-h-[calc(100vh-49px)]">

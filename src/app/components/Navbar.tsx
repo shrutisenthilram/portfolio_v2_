@@ -15,6 +15,9 @@ const SCROLL_LINKS = [
   { label: "Contact", id: "contact" },
 ];
 
+// A real page (not a section on the home page).
+const PLAYGROUND_LINK = { label: "Playground", to: "/playground" };
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("");
@@ -128,6 +131,22 @@ export function Navbar() {
               );
             })}
 
+            <Link
+              to={PLAYGROUND_LINK.to}
+              className="relative transition-colors duration-200 pb-0.5"
+              style={{
+                fontSize: "0.85rem",
+                fontWeight: 400,
+                color: location.pathname === PLAYGROUND_LINK.to ? ACCENT : "var(--p-fg-65)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = CORAL)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = location.pathname === PLAYGROUND_LINK.to ? ACCENT : "var(--p-fg-65)")
+              }
+            >
+              {PLAYGROUND_LINK.label}
+            </Link>
+
             {resumeButton}
 
             {/* Theme toggle */}
@@ -212,6 +231,13 @@ export function Navbar() {
               </a>
             )
           )}
+          <Link
+            to={PLAYGROUND_LINK.to}
+            className="transition-colors duration-200"
+            style={{ fontSize: "1rem", fontWeight: 400, color: "var(--p-fg-65)" }}
+          >
+            {PLAYGROUND_LINK.label}
+          </Link>
           <Link
             to="/projects"
             className="transition-colors duration-200"

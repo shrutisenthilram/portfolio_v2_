@@ -35,12 +35,20 @@ How it works:
 - Kin, Vote Smart, and Design Frontiers use hand-built case studies and are edited in code
   (`src/app/data/`).
 
+## The Playground
+
+`/playground` holds a garden you can plant flowers in, plus experiments, short notes and a
+"currently into" list. Those items are JSON files in `src/content/playground/`, edited the same
+way as projects: run `npm run dev` and open **http://localhost:5173/admin/playground**. Drafts
+show only locally; a section with nothing published stays hidden on the live site.
+
 ## Where things live
 
 | What | Where |
 | --- | --- |
 | Links, headline, availability, resume URL | `src/app/data/site.ts` |
 | Projects (cards and pages), edited in `/admin` | `src/content/projects/*.json` |
+| Playground items, edited in `/admin/playground` | `src/content/playground/*.json` |
 | Hand-built projects (Kin, Vote Smart, Design Frontiers) | `src/app/data/projects.ts` |
 | Full case studies | `src/app/data/case-studies/` |
 | PRD overview pages | `src/app/data/prds/` |

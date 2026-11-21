@@ -5,6 +5,7 @@
 // `npm run build` or on Vercel: there is no live admin to attack. It only
 // reads and writes files inside this repo:
 //   • src/content/projects/<slug>.json   (project content)
+//   • src/content/playground/<slug>.json (playground items)
 //   • public/uploads/<slug>/<file>        (images and PDFs)
 // Edits then go live the normal way: commit and push.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,12 +18,15 @@ import path from "node:path";
 const ROOT = process.cwd();
 const PROJECTS_DIR = path.resolve(ROOT, "src/content/projects");
 const UPLOAD_DIR = path.resolve(ROOT, "public/uploads");
+const PLAYGROUND_DIR = path.resolve(ROOT, "src/content/playground");
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const FILE_RE = /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,100}$/;
 const ALLOWED_EXT = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".pdf"]);
 const STATUSES = new Set(["draft", "published"]);
 const KINDS = new Set(["product", "teardown", "research", "engineering", "leadership"]);
+const PLAY_KINDS = new Set(["experiment", "note", "interest"]);
+const PLAY_KEYS = ["slug", "status", "kind", "order", "title", "summary", "body", "date", "link", "linkLabel", "tags", "image"] as const;
 
 const MAX_JSON_BYTES = 1_000_000; // 1 MB
 const MAX_UPLOAD_BYTES = 15_000_000; // 15 MB
@@ -144,6 +148,32 @@ function sanitize(raw: any) {
   return ordered;
 }
 
+function sanitizePlayground(raw: any) {
+  if (!raw || typeof raw !== "object") throw new HttpError(400, "Invalid body");
+  const slug = str(raw.slug);
+  if (!SLUG_RE.test(slug)) throw new HttpError(400, "Slug must be lowercase letters, numbers and hyphens");
+  if (!STATUSES.has(raw.status)) throw new HttpError(400, "Invalid status");
+  if (!PLAY_KINDS.has(raw.kind)) throw new HttpError(400, "Invalid kind");
+  if (!str(raw.title).trim()) throw new HttpError(400, "Title is required");
+  const out: Record<string, unknown> = {
+    slug,
+    status: raw.status,
+    kind: raw.kind,
+    order: Number.isFinite(Number(raw.order)) ? Number(raw.order) : 999,
+    title: str(raw.title),
+    summary: str(raw.summary),
+    body: str(raw.body),
+    date: str(raw.date),
+    link: str(raw.link),
+    linkLabel: str(raw.linkLabel),
+    tags: strList(raw.tags),
+    image: str(raw.image),
+  };
+  const ordered: Record<string, unknown> = {};
+  for (const k of PLAY_KEYS) ordered[k] = out[k];
+  return ordered;
+}
+
 function insideDir(dir: string, target: string) {
   return target.startsWith(dir + path.sep);
 }
@@ -170,6 +200,29 @@ async function handle(req: IncomingMessage, res: ServerResponse) {
     const file = path.resolve(PROJECTS_DIR, `${slug}.json`);
     if (!insideDir(PROJECTS_DIR, file) || !fs.existsSync(file)) {
       throw new HttpError(404, "Project not found");
+    }
+    fs.unlinkSync(file);
+    return json(res, 200, { ok: true });
+  }
+
+  if (url.pathname === "/__admin/save-playground") {
+    const body = JSON.parse((await readBody(req, MAX_JSON_BYTES)).toString("utf8"));
+    const data = sanitizePlayground(body);
+    const file = path.resolve(PLAYGROUND_DIR, `${data.slug}.json`);
+    if (!insideDir(PLAYGROUND_DIR, file)) throw new HttpError(400, "Bad path");
+    const tmp = `${file}.tmp`;
+    fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n");
+    fs.renameSync(tmp, file);
+    return json(res, 200, { ok: true, slug: data.slug });
+  }
+
+  if (url.pathname === "/__admin/delete-playground") {
+    const body = JSON.parse((await readBody(req, 10_000)).toString("utf8"));
+    const slug = str(body.slug);
+    if (!SLUG_RE.test(slug)) throw new HttpError(400, "Bad slug");
+    const file = path.resolve(PLAYGROUND_DIR, `${slug}.json`);
+    if (!insideDir(PLAYGROUND_DIR, file) || !fs.existsSync(file)) {
+      throw new HttpError(404, "Item not found");
     }
     fs.unlinkSync(file);
     return json(res, 200, { ok: true });
@@ -223,7 +276,7 @@ export function stripDraftsFromBuild(): Plugin {
     enforce: "pre",
     transform(code, id) {
       const clean = id.split("?")[0].replace(/\\/g, "/");
-      if (!/\/src\/content\/projects\/[^/]+\.json$/.test(clean)) return null;
+      if (!/\/src\/content\/(projects|playground)\/[^/]+\.json$/.test(clean)) return null;
       try {
         const data = JSON.parse(code);
         if (data.status === "published") return null;

@@ -64,3 +64,33 @@ export const PROJECT_KINDS: { value: ProjectKind; label: string }[] = [
   { value: "engineering", label: "Engineering" },
   { value: "leadership", label: "Leadership" },
 ];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Playground items: src/content/playground/<slug>.json, edited at /admin/playground.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type PlaygroundKind =
+  | "experiment" // a small build, demo or side experiment
+  | "note" // a short written post
+  | "interest"; // something you are currently into
+
+export const PLAYGROUND_KINDS: { value: PlaygroundKind; label: string }[] = [
+  { value: "experiment", label: "Experiment / demo" },
+  { value: "note", label: "Note / blog post" },
+  { value: "interest", label: "Currently into" },
+];
+
+export type PlaygroundItem = {
+  slug: string;
+  status: ProjectStatus; // draft = visible only locally
+  kind: PlaygroundKind;
+  order?: number; // lower numbers appear first (notes: newest should have the lowest number)
+  title: string;
+  summary: string; // one or two sentences
+  body?: string; // notes: the full text (blank lines make paragraphs)
+  date?: string; // e.g. "Nov 2026"
+  link?: string; // external link: a demo, repo or post
+  linkLabel?: string; // text for that link, e.g. "Try it"
+  tags?: string[];
+  image?: string; // optional picture
+};
