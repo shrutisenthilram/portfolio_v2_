@@ -19,3 +19,14 @@ export const SITE = {
   headlineAccent: "shipped products.",
   proof: "Currently @ Cloudflare",
 } as const;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Locks: while an area is `true`, visitors to the LIVE site see an "under construction"
+// notice instead of its content. When you run the site locally (`npm run dev`) you
+// always see the real content. To preview what visitors see, add ?locked to any URL
+// (for example http://localhost:5173/?locked). Flip a value to false and push to unlock.
+// ─────────────────────────────────────────────────────────────────────────────
+export const LOCKS = {
+  projects: true, // Featured Projects, All Projects, project pages, case studies, Kin prototype
+  playground: true, // the Playground tab
+} as const;

@@ -357,3 +357,16 @@
 .garden-flower { transform-origin: 50% 100%; animation: garden-grow 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; pointer-events: none; }
 @keyframes garden-grow { from { transform: scale(0.05); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .garden-flower { animation: none; } }
+
+/* Simple pink cursor: a pink arrow normally, a deeper pink one over anything clickable.
+   Fine pointers only (phones and tablets ignore it); text boxes keep the normal text cursor. */
+@media (pointer: fine) {
+  .site-root { cursor: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M3 2 L3 19 L7.5 14.8 L10.6 21.5 L13.2 20.3 L10.1 13.7 L16.5 13.7 Z%22 fill=%22%23D9668B%22 stroke=%22%23ffffff%22 stroke-width=%221.4%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") 3 2, auto; }
+  .site-root a[href],
+  .site-root button:not(:disabled),
+  .site-root [role="button"],
+  .site-root summary,
+  .site-root label,
+  .site-root select { cursor: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M3 2 L3 19 L7.5 14.8 L10.6 21.5 L13.2 20.3 L10.1 13.7 L16.5 13.7 Z%22 fill=%22%23B65670%22 stroke=%22%23ffffff%22 stroke-width=%221.4%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") 3 2, pointer; }
+  .site-root input[type="text"], .site-root textarea { cursor: text; }
+}

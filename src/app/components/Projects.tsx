@@ -2,10 +2,12 @@ import { BranchRule, EdgeVine } from "./FloralArt";
 import { Link } from "react-router";
 import { featuredProjects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
+import { LockedNotice, useLocked } from "./Locked";
 
 const ACCENT = "#B65670";
 
 export function Projects() {
+  const locked = useLocked("projects");
   return (
     <section
       id="work"
@@ -33,6 +35,7 @@ export function Projects() {
           </h2>
           <BranchRule className="mt-3" />
         </div>
+        {!locked && (
         <Link
           to="/projects"
           className="hidden sm:inline-flex items-center gap-2 pb-0.5 transition-colors duration-200"
@@ -40,8 +43,13 @@ export function Projects() {
         >
           All projects →
         </Link>
+        )}
       </div>
 
+      {locked ? (
+        <LockedNotice area="projects" />
+      ) : (
+      <>
       <div className={`grid grid-cols-1 ${featuredProjects.length <= 2 ? "md:grid-cols-2" : "md:grid-cols-3"} gap-8 md:gap-6`}>
         {featuredProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} variant="featured" />
@@ -55,6 +63,8 @@ export function Projects() {
       >
         All projects →
       </Link>
+      </>
+      )}
     </section>
   );
 }

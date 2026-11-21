@@ -6,6 +6,7 @@ import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ProjectCaseStudyPage } from "./pages/ProjectCaseStudyPage";
 import { AboutPage } from "./pages/AboutPage";
 import { NotFound } from "./pages/NotFound";
+import { guarded, guardedLayout } from "./components/Locked";
 import { PlaygroundPage } from "./pages/PlaygroundPage";
 // PaletteDemo is intentionally not routed: it holds placeholder content.
 import { KinLayout } from "./kin/KinLayout";
@@ -24,6 +25,14 @@ import { OnboardingPage } from "./kin/OnboardingPage";
 
 // The /admin editor exists only in local development. In a production build
 // import.meta.env.DEV is false, so this route (and the editor code) is removed.
+// While LOCKS (src/app/data/site.ts) are on, visitors see an "under construction" notice for
+// these routes. Locally you always see the real pages.
+const LockedAllProjects = guarded("projects", "Projects", AllProjects);
+const LockedProjectDetail = guarded("projects", "Projects", ProjectDetailPage);
+const LockedCaseStudy = guarded("projects", "Projects", ProjectCaseStudyPage);
+const LockedPlayground = guarded("playground", "Playground", PlaygroundPage);
+const LockedKin = guardedLayout("projects", "Projects", KinLayout);
+
 const devOnlyRoutes = import.meta.env.DEV
   ? [
       {
@@ -49,16 +58,16 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "about", Component: AboutPage },
-      { path: "projects", Component: AllProjects },
-      { path: "playground", Component: PlaygroundPage },
-      { path: "projects/:slug", Component: ProjectDetailPage },
-      { path: "projects/:slug/case-study", Component: ProjectCaseStudyPage },
+      { path: "projects", Component: LockedAllProjects },
+      { path: "playground", Component: LockedPlayground },
+      { path: "projects/:slug", Component: LockedProjectDetail },
+      { path: "projects/:slug/case-study", Component: LockedCaseStudy },
       { path: "*", Component: NotFound },
     ],
   },
   {
     path: "/kin",
-    Component: KinLayout,
+    Component: LockedKin,
     children: [
       { index: true, Component: DesignSystemPage },
       { path: "nav-map", Component: NavigationMapPage },
