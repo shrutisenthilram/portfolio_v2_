@@ -24,6 +24,7 @@ import {
 import { FooterNav } from "../case-study/CaseStudyShell";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { getTagColor } from "../../data/tagColors";
+import { BranchRule, EdgeVine } from "../FloralArt";
 
 const ACCENT = "#B65670";
 const CORAL = "#557A63";
@@ -201,8 +202,9 @@ export function ProjectPage({
   const visible = sections.filter((s) => s.show);
 
   return (
-    <article style={{ fontFamily: "'Inter', sans-serif" }}>
-      <div className="max-w-[860px] mx-auto px-6 md:px-10 lg:px-14 pt-28 md:pt-32">
+    <article className="relative" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <EdgeVine side="left" top="38%" />
+      <div className="max-w-[860px] mx-auto px-6 md:px-10 lg:px-14 pt-24 md:pt-28">
         {isDraft && (
           <div
             className="mb-8 px-4 py-3"
@@ -249,7 +251,7 @@ export function ProjectPage({
         </div>
 
         <h1
-          className="mb-4"
+          className="mb-2"
           style={{
             fontSize: "clamp(2rem, 5vw, 3.4rem)",
             fontWeight: 300,
@@ -260,6 +262,7 @@ export function ProjectPage({
         >
           {project.title}
         </h1>
+        <BranchRule className="mb-4" />
         <p
           className="max-w-xl mb-8"
           style={{ fontSize: "1.05rem", lineHeight: 1.7, color: "var(--p-fg-65)" }}

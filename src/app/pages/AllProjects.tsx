@@ -11,6 +11,7 @@ import {
 import { ProjectCard } from "../components/ProjectCard";
 import { ImageWithFallback, ImagePlaceholder } from "../components/figma/ImageWithFallback";
 import { INDIGO } from "../data/tagColors";
+import { BranchRule, EdgeVine } from "../components/FloralArt";
 
 const ACCENT = INDIGO;
 
@@ -197,8 +198,9 @@ export function AllProjects() {
   );
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif" }}>
-      <div className="pt-32 pb-16 px-6 md:px-12 max-w-6xl mx-auto">
+    <div className="relative" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <EdgeVine side="left" top="42%" />
+      <div className="pt-24 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="flex items-center gap-2 mb-10">
           <Link
             to="/"
@@ -231,6 +233,7 @@ export function AllProjects() {
             >
               All Projects
             </h1>
+            <BranchRule className="mt-3" />
           </div>
 
           <div className="flex items-center gap-3">

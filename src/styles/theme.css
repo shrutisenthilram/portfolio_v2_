@@ -291,7 +291,7 @@
 
 
 /* Site-wide typography: serif headings, small rose bloom before section labels */
-.site-root main .tracking-widest.uppercase::before {
+.site-root .tracking-widest.uppercase::before {
   content: "";
   display: inline-block;
   width: 0.95em;

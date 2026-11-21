@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { MagneticButton } from "../components/MagneticButton";
 import { SITE } from "../data/site";
+import { BranchRule, EdgeVine } from "../components/FloralArt";
 import { CommunitiesSection } from "../components/CommunitiesSection";
 // TODO: revisit music section
 // import { MusicSection } from "../components/MusicSection";
@@ -302,7 +303,8 @@ export function AboutPage() {
   const [imgHovered, setImgHovered] = useState(false);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="relative" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <EdgeVine side="right" top="30%" />
       {/* ── Page header ── */}
       <div className="pt-28 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         {/* Breadcrumb */}
@@ -407,6 +409,7 @@ export function AboutPage() {
               </span>{" "}
               meet.
             </h1>
+            <BranchRule className="-mt-4 mb-6" />
 
             <p
               className="mb-5 max-w-lg"
